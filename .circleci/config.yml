@@ -5,9 +5,9 @@ jobs:
     docker:
       - image: ubuntu:18.04
 
-      environment:
-        CXX: /usr/bin/g++-8
-        CC: /usr/bin/gcc-8
+        environment:
+          CXX: /usr/bin/g++-8
+          CC: /usr/bin/gcc-8
 
     steps:
       - checkout
