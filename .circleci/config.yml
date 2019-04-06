@@ -45,13 +45,4 @@ jobs:
 
       - run:
         name: "Install build tools"
-        command: | C:\TEMP\vs_buildtools.exe --quiet --wait
-      --norestart --nocache `
-      --installPath C:\BuildTools `
-      --channelUri C:\TEMP\VisualStudio.chman `
-      --installChannelUri C:\TEMP\VisualStudio.chman `
-      --all `
-      --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 `
-      --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 `
-      --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 `
-      --remove Microsoft.VisualStudio.Component.Windows81SDK
+        command: "C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache --installPath C:\BuildTools --channelUri C:\TEMP\VisualStudio.chman --installChannelUri C:\TEMP\VisualStudio.chman --all --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 --remove Microsoft.VisualStudio.Component.Windows81SDK"
