@@ -125,17 +125,17 @@ ecs\fast:
 .PHONY : ecs\fast
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named Starfarm
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) test
-.PHONY : test
+Starfarm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) Starfarm
+.PHONY : Starfarm
 
 # fast build rule for target.
-test\fast:
-	$(MAKE) -f CMakeFiles\test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.dir\build
-.PHONY : test\fast
+Starfarm\fast:
+	$(MAKE) -f CMakeFiles\Starfarm.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Starfarm.dir\build
+.PHONY : Starfarm\fast
 
 ECS\src\Component\Component.obj: ECS\src\Component\Component.cpp.obj
 
@@ -407,32 +407,35 @@ ECS\src\Entity\IEntityContainer.cpp.s:
 	$(MAKE) -f CMakeFiles\ecs.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ecs.dir\ECS\src\Entity\IEntityContainer.cpp.s
 .PHONY : ECS\src\Entity\IEntityContainer.cpp.s
 
-test\src\main.obj: test\src\main.cpp.obj
+Starfarm\src\main.obj: Starfarm\src\main.cpp.obj
 
-.PHONY : test\src\main.obj
+.PHONY : Starfarm\src\main.obj
 
 # target to build an object file
-test\src\main.cpp.obj:
-	$(MAKE) -f CMakeFiles\test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.dir\test\src\main.cpp.obj
-.PHONY : test\src\main.cpp.obj
+Starfarm\src\main.cpp.obj:
+	$(MAKE) -f CMakeFiles\ecs.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj
+	$(MAKE) -f CMakeFiles\Starfarm.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Starfarm.dir\Starfarm\src\main.cpp.obj
+.PHONY : Starfarm\src\main.cpp.obj
 
-test\src\main.i: test\src\main.cpp.i
+Starfarm\src\main.i: Starfarm\src\main.cpp.i
 
-.PHONY : test\src\main.i
+.PHONY : Starfarm\src\main.i
 
 # target to preprocess a source file
-test\src\main.cpp.i:
-	$(MAKE) -f CMakeFiles\test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.dir\test\src\main.cpp.i
-.PHONY : test\src\main.cpp.i
+Starfarm\src\main.cpp.i:
+	$(MAKE) -f CMakeFiles\ecs.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ecs.dir\Starfarm\src\main.cpp.i
+	$(MAKE) -f CMakeFiles\Starfarm.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Starfarm.dir\Starfarm\src\main.cpp.i
+.PHONY : Starfarm\src\main.cpp.i
 
-test\src\main.s: test\src\main.cpp.s
+Starfarm\src\main.s: Starfarm\src\main.cpp.s
 
-.PHONY : test\src\main.s
+.PHONY : Starfarm\src\main.s
 
 # target to generate assembly for a file
-test\src\main.cpp.s:
-	$(MAKE) -f CMakeFiles\test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.dir\test\src\main.cpp.s
-.PHONY : test\src\main.cpp.s
+Starfarm\src\main.cpp.s:
+	$(MAKE) -f CMakeFiles\ecs.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ecs.dir\Starfarm\src\main.cpp.s
+	$(MAKE) -f CMakeFiles\Starfarm.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Starfarm.dir\Starfarm\src\main.cpp.s
+.PHONY : Starfarm\src\main.cpp.s
 
 # Help Target
 help:
@@ -442,7 +445,7 @@ help:
 	@echo ... depend
 	@echo ... ecs
 	@echo ... rebuild_cache
-	@echo ... test
+	@echo ... Starfarm
 	@echo ... edit_cache
 	@echo ... ECS/src/Component/Component.obj
 	@echo ... ECS/src/Component/Component.i
@@ -474,9 +477,9 @@ help:
 	@echo ... ECS/src/Entity/IEntityContainer.obj
 	@echo ... ECS/src/Entity/IEntityContainer.i
 	@echo ... ECS/src/Entity/IEntityContainer.s
-	@echo ... test/src/main.obj
-	@echo ... test/src/main.i
-	@echo ... test/src/main.s
+	@echo ... Starfarm/src/main.obj
+	@echo ... Starfarm/src/main.i
+	@echo ... Starfarm/src/main.s
 .PHONY : help
 
 

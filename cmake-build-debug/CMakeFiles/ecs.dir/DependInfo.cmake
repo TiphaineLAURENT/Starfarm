@@ -14,11 +14,13 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/Hugo/Downloads/ECS-master/ECS/src/Entity/EntityManager.cpp" "C:/Users/Hugo/Downloads/ECS-master/cmake-build-debug/CMakeFiles/ecs.dir/ECS/src/Entity/EntityManager.cpp.obj"
   "C:/Users/Hugo/Downloads/ECS-master/ECS/src/Entity/IEntity.cpp" "C:/Users/Hugo/Downloads/ECS-master/cmake-build-debug/CMakeFiles/ecs.dir/ECS/src/Entity/IEntity.cpp.obj"
   "C:/Users/Hugo/Downloads/ECS-master/ECS/src/Entity/IEntityContainer.cpp" "C:/Users/Hugo/Downloads/ECS-master/cmake-build-debug/CMakeFiles/ecs.dir/ECS/src/Entity/IEntityContainer.cpp.obj"
+  "C:/Users/Hugo/Downloads/ECS-master/Starfarm/src/main.cpp" "C:/Users/Hugo/Downloads/ECS-master/cmake-build-debug/CMakeFiles/ecs.dir/Starfarm/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../SFML-2.5.1/include"
   )
 
 # Targets to which this target links.

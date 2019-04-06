@@ -248,6 +248,25 @@ CMakeFiles\ecs.dir\ECS\src\Entity\EntityContainer.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ecs.dir\ECS\src\Entity\EntityContainer.cpp.s /c C:\Users\Hugo\Downloads\ECS-master\ECS\src\Entity\EntityContainer.cpp
 <<
 
+CMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj: CMakeFiles\ecs.dir\flags.make
+CMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj: ..\Starfarm\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Hugo\Downloads\ECS-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ecs.dir/Starfarm/src/main.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj /FdCMakeFiles\ecs.dir\ecs.pdb /FS -c C:\Users\Hugo\Downloads\ECS-master\Starfarm\src\main.cpp
+<<
+
+CMakeFiles\ecs.dir\Starfarm\src\main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/Starfarm/src/main.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\ecs.dir\Starfarm\src\main.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Hugo\Downloads\ECS-master\Starfarm\src\main.cpp
+<<
+
+CMakeFiles\ecs.dir\Starfarm\src\main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/Starfarm/src/main.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ecs.dir\Starfarm\src\main.cpp.s /c C:\Users\Hugo\Downloads\ECS-master\Starfarm\src\main.cpp
+<<
+
 # Object files for target ecs
 ecs_OBJECTS = \
 "CMakeFiles\ecs.dir\ECS\src\Entity\IEntity.cpp.obj" \
@@ -259,7 +278,8 @@ ecs_OBJECTS = \
 "CMakeFiles\ecs.dir\ECS\src\Component\IComponentContainer.cpp.obj" \
 "CMakeFiles\ecs.dir\ECS\src\Entity\EntityManager.cpp.obj" \
 "CMakeFiles\ecs.dir\ECS\src\Entity\IEntityContainer.cpp.obj" \
-"CMakeFiles\ecs.dir\ECS\src\Entity\EntityContainer.cpp.obj"
+"CMakeFiles\ecs.dir\ECS\src\Entity\EntityContainer.cpp.obj" \
+"CMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj"
 
 # External object files for target ecs
 ecs_EXTERNAL_OBJECTS =
@@ -274,9 +294,10 @@ lib\ecs.lib: CMakeFiles\ecs.dir\ECS\src\Component\IComponentContainer.cpp.obj
 lib\ecs.lib: CMakeFiles\ecs.dir\ECS\src\Entity\EntityManager.cpp.obj
 lib\ecs.lib: CMakeFiles\ecs.dir\ECS\src\Entity\IEntityContainer.cpp.obj
 lib\ecs.lib: CMakeFiles\ecs.dir\ECS\src\Entity\EntityContainer.cpp.obj
+lib\ecs.lib: CMakeFiles\ecs.dir\Starfarm\src\main.cpp.obj
 lib\ecs.lib: CMakeFiles\ecs.dir\build.make
 lib\ecs.lib: CMakeFiles\ecs.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Hugo\Downloads\ECS-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library lib\ecs.lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Hugo\Downloads\ECS-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library lib\ecs.lib"
 	$(CMAKE_COMMAND) -P CMakeFiles\ecs.dir\cmake_clean_target.cmake
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /lib /nologo /machine:X86 /out:lib\ecs.lib @CMakeFiles\ecs.dir\objects1.rsp 
 

@@ -193,6 +193,9 @@
 		<Unit filename="C:/Users/Hugo/Downloads/ECS-master/ECS/src/util/util.hpp">
 			<Option target="ecs"/>
 		</Unit>
+		<Unit filename="C:/Users/Hugo/Downloads/ECS-master/Game/main.cpp">
+			<Option target="ecs"/>
+		</Unit>
 		<Unit filename="C:/Users/Hugo/Downloads/ECS-master/test/src/main.cpp">
 			<Option target="test"/>
 		</Unit>

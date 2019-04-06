@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ecs.dir/ECS/src/Entity/EntityManager.cpp.obj"
   "CMakeFiles/ecs.dir/ECS/src/Entity/IEntityContainer.cpp.obj"
   "CMakeFiles/ecs.dir/ECS/src/Entity/EntityContainer.cpp.obj"
+  "CMakeFiles/ecs.dir/Starfarm/src/main.cpp.obj"
   "lib/ecs.pdb"
   "lib/ecs.lib"
 )
