@@ -21,13 +21,6 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          class SystemCompare {
-                  bool operator()(const std::unique_ptr<ISystem> &lhs,
-                                  const std::unique_ptr<ISystem> &rhs) const {
-                          return lhs->getPriority() < rhs->getPriority();
-                  }
-          };
-
           using SystemRegistry = std::map<
                   util::ID,
                   std::unique_ptr<ISystem>
