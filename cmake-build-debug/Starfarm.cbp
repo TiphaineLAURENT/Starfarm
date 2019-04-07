@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Starfarm"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\SFML-2.5.1-visual32\;CMake Files\SFML-2.5.1-visual32\lib\;CMake Files\SFML-2.5.1-visual32\lib\cmake\;CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ecs">
+				<Option output="C:/Users/Hugo/Documents/GitHub/Starfarm/lib/ecs.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 ecs"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ecs/fast">
+				<Option output="C:/Users/Hugo/Documents/GitHub/Starfarm/lib/ecs.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 ecs/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Starfarm">
+				<Option output="C:/Users/Hugo/Documents/GitHub/Starfarm/bin/Starfarm.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 Starfarm"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Starfarm/fast">
+				<Option output="C:/Users/Hugo/Documents/GitHub/Starfarm/bin/Starfarm.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 Starfarm/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Hugo\Documents\GitHub\Starfarm\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/Component.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/Component.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/ComponentContainer.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/ComponentContainer.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/ComponentManager.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/ComponentManager.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/IComponent.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/IComponent.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/IComponentContainer.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Component/IComponentContainer.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/Entity.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/Entity.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/EntityContainer.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/EntityContainer.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/EntityManager.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/EntityManager.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/IEntity.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/IEntity.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/IEntityContainer.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/Entity/IEntityContainer.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/ECS/src/util/util.hpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/Starfarm/src/main.cpp">
+			<Option target="ecs"/>
+			<Option target="Starfarm"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLSharedTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLSharedTargets-release.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\SFML-2.5.1-visual32\lib\cmake\SFML\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
