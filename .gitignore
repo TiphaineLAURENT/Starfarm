@@ -34,5 +34,5 @@
 # Build
 .idea/
 build/
-test/
 cmake-build-debug/
+test/
