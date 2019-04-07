@@ -33,6 +33,7 @@
 
 # Build
 .idea/
+.vs/
 build/
 cmake-build-debug/
 test/

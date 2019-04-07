@@ -11,5 +11,10 @@ Window::Window(const std::string &Title, const sf::Vector2u &Size, bool useShade
 
 void Window::Update()
 {
-    //Draw alla entities
+    //Draw all entities
+}
+
+bool Window::isFullscreen()
+{
+    return true;
 }
