@@ -54,6 +54,8 @@ namespace game
 	                                               &soundBufferName,
                                                        const std::string
 	                                               &path = SOUND_DIRECTORY);
+
+	  static RessourceManager &getInstance();
 	  static void destroy();
 
     private:
