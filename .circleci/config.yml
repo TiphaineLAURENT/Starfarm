@@ -40,9 +40,8 @@ jobs:
           name: Creating game binary
           command: "cmake --build build --target Starfarm"
 
-      - run:
-          name: Testing project
-          command: "./bin/Starfarm --success"
+  unix_unit_test:
+
 
   windows:
     docker:
