@@ -1,4 +1,0 @@
-C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug/CMakeFiles/ecs.dir
-C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug/CMakeFiles/Starfarm.dir
-C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -1,5 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\Hugo\Documents\GitHub\Starfarm
--- Found SFML 2.5.1 in C:/Users/Hugo/Documents/GitHub/Starfarm/SFML-2.5.1-visual32/lib/cmake/SFML
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/Hugo/Documents/GitHub/Starfarm/cmake-build-debug
