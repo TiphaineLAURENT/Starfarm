@@ -16,70 +16,73 @@ namespace game
                                                   &textureName,
                                                   const std::string &path)
   {
-	  if (!_manager)
-	  	_manager = new RessourceManager;
+          RessourceManager &manager = getInstance();
 
-	  if (!_manager->_textures.count(textureName)) {
+	  if (!manager._textures.count(textureName)) {
 		  sf::Texture texture;
 		  texture.loadFromFile(path + textureName);
-		  _manager->_textures[textureName] =
+		  manager._textures[textureName] =
 			  std::make_unique<sf::Texture>(texture);
 	  }
 
-	  return *_manager->_textures[textureName];
+	  return *manager._textures[textureName];
   }
 
   sf::Music &RessourceManager::getMusic(const std::string &musicName,
                                               const std::string &path)
   {
-	  if (!_manager)
-		  _manager = new RessourceManager;
+          RessourceManager &manager = getInstance();
 
-	  if (!_manager->_musics.count(musicName)) {
+	  if (!manager._musics.count(musicName)) {
 		  auto music = std::make_unique<sf::Music>();
 		  music->openFromFile(path + musicName);
-		  _manager->_musics[musicName] = std::move(music);
+		  manager._musics[musicName] = std::move(music);
 	  }
 
-	  return *_manager->_musics[musicName];
+	  return *manager._musics[musicName];
   }
 
   const sf::Font &RessourceManager::getFont(const std::string &fontName,
                                             const std::string &path)
   {
-	  if (!_manager)
-		  _manager = new RessourceManager;
+          RessourceManager &manager = getInstance();
 
-	  if (!_manager->_fonts.count(fontName)) {
+	  if (!manager._fonts.count(fontName)) {
 		  sf::Font font;
 		  font.loadFromFile(path + fontName);
-		  _manager->_fonts[fontName] =
+		  manager._fonts[fontName] =
 			  std::make_unique<sf::Font>(font);
 	  }
 
-	  return *_manager->_fonts[fontName];
+	  return *manager._fonts[fontName];
   }
 
   const sf::SoundBuffer &RessourceManager::getSoundBuffer(const std::string
                                                           &soundBufferName,
                                                           const std::string &path)
   {
-  	if (!_manager)
-  		_manager = new RessourceManager;
+          RessourceManager &manager = getInstance();
 
-  	if (_manager->_soundBuffers.count(soundBufferName)) {
+  	if (manager._soundBuffers.count(soundBufferName)) {
 	        sf::SoundBuffer buffer;
 	        buffer.loadFromFile(path + soundBufferName);
-	        _manager->_soundBuffers[soundBufferName] =
+	        manager._soundBuffers[soundBufferName] =
 		        std::make_unique<sf::SoundBuffer>(buffer);
   	}
 
-  	return *_manager->_soundBuffers[soundBufferName];
+  	return *manager._soundBuffers[soundBufferName];
   }
 
   void RessourceManager::destroy()
   {
 	  delete _manager;
+  }
+
+  RessourceManager &RessourceManager::getInstance()
+  {
+          if (!_manager)
+                  _manager = new RessourceManager;
+          return *_manager;
   }
 
 }

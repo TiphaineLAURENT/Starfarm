@@ -37,6 +37,14 @@ jobs:
           command: "apt-get update && apt-get install -y libopenal-dev"
 
       - run:
+          name: Installing Freetype
+          command: "apt-get update && apt-get install -y libfreetype6-dev"
+
+      - run:
+          name: Installing Vorbis
+          command: "apt-get update && apt-get install -y libvorbis-dev"
+
+      - run:
           name: Creating build files
           command: "cmake -H. -Bbuild"
 
@@ -44,26 +52,26 @@ jobs:
           name: Creating game binary
           command: "cmake --build build --target Starfarm"
 
-  windows:
-    docker:
-      - image: microsoft/dotnet-framework:4.7.1
-
-    steps:
-      - checkout
-
-      - run:
-          name: "Set execution policy to accept script execution"
-          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-          command: "Set-ExecutionPolicy RemoteSigned"
-
-      - run:
-          name: "Download & Install build tools"
-          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-          command: "./build_windows.ps1"
+#  windows:
+#    docker:
+#      - image: microsoft/dotnet-framework:4.7.1
+#
+#    steps:
+#      - checkout
+#
+#      - run:
+#          name: "Set execution policy to accept script execution"
+#          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+#          command: "Set-ExecutionPolicy RemoteSigned"
+#
+#      - run:
+#          name: "Download & Install build tools"
+#          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+#          command: "./build_windows.ps1"
 
 workflows:
   version: 2
   builds:
     jobs:
       - unix
-      - windows
+#      - windows
