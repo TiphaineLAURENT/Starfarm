@@ -23,10 +23,10 @@ set(ECS_SOURCES
         )
 
 set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/Starfarm/ressource")
-add_compile_definitions(TEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture")
-add_compile_definitions(MUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music")
-add_compile_definitions(SOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound")
-add_compile_definitions(FONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font")
+add_definitions(-DTEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture")
+add_definitions(-DMUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music")
+add_definitions(-DSOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound")
+add_definitions(-DFONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font")
 
 set(STARFARM_SOURCES
         Starfarm/src/main.cpp
