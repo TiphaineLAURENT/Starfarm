@@ -7,10 +7,17 @@
 
 # include <Entity.hpp>
 
+# include "../Component/TransformComponent.hpp"
+
 namespace game
 {
 
   class PlayerEntity : public ecs::Entity<PlayerEntity> {
+  public:
+          PlayerEntity()
+          {
+                  addComponent<TransformComponent>();
+          }
   };
 
 }

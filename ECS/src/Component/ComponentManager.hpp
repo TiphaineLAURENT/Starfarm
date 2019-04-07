@@ -89,11 +89,17 @@ namespace ecs
 	  }
 
 	  template <class C>
-	  static CComponentIterator<C> begin();
+	  static CComponentIterator<C> begin()
+          {
+                  return getComponentContainer<C>().begin();
+          }
 	  template <class C>
-	  static CComponentIterator<C> end();
+	  static CComponentIterator<C> end()
+          {
+                  return getComponentContainer<C>().end();
+          }
 
-    private:
+  private:
   };
 
   std::ostream &operator<<(std::ostream &out, const ComponentManager &);

@@ -20,15 +20,4 @@ namespace ecs
 	  return *_instance;
   }
 
-  template<class C>
-  CComponentIterator<C> ComponentManager::begin()
-  {
-	  return getComponentContainer<C>().begin();
-  }
-
-  template<class C>
-  CComponentIterator<C> ComponentManager::end()
-  {
-	  return getComponentContainer<C>().end();
-  }
 }

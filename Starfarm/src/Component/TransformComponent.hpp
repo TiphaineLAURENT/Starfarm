@@ -8,28 +8,44 @@
 # include <ostream>
 # include <Component.hpp>
 
-class TransformComponent : public ecs::Component<TransformComponent>
+namespace game
 {
-// ATTRIBUTES
-private:
-        std::pair<size_t, size_t> _position;
-        std::pair<size_t, size_t> _rotation;
-        std::pair<size_t, size_t> _scale;
 
-public:
+  class TransformComponent : public ecs::Component<TransformComponent>
+  {
+// ATTRIBUTES
+  private:
+          using Positions = std::pair<size_t, size_t>;
+          Positions _position;
+
+          using Rotations = std::pair<size_t, size_t>;
+          Positions _rotation;
+
+          using Scales = std::pair<size_t, size_t>;
+          Scales _scale;
+
+  public:
 
 // METHODS:
-public: // CONSTRUCTORS
-        TransformComponent();
-        ~TransformComponent() = default;
-        TransformComponent(const TransformComponent &copy) = default;
-        TransformComponent(TransformComponent &&other) noexcept = default;
+  public: // CONSTRUCTORS
+          explicit TransformComponent(Positions position = {0, 0},
+                             Rotations rotation = {0, 0},
+                             Scales scale = {0, 0}
+          );
+          ~TransformComponent() override = default;
+          TransformComponent(const TransformComponent &copy) = default;
+          TransformComponent(TransformComponent &&other) noexcept = default;
 
-public: // OPERATORS
-        TransformComponent &operator=(const TransformComponent &other) = default;
-        TransformComponent &operator=(TransformComponent &&other) = default;
-};
+  public: // OPERATORS
+          TransformComponent &operator=(const TransformComponent &other) = default;
+          TransformComponent &operator=(TransformComponent &&other) = default;
 
-std::ostream &operator<<(std::ostream &out, const TransformComponent &);
+  public:
+          void update() const;
+  };
+
+  std::ostream &operator<<(std::ostream &out, const TransformComponent &);
+
+}
 
 #endif //STARFARM_TRANSFORMCOMPONENT_HPP

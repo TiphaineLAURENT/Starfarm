@@ -14,5 +14,6 @@ int main(int argc, char* argv[])
 {
     game::Game game;
     game.loop();
+
     return 0;
 }

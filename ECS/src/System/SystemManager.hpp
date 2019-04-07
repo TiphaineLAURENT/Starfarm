@@ -35,7 +35,7 @@ namespace ecs
 
 // METHODS:
   public: // CONSTRUCTORS
-          SystemManager();
+          SystemManager() = default;
           ~SystemManager() = default;
           SystemManager(const SystemManager &copy) = delete;
           SystemManager(SystemManager &&other) noexcept = delete;
@@ -54,7 +54,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager &instance       = getInstance();
 
                   auto system = std::make_unique<S>(std::forward<ARGS>(args)...);
@@ -120,7 +120,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager &instance       = getInstance();
 
                   return *static_cast<S*>(instance._systems[systemTypeID].get());
@@ -133,7 +133,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager      &instance    = getInstance();
 
                   auto system = instance.getSystem<S>();
@@ -148,7 +148,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager      &instance    = getInstance();
 
                   auto system = instance.getSystem<S>();
@@ -163,7 +163,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager      &instance    = getInstance();
 
                   auto system = instance.getSystem<S>();
@@ -178,7 +178,7 @@ namespace ecs
                                 "System must be derived from ISystem"
                   );
 
-                  const SystemTypeID systemTypeID = S::getSystemTypeID();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
                   SystemManager      &instance    = getInstance();
 
                   auto system = instance.getSystem<S>();
