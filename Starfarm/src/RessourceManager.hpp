@@ -14,7 +14,7 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Audio/SoundBuffer.hpp>
 
-namespace client
+namespace game
 {
 
   class RessourceManager
@@ -33,12 +33,12 @@ namespace client
     public:// CONSTRUCTORS
 	  RessourceManager() = default;
 	  ~RessourceManager() = default;
-//	RessourceManager(const RessourceManager &copy) = default;
-//	RessourceManager(RessourceManager &&) noexcept = default;
+          RessourceManager(const RessourceManager &copy) = delete;
+          RessourceManager(RessourceManager &&) noexcept = delete;
 
     public: //OPERATORS
-//	RessourceManager &operator=(const RessourceManager &other) = default;
-//	RessourceManager &operator=(RessourceManager &&) = default;
+          RessourceManager &operator=(const RessourceManager &other) = delete;
+          RessourceManager &operator=(RessourceManager &&) = delete;
 
     public:
 	  static const sf::Texture &getTexture(const std::string &textureName,

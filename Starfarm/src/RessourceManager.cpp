@@ -7,8 +7,11 @@
 
 #include "RessourceManager.hpp"
 
-namespace client
+namespace game
 {
+
+  RessourceManager *RessourceManager::_manager = nullptr;
+
   const sf::Texture &RessourceManager::getTexture(const std::string
                                                   &textureName,
                                                   const std::string &path)
@@ -78,4 +81,5 @@ namespace client
   {
 	  delete _manager;
   }
+
 }
