@@ -31,7 +31,7 @@ namespace ecs
 
     public: //OPERATORS
 	  Entity &operator=(const Entity &other) = default;
-	  Entity &operator=(Entity &&) = default;
+	  Entity &operator=(Entity &&) noexcept = default;
 
     public:
 	  const EntityTypeID getEntityTypeID() const override
