@@ -51,7 +51,7 @@ jobs:
 
 workflows:
   version: 2
-    building:
-      jobs:
-        - unix
-        - windows
+  builds:
+    jobs:
+      - unix
+      - windows
