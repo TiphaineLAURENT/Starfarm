@@ -7,15 +7,20 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class Window
+namespace game
 {
-public:
-    Window(const std::string& Title = "Window", const sf::Vector2u& Size = {640, 480}, bool useShaders = true);
-    ~Window();
+    class Window
+    {
+    public:
+        Window(const std::string& Title = "Window", const sf::Vector2u& Size = {640, 480});
+        ~Window();
 
-    void Update();
+    public:
+        void Update();
 
-    bool isFullscreen();
-};
+    private:
+        sf::Vector2u _size;
+    };
+}
 
 #endif //STARFARM_WINDOW_HPP

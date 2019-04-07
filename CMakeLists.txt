@@ -32,7 +32,7 @@ set(STARFARM_SOURCES
         Starfarm/src/main.cpp
         Starfarm/src/Window.cpp Starfarm/src/Window.hpp
         Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
-        )
+		Starfarm/src/Game.cpp Starfarm/src/Game.hpp)
 
 set(EXECUTABLE_NAME "Starfarm")
 

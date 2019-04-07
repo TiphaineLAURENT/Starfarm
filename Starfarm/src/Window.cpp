@@ -4,17 +4,20 @@
 
 #include "Window.hpp"
 
-Window::Window(const std::string &Title, const sf::Vector2u &Size, bool useShaders)
+namespace game
 {
+    Window::Window(const std::string& Title, const sf::Vector2u& Size) :_size(Size)
+    {
 
-}
+    }
 
-void Window::Update()
-{
-    //Draw all entities
-}
+    Window::~Window()
+    {
 
-bool Window::isFullscreen()
-{
-    return true;
+    }
+
+    void Window::Update()
+    {
+        //Draw all entities
+    }
 }
