@@ -48,3 +48,10 @@ jobs:
         name: "Download & Install build tools"
         shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
         command: "./build_windows.ps1"
+
+workflows:
+  version: 2
+    build:
+      jobs:
+        - unix
+        - windows
