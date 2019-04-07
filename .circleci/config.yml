@@ -37,6 +37,14 @@ jobs:
           command: "apt-get update && apt-get install -y libopenal-dev"
 
       - run:
+          name: Installing Freetype
+          command: "apt-get update && apt-get install -y libfreetype6-dev"
+
+      - run:
+          name: Installing Vorbis
+          command: "apt-get update && apt-get install -y libvorbis-dev"
+
+      - run:
           name: Creating build files
           command: "cmake -H. -Bbuild"
 
