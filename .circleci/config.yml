@@ -40,9 +40,6 @@ jobs:
           name: Creating game binary
           command: "cmake --build build --target Starfarm"
 
-  unix_unit_test:
-
-
   windows:
     docker:
       - image: microsoft/dotnet-framework:4.7.1
