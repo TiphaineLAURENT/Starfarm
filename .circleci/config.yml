@@ -40,11 +40,11 @@ jobs:
       - checkout
 
       - run:
-        name: "Download build tools"
+        name: "Set execution policy to accept script execution"
         shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-        command: "Invoke-WebRequest -OutFile C:\TEMP\vs_buildtools.exe -Uri https://aka.ms/vs/16/release/vs_buildtools.exe"
+        command: "Set-ExecutionPolicy RemoteSigned"
 
       - run:
-        name: "Install build tools"
+        name: "Download & Install build tools"
         shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-        command: "C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache --installPath C:\BuildTools --channelUri C:\TEMP\VisualStudio.chman --installChannelUri C:\TEMP\VisualStudio.chman --all --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 --remove Microsoft.VisualStudio.Component.Windows81SDK"
+        command: "./build_windows.ps1"
