@@ -15,11 +15,24 @@ set(ECS_SOURCES
         ECS/src/Component/IComponentContainer.cpp ECS/src/Component/IComponentContainer.hpp
         ECS/src/Entity/EntityManager.cpp ECS/src/Entity/EntityManager.hpp
         ECS/src/Entity/IEntityContainer.cpp ECS/src/Entity/IEntityContainer.hpp
-        ECS/src/Entity/EntityContainer.cpp ECS/src/Entity/EntityContainer.hpp)
+        ECS/src/Entity/EntityContainer.cpp ECS/src/Entity/EntityContainer.hpp
+        ECS/src/System/ISystem.cpp ECS/src/System/ISystem.hpp
+        ECS/src/System/System.cpp ECS/src/System/System.hpp
+        ECS/src/System/SystemManager.cpp ECS/src/System/SystemManager.hpp
+        ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
+        )
+
+set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/ressource")
+add_compile_definitions(TEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture")
+add_compile_definitions(MUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music")
+add_compile_definitions(SOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound")
+add_compile_definitions(FONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font")
 
 set(STARFARM_SOURCES
         Starfarm/src/main.cpp
-        Starfarm/src/Window.cpp Starfarm/src/Window.hpp)
+        Starfarm/src/Window.cpp Starfarm/src/Window.hpp
+        Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
+        )
 
 set(EXECUTABLE_NAME "Starfarm")
 
