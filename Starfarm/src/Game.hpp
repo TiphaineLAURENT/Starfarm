@@ -5,17 +5,18 @@
 #ifndef STARFARM_GAME_HPP
 #define STARFARM_GAME_HPP
 
-#include "Window.hpp"
+#include "../../SFML-2.5.1-gcc64/include/SFML/Window.hpp"
 
 namespace game
 {
     class Game {
     public:
         Game();
-        ~Game();
+        ~Game() = default;
+
     public:
+        void loop();
     private:
-        Window mainWindow;
     };
 }
 

@@ -33,11 +33,12 @@ include_directories(ECS/src/Component)
 include_directories(ECS/src/System)
 set(STARFARM_SOURCES
         Starfarm/src/main.cpp
-        Starfarm/src/Window.cpp Starfarm/src/Window.hpp
         Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
 		Starfarm/src/Game.cpp Starfarm/src/Game.hpp
         Starfarm/src/Player/PlayerEntity.hpp
-        Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp)
+        Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp
+		Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
+        )
 
 set(EXECUTABLE_NAME "Starfarm")
 
