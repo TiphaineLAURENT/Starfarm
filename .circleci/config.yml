@@ -13,24 +13,24 @@ jobs:
       - checkout
 
       - run:
-        name: Install g++-8
-        command: "apt-get update && apt-get install -y g++-8"
+          name: Install g++-8
+          command: "apt-get update && apt-get install -y g++-8"
 
       - run:
-        name: Installing CMAKE
-        command: "apt-get update && apt-get install -y cmake"
+          name: Installing CMAKE
+          command: "apt-get update && apt-get install -y cmake"
 
       - run:
-        name: Creating build files
-        command: "cmake -H. -Bbuild"
+          name: Creating build files
+          command: "cmake -H. -Bbuild"
 
       - run:
-        name: Creating game binary
-        command: "cmake --build build --target Starfarm"
+          name: Creating game binary
+          command: "cmake --build build --target Starfarm"
 
       - run:
-        name: Testing project
-        command: "./bin/Starfarm --success"
+          name: Testing project
+          command: "./bin/Starfarm --success"
 
   windows:
     docker:
@@ -40,14 +40,14 @@ jobs:
       - checkout
 
       - run:
-        name: "Set execution policy to accept script execution"
-        shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-        command: "Set-ExecutionPolicy RemoteSigned"
+          name: "Set execution policy to accept script execution"
+          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+          command: "Set-ExecutionPolicy RemoteSigned"
 
       - run:
-        name: "Download & Install build tools"
-        shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-        command: "./build_windows.ps1"
+          name: "Download & Install build tools"
+          shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+          command: "./build_windows.ps1"
 
 workflows:
   version: 2
