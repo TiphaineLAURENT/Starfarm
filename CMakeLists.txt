@@ -22,7 +22,7 @@ set(ECS_SOURCES
         ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
         )
 
-set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/ressource")
+set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/Starfarm/ressource")
 add_compile_definitions(TEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture")
 add_compile_definitions(MUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music")
 add_compile_definitions(SOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound")
