@@ -37,4 +37,4 @@
 build/
 cmake-build-debug/
 test/
-lib/
+/lib/
