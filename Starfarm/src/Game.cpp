@@ -4,10 +4,12 @@
 
 #include <SimpleSystemManager.hpp>
 #include <EntityManager.hpp>
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <cmath>
 #include "Game.hpp"
 #include "System/TransformSystem.hpp"
 #include "Player/PlayerEntity.hpp"
-#include <iostream>
 
 namespace game
 {
@@ -16,24 +18,22 @@ namespace game
             ecs::SimpleSystemManager::createSystem<TransformSystem>();
     }
 
+    int GetAngleMouse(sf::Sprite _sprite)
+    {
+        const float Pi = 3.141592654f;
+        sf::Mouse mouse;
+        sf::Vector2i mouseVector = mouse.getPosition();
+        sf::Vector2f spriteVector = _sprite.getPosition();
+        auto angle = atan2(mouseVector.y - spriteVector.y, mouseVector.x - spriteVector.x);
+        return angle / Pi * 180;
+    }
+
     void Game::loop()
     {
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            ecs::EntityManager::createEntity<PlayerEntity>();
-            auto player = ecs::EntityManager::createEntity<PlayerEntity>();
-
-            std::clog << player.getComponent<TransformComponent>()->getComponentCount()
-                      << "\n";
         sf::Window mainWindow(sf::VideoMode(640, 480), "Game");
 
         while (mainWindow.isOpen())
         {
-                ecs::SimpleSystemManager::update();
             sf::Event event;
             while (mainWindow.pollEvent(event))
             {
