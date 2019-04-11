@@ -9,7 +9,7 @@ namespace game
 
   RendererComponent::RendererComponent()
   {
-	  _texture.loadFromFile("darkgrey_05.png");
+	  _texture.loadFromFile("texture/darkgrey_05.png");
 	  _sprite.setTexture(_texture);
   }
 

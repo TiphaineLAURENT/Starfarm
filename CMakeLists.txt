@@ -68,6 +68,11 @@ elseif (UNIX)
     set(SFML_DIR "SFML-2.5.1-gcc64/lib/cmake/SFML")
     include_directories(SFML-2.5.1-gcc64/include)
 endif()
+add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${CMAKE_SOURCE_DIR}/resource
+		${EXECUTABLE_OUTPUT_PATH}
+)
 
 find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
 target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
