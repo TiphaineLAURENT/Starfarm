@@ -3,7 +3,9 @@
 //
 
 #include <iostream>
+#include <EntityManager.hpp>
 #include "TransformComponent.hpp"
+#include "../Player/PlayerEntity.hpp"
 
 namespace game
 {
@@ -21,6 +23,9 @@ namespace game
   void TransformComponent::update() const
   {
           std::clog << "Transform Component Update" << getComponentID() << "\n";
+
+          auto id = getOwner();
+          auto entity = ecs::EntityManager::getEntityById<PlayerEntity>(id);
   }
 
 }
