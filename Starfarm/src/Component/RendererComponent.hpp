@@ -6,25 +6,31 @@
 # define STARFARM_RENDERERCOMPONENT_HPP
 
 # include <ostream>
+#include <Component.hpp>
 
-class RendererComponent
+namespace game
 {
+
+  class RendererComponent : ecs::Component<RendererComponent>
+  {
 // ATTRIBUTES
-private:
-public:
+  private:
+  public:
 
 // METHODS:
-public: // CONSTRUCTORS
-        RendererComponent();
-        ~RendererComponent() = default;
-        RendererComponent(const RendererComponent &copy) = default;
-        RendererComponent(RendererComponent &&other) noexcept = default;
+  public: // CONSTRUCTORS
+          RendererComponent();
+          ~RendererComponent() = default;
+          RendererComponent(const RendererComponent &copy) = default;
+          RendererComponent(RendererComponent &&other) noexcept = default;
 
-public: // OPERATORS
-        RendererComponent &operator=(const RendererComponent &other) = default;
-        RendererComponent &operator=(RendererComponent &&other) = default;
-};
+  public: // OPERATORS
+          RendererComponent &operator=(const RendererComponent &other) = default;
+          RendererComponent &operator=(RendererComponent &&other) = default;
+  };
 
-std::ostream &operator<<(std::ostream &out, const RendererComponent &);
+  std::ostream &operator<<(std::ostream &out, const RendererComponent &);
+
+}
 
 #endif //STARFARM_RENDERERCOMPONENT_HPP

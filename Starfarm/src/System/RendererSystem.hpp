@@ -7,6 +7,8 @@
 
 # include <ostream>
 
+namespace game
+
 class RendererSystem
 {
 // ATTRIBUTES
