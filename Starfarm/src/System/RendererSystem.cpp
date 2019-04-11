@@ -15,11 +15,6 @@ namespace game
 
   void RendererSystem::update()
   {
-          for (auto &component :
-                  ecs::ComponentManager::getComponentContainer
-                          <RendererComponent>()) {
-                  component->
-          }
   }
 
 }
