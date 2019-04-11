@@ -15,11 +15,13 @@ namespace game
 
   void RendererSystem::update()
   {
+	  _window->clear();
           for (auto &component :
                   ecs::ComponentManager::getComponentContainer
                           <RendererComponent>()) {
-                  component->
+                  _window->draw(dynamic_cast<RendererComponent*>(component.get())->getSprite());
           }
+		  _window->display();
   }
 
 }

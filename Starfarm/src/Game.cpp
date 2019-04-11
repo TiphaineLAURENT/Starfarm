@@ -9,16 +9,19 @@
 #include <cmath>
 #include "Game.hpp"
 #include "System/TransformSystem.hpp"
+#include "System/RendererSystem.hpp"
 #include "Player/PlayerEntity.hpp"
 
 namespace game
 {
     Game::Game()
+		: _window(sf::VideoMode(640, 480, 32), "Game")
     {
             ecs::SimpleSystemManager::createSystem<TransformSystem>();
+			ecs::SimpleSystemManager::createSystem<RendererSystem>(&_window);
     }
 
-    int GetAngleMouse(sf::Sprite _sprite)
+    float GetAngleMouse(sf::Sprite _sprite)
     {
         const float Pi = 3.141592654f;
         sf::Mouse mouse;
@@ -30,15 +33,16 @@ namespace game
 
     void Game::loop()
     {
-        sf::Window mainWindow(sf::VideoMode(640, 480), "Game");
+		auto player = ecs::EntityManager::createEntity<PlayerEntity>();
 
-        while (mainWindow.isOpen())
+        while (_window.isOpen())
         {
+			ecs::SimpleSystemManager::update();
             sf::Event event;
-            while (mainWindow.pollEvent(event))
+            while (_window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
-                    mainWindow.close();
+                    _window.close();
             }
         }
     }

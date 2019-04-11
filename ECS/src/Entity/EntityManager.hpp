@@ -72,7 +72,7 @@ namespace ecs
 	  {
 		  EntityContainer<E> &container = getEntityContainer<E>();
 
-		  return container.getComponent(entityID);
+		  return container.getEntityById(entityID);
 	  }
 	  template<class E>
 	  static std::vector<E*> getComponents(EntityID entityID)
