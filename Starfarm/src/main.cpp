@@ -13,7 +13,7 @@
 
 int main(int argc, char* argv[])
 {
-    game::GameTest game;
+    game::Game game;
     game.loop();
 
     return 0;

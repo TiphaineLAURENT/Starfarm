@@ -23,11 +23,11 @@ set(ECS_SOURCES
         ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
         )
 
-set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/Starfarm/ressource")
-add_definitions(-DTEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture")
-add_definitions(-DMUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music")
-add_definitions(-DSOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound")
-add_definitions(-DFONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font")
+set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/resource")
+add_definitions(-DTEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture/")
+add_definitions(-DMUSIC_DIRECTORY="${RESSOURCE_DIRECTORY}/music/")
+add_definitions(-DSOUND_DIRECTORY="${RESSOURCE_DIRECTORY}/sound/")
+add_definitions(-DFONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font/")
 
 include_directories(ECS/src/Entity)
 include_directories(ECS/src/Component)

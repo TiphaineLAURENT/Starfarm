@@ -2,6 +2,7 @@
 // Created by tiphaine on 11/04/19.
 //
 
+#include <iostream>
 #include <ComponentManager.hpp>
 #include "RendererSystem.hpp"
 #include "../Component/RendererComponent.hpp"

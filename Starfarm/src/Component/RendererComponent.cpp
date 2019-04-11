@@ -8,7 +8,6 @@ namespace game
 {
 
   RendererComponent::RendererComponent(const sf::Texture &texture)
-	  : Component()
   {
 	  _sprite.setTexture(texture);
   }

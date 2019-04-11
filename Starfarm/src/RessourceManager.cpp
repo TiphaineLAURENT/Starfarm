@@ -5,6 +5,7 @@
 ** RessourceManager
 */
 
+#include <iostream>
 #include "RessourceManager.hpp"
 
 namespace game
