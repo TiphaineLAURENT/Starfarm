@@ -9,6 +9,7 @@
 
 # include "../Component/TransformComponent.hpp"
 # include "../Component/RendererComponent.hpp"
+#include "../RessourceManager.hpp"
 
 namespace game
 {
@@ -18,7 +19,7 @@ namespace game
           PlayerEntity()
           {
                   addComponent<TransformComponent>();
-				  addComponent<RendererComponent>();
+				  addComponent<RendererComponent>(RessourceManager::getTexture("texture/darkgrey_05.png"));
           }
   };
 

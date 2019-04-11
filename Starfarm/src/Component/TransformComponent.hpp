@@ -28,9 +28,9 @@ namespace game
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit TransformComponent(Positions position = {0, 0},
-                             Rotations rotation = {0, 0},
-                             Scales scale = {0, 0}
+          explicit TransformComponent(Positions position = Positions(0, 0),
+                             Rotations rotation = Rotations(0, 0),
+                             Scales scale = Scales(0, 0)
           );
           ~TransformComponent() override = default;
           TransformComponent(const TransformComponent &copy) = default;

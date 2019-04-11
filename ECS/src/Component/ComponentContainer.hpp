@@ -55,7 +55,7 @@ namespace ecs
 		  static_assert(std::is_base_of<IComponent, C>::value,
 		                "Component must be derived from IComponent");
 
-		  auto component = std::make_unique<C>(std::forward(args)...);
+		  auto component = std::make_unique<C>(std::forward<ARGS>(args)...);
 		  component->setOwner(entityID);
 
 		  _components.push_back(std::move(component));

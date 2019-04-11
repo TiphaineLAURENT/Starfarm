@@ -16,17 +16,16 @@ namespace game
   {
 // ATTRIBUTES
   private:
-	  sf::Texture _texture; // TODO: REMOVE
           sf::Sprite _sprite;
           sf::Color _color = sf::Color::White;
-          std::pair<bool, bool> _flip = {false, false};
+		  std::pair<bool, bool> _flip = { false, false };
           size_t _order = 0;
 
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit RendererComponent();
+          explicit RendererComponent(const sf::Texture&);
           ~RendererComponent() override = default;
           RendererComponent(const RendererComponent &copy) = default;
           RendererComponent(RendererComponent &&other) noexcept = default;

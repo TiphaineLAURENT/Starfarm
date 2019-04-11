@@ -7,10 +7,10 @@
 namespace game
 {
 
-  RendererComponent::RendererComponent()
+  RendererComponent::RendererComponent(const sf::Texture &texture)
+	  : Component()
   {
-	  _texture.loadFromFile("texture/darkgrey_05.png");
-	  _sprite.setTexture(_texture);
+	  _sprite.setTexture(texture);
   }
 
   const sf::Sprite & RendererComponent::getSprite() const

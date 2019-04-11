@@ -64,7 +64,7 @@ namespace ecs
 	  {
 		  ComponentContainer<C> &container = getComponentContainer<C>();
 
-		  return container.addComponent(entityID, std::forward(args)...);
+		  return container.addComponent(entityID, std::forward<ARGS>(args)...);
 	  }
 	  template <class C>
 	  static C *getComponent(EntityID entityID)
