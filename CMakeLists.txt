@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(Starfarm)
 set(CMAKE_CXX_STANDARD  17)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 set(ECS_SOURCE_DIRECTORY ECS/src)
 set(ECS_SOURCES
@@ -40,28 +41,33 @@ set(STARFARM_SOURCES
 		Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
         Starfarm/src/System/TransformSystem.cpp Starfarm/src/System/TransformSystem.hpp)
 
-set(EXECUTABLE_NAME "Starfarm")
-
 add_library(ecs STATIC ${ECS_SOURCES})
+
+set(EXECUTABLE_NAME "Starfarm")
 add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES})
 
 if (WIN32)
 	if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-		set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin-visual64)
 		set(SFML_DIR "SFML-2.5.1-visual64/lib/cmake/SFML")
+		set(SFML_DLLS "${CMAKE_SOURCE_DIR}/SFML-2.5.1-visual64/bin")
 		include_directories(SFML-2.5.1-visual64/include)
 	elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
-		set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin-visual32)
+#		set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin-visual32)
 		set(SFML_DIR "SFML-2.5.1-visual32/lib/cmake/SFML")
+		set(SFML_DLLS "${CMAKE_SOURCE_DIR}/SFML-2.5.1-visual32/bin")
 		include_directories(SFML-2.5.1-visual32/include)
 	endif()
 elseif (UNIX)
-	set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin-gcc64)
     set(SFML_DIR "SFML-2.5.1-gcc64/lib/cmake/SFML")
     include_directories(SFML-2.5.1-gcc64/include)
 endif()
 
 find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
 target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
+add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${SFML_DLLS}
+		${EXECUTABLE_OUTPUT_PATH}
+)
 
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
