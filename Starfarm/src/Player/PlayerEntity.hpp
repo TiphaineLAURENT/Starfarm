@@ -8,6 +8,7 @@
 # include <Entity.hpp>
 
 # include "../Component/TransformComponent.hpp"
+# include "../Component/RendererComponent.hpp"
 
 namespace game
 {
@@ -17,6 +18,7 @@ namespace game
           PlayerEntity()
           {
                   addComponent<TransformComponent>();
+				  addComponent<RendererComponent>();
           }
   };
 

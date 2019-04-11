@@ -7,7 +7,7 @@
 
 # include <ostream>
 #include <Component.hpp>
-#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace game
 {
@@ -16,6 +16,7 @@ namespace game
   {
 // ATTRIBUTES
   private:
+	  sf::Texture _texture; // TODO: REMOVE
           sf::Sprite _sprite;
           sf::Color _color = sf::Color::White;
           std::pair<bool, bool> _flip = {false, false};
@@ -25,7 +26,7 @@ namespace game
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit RendererComponent(const sf::Texture&);
+          explicit RendererComponent();
           ~RendererComponent() override = default;
           RendererComponent(const RendererComponent &copy) = default;
           RendererComponent(RendererComponent &&other) noexcept = default;
@@ -35,7 +36,7 @@ namespace game
           RendererComponent &operator=(RendererComponent &&other) = default;
 
   public:
-
+		  const sf::Sprite &getSprite() const;
   };
 
   std::ostream &operator<<(std::ostream &out, const RendererComponent &);

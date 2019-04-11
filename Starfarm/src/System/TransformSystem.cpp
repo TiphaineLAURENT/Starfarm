@@ -15,8 +15,6 @@ namespace game
           for (auto it = ecs::ComponentManager::begin<TransformComponent>();
                it != ecs::ComponentManager::end<TransformComponent>();
                ++it) {
-                  std::clog << "Transform System Update" << "\n";
-
                   auto component = dynamic_cast<TransformComponent*>(it->get());
                   component->update();
           }

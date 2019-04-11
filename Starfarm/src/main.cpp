@@ -9,10 +9,11 @@
 #include <SFML/Window.hpp>
 
 #include "Game.hpp"
+#include "GameTest.hpp"
 
 int main(int argc, char* argv[])
 {
-    game::Game game;
+    game::GameTest game;
     game.loop();
 
     return 0;
