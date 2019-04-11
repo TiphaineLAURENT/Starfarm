@@ -6,27 +6,37 @@
 # define STARFARM_RENDERERSYSTEM_HPP
 
 # include <ostream>
+#include <System.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace game
-
-class RendererSystem
 {
+
+  class RendererSystem : public ecs::System<RendererSystem>
+  {
 // ATTRIBUTES
-private:
-public:
+  private:
+          sf::RenderWindow * const _window = nullptr;
+
+  public:
 
 // METHODS:
-public: // CONSTRUCTORS
-        RendererSystem();
-        ~RendererSystem() = default;
-        RendererSystem(const RendererSystem &copy) = default;
-        RendererSystem(RendererSystem &&other) noexcept = default;
+  public: // CONSTRUCTORS
+          explicit RendererSystem(sf::RenderWindow *const);
+          ~RendererSystem() override = default;
+          RendererSystem(const RendererSystem &copy) = delete;
+          RendererSystem(RendererSystem &&other) noexcept = delete;
 
-public: // OPERATORS
-        RendererSystem &operator=(const RendererSystem &other) = default;
-        RendererSystem &operator=(RendererSystem &&other) = default;
-};
+  public: // OPERATORS
+          RendererSystem &operator=(const RendererSystem &other) = delete;
+          RendererSystem &operator=(RendererSystem &&other) = delete;
 
-std::ostream &operator<<(std::ostream &out, const RendererSystem &);
+  public:
+          void update() override;
+  };
+
+  std::ostream &operator<<(std::ostream &out, const RendererSystem &);
+
+}
 
 #endif //STARFARM_RENDERERSYSTEM_HPP

@@ -3,3 +3,13 @@
 //
 
 #include "RendererComponent.hpp"
+
+namespace game
+{
+
+  RendererComponent::RendererComponent(const sf::Texture &)
+  {
+
+  }
+
+}
