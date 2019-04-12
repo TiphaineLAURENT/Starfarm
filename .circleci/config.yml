@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.0.4
 
 jobs:
   unix:
@@ -6,6 +9,7 @@ jobs:
       - image: ubuntu:18.04
 
         environment:
+          CODECOV_TOKEN: 547648b8-b297-4507-8ffc-cbfaf701eac8
           CXX: /usr/bin/g++-8
           CC: /usr/bin/gcc-8
 
@@ -52,8 +56,14 @@ jobs:
           name: Creating game binary
           command: "cmake --build build --target Starfarm"
 
+      - upload-coverage:
+
+
 workflows:
   version: 2
   builds:
     jobs:
       - unix
+      - codecov:
+          requires:
+            - unix
