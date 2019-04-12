@@ -96,3 +96,13 @@ if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         target_link_libraries(coverage_config INTERFACE --coverage)
     endif()
 endif()
+target_compile_options(coverage_config INTERFACE
+                       -O0        # no optimization
+                       -g         # generate debug info
+                       --coverage # sets all required flags
+                       )
+
+option (BUILD_TESTING "Build the testing tree." ON)
+    message("test")
+    enable_testing()
+    add_subdirectory(test)
