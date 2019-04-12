@@ -54,17 +54,15 @@ jobs:
 
       - run:
           name: Creating game binary
-          command: "cmake --build build --target Starfarm --config Debug -- -j $(nproc)"
+          command: "cmake --build build --config Debug -- -j $(nproc)"
 
       - run:
           name: Installing lcov
           command: "apt-get install -y lcov"
 
       - run:
-          name: Compiling and executing tests
+          name: Executing tests
           command: |
-            cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
-            cmake --build . --config Debug -- -j $(nproc)
             ctest -j $(nproc) --output-on-failure
 
       - run:

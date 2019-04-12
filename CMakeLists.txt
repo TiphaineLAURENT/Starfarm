@@ -103,6 +103,5 @@ target_compile_options(coverage_config INTERFACE
                        )
 
 option (BUILD_TESTING "Build the testing tree." ON)
-    message("test")
-    enable_testing()
-    add_subdirectory(test)
+enable_testing()
+add_subdirectory(test)
