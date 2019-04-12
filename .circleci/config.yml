@@ -58,7 +58,7 @@ jobs:
 
       - run:
           name: Installing lcov
-          command: "apt-get install -y libgd-gd2-perl"
+          command: "apt-get install -y lcov"
 
       - run:
           name: Uploading coverage
