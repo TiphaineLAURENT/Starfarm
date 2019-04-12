@@ -22,31 +22,31 @@ jobs:
 
       - run:
           name: Installing CMAKE
-          command: "apt-get update && apt-get install -y cmake"
+          command: "apt-get install -y cmake"
 
       - run:
           name: Installing X11
-          command: "apt-get update && apt-get install -y libx11-dev"
+          command: "apt-get install -y libx11-dev"
 
       - run:
           name: Installing Xrandr
-          command: "apt-get update && apt-get install -y libxrandr-dev"
+          command: "apt-get install -y libxrandr-dev"
 
       - run:
           name: Installing OpenGL
-          command: "apt-get update && apt-get install -y libgl1-mesa-dev"
+          command: "apt-get install -y libgl1-mesa-dev"
 
       - run:
           name: Installing Openal
-          command: "apt-get update && apt-get install -y libopenal-dev"
+          command: "apt-get install -y libopenal-dev"
 
       - run:
           name: Installing Freetype
-          command: "apt-get update && apt-get install -y libfreetype6-dev"
+          command: "apt-get install -y libfreetype6-dev"
 
       - run:
           name: Installing Vorbis
-          command: "apt-get update && apt-get install -y libvorbis-dev"
+          command: "apt-get install -y libvorbis-dev"
 
       - run:
           name: Creating build files
@@ -58,7 +58,7 @@ jobs:
 
       - run:
           name: Installing lcov
-          command: "apt-get update && libgd-gd2-perl"
+          command: "apt-get install -y libgd-gd2-perl"
 
       - run:
           name: Uploading coverage
