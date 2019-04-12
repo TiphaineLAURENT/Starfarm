@@ -56,9 +56,6 @@ jobs:
           name: Creating game binary
           command: "cmake --build build --target Starfarm"
 
-      - upload-coverage:
-
-
 workflows:
   version: 2
   builds:
