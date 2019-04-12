@@ -57,10 +57,9 @@ jobs:
           command: "cmake --build build --target Starfarm"
 
 workflows:
-  version: 2
   builds:
     jobs:
       - unix
-      - codecov:
+      - codecov/upload:
           requires:
             - unix
