@@ -1,4 +1,4 @@
-[//]: # (@formatter:off)
+<!-- @formatter:off -->
 | Platform | Status |
 |----------|:------:|
 | Linux (Ubuntu 18.04 - g++-8 - CMake 3.10.2) | [![CircleCI](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master.svg?style=svg)](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master) |
@@ -12,4 +12,4 @@ Code Quality<br>
 
 A SFML game where your ship must farm to progress
 
-[//]: # (@formatter:on)
+<!-- @formatter:on -->
