@@ -57,6 +57,10 @@ jobs:
           command: "cmake --build build --target Starfarm"
 
       - run:
+          name: Installing lcov
+          command: "sudo apt-get update && libgd-gd2-perl"
+
+      - run:
           name: Uploading coverage
           command: |
             lcov --directory . --capture --output-file coverage.info
