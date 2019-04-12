@@ -10,14 +10,10 @@
 namespace game
 {
 
-  void game::TransformSystem::update()
-  {
-          for (auto it = ecs::ComponentManager::begin<TransformComponent>();
-               it != ecs::ComponentManager::end<TransformComponent>();
-               ++it) {
-                  auto component = dynamic_cast<TransformComponent*>(it->get());
-                  component->update();
-          }
-  }
+	void game::TransformSystem::update()
+	{
+		for (auto& component : ecs::ComponentManager::getComponentContainer<TransformComponent>())
+			component.update();
+	}
 
 }

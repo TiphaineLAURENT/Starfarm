@@ -19,14 +19,14 @@ namespace ecs
 
   template <class C>
   using CComponentIterator =
-  typename std::vector<std::unique_ptr<IComponent>>::iterator;
+  typename std::vector<C>::iterator;
 
   template <class C>
   class ComponentContainer : public IComponentContainer
   {
 // ATTRIBUTES
     private:
-	  std::vector<std::unique_ptr<IComponent>> _components;
+	  std::vector<C> _components;
 
     public:
 
@@ -55,28 +55,36 @@ namespace ecs
 		  static_assert(std::is_base_of<IComponent, C>::value,
 		                "Component must be derived from IComponent");
 
-		  auto component = std::make_unique<C>(std::forward<ARGS>(args)...);
-		  component->setOwner(entityID);
+		  auto component = C{ std::forward<ARGS>(args)... };
+		  component.setOwner(entityID);
 
-		  _components.push_back(std::move(component));
-		  return *static_cast<C*>(_components.back().get());
+		  _components.push_back(component);
+		  return _components.back();
 	  }
-	  C *getComponent(EntityID entityID)
+	  C &getComponent(EntityID entityID)
 	  {
 		  for (auto &component : _components) {
-			  if (component->getOwner() == entityID)
-				  return static_cast<C*>(component.get());
+			  if (component.getOwner() == entityID)
+				  return component;
 		  }
-		  return nullptr;
 	  }
-	  std::vector<C*> getComponents(EntityID entityID)
+	  std::vector<C* const> getComponents(EntityID entityID)
 	  {
 		  std::vector<C*> components;
 
 		  for (auto &component : _components) {
 			  if (component->getOwner() == entityID)
-				  components.push_back(static_cast<C*>
-				                       (component.get()));
+				  components.emplace_back(&component);
+		  }
+		  return components;
+	  }
+	  const std::vector<C*> getComponents(EntityID entityID) const
+	  {
+		  std::vector<C*> components;
+
+		  for (auto& component : _components) {
+			  if (component->getOwner() == entityID)
+				  components.emplace_back(&component);
 		  }
 		  return components;
 	  }
@@ -84,8 +92,8 @@ namespace ecs
 	  {
 		  auto toRemove = std::find_if(_components.begin(),
 		                               _components.end(),
-			          [&](std::unique_ptr<IComponent>&component)
-		                               {return component->getOwner() == entityID;}
+			          [&](C &component)
+		                               {return component.getOwner() == entityID;}
 		  );
 		  _components.erase(toRemove);
 	  }
@@ -97,6 +105,16 @@ namespace ecs
 	  CComponentIterator<C> end()
 	  {
 		  return _components.end();
+	  }
+
+	  std::vector<C> &getComponents()
+	  {
+		  return _components;
+	  }
+
+	  const std::vector<C> &getComponents() const
+	  {
+		  return _components;
 	  }
 
     private:

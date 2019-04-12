@@ -73,4 +73,16 @@ namespace ecs
 	  return out;
   }
 
+  std::ostream& operator<<(std::ostream& out, const IComponent *component)
+  {
+	  out << "{ "
+		  << "ID: " << component->getComponentID() << ", "
+		  << "Count: " << component->getComponentCount() << ", "
+		  << "TypeID: " << component->getComponentTypeID() << ", "
+		  << "Owner: " << component->getOwner() << ", "
+		  << "Active: " << component->isActive() << true
+		  << " }";
+	  return out;
+  }
+
 }

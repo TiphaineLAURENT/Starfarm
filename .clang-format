@@ -6,6 +6,10 @@
 # AfterClass; AfterControlStatement; AfterEnum; AfterFunction; AfterNamespace; 
 # AfterStruct; AfterUnion
 
+
+# DO NOT USE
+# This version is not complete
+
 AccessModifierOffset: 0
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: true
@@ -29,20 +33,20 @@ BinPackArguments: true
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BraceWrapping:
-	AfterCaseLabel: false
-	AfterClass: true
-	AfterControlStatement: false
-	AfterEnum: true
-	AfterFunction: true
-	AfterNamespace: true
-	AfterStruct: true
-	AfterUnion: true
-	AfterExternBlock: true
-	BeforeCatch: false
-	BeforeElse: false
-	SplitEmptyFunction: false
-	SplitEmptyRecord: false
-	SplitEmptyNamespace: false
+    #AfterCaseLabel: false
+    AfterClass: true
+    AfterControlStatement: false
+    AfterEnum: true
+    AfterFunction: true
+    AfterNamespace: true
+    AfterStruct: true
+    AfterUnion: true
+    AfterExternBlock: true
+    BeforeCatch: false
+    BeforeElse: false
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+    SplitEmptyNamespace: false
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
@@ -65,7 +69,7 @@ ReflowComments: true
 SortIncludes: true
 SortUsingDeclarations: false
 SpaceAfterCStyleCast: false
-SpaceAfterLogicalNot: false
+#SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeCpp11BracedList: false

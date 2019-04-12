@@ -27,9 +27,9 @@ namespace ecs
 	  static std::vector<ComponentID> _freeID;
 	  static ComponentID            _componentCount;
 
-	  EntityID _owner;
+	  EntityID _owner = util::INVALID_ID;
 
-	  bool _active;
+	  bool _active = true;
 
     public:
 
@@ -59,7 +59,7 @@ namespace ecs
     private:
   };
 
-  std::ostream &operator<<(std::ostream &out, const IComponent &);
+  std::ostream &operator<<(std::ostream &out, const IComponent *);
 
 }
 
