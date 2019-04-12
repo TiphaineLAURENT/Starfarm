@@ -61,6 +61,13 @@ jobs:
           command: "apt-get install -y lcov"
 
       - run:
+          name: Compiling and executing tests
+          command: |
+            cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
+            cmake --build . --config Debug -- -j $(nproc)
+            ctest -j $(nproc) --output-on-failure
+
+      - run:
           name: Uploading coverage
           command: |
             lcov --directory . --capture --output-file coverage.info
