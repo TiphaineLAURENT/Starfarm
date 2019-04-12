@@ -50,11 +50,11 @@ jobs:
 
       - run:
           name: Creating build files
-          command: "cmake -H. -Bbuild"
+          command: "cmake -H. -Bbuild -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug"
 
       - run:
           name: Creating game binary
-          command: "cmake --build build --target Starfarm"
+          command: "cmake --build build --target Starfarm --config Debug -- -j $(nproc)"
 
       - run:
           name: Installing lcov
