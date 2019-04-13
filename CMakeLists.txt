@@ -48,6 +48,7 @@ set(STARFARM_SOURCES
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
     )
+set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFAR_SOURCES})
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -106,9 +107,5 @@ endif ()
 option(BUILD_TESTING "Build testing tree" ON)
 if (BUILD_TESTING AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
     enable_testing()
-
-    add_library(Starfarm_lib ${STARFARM_SOURCES})
-    target_link_libraries(Starfarm_lib PUBLIC coverage_config)
-
     add_subdirectory(tests)
 endif ()
