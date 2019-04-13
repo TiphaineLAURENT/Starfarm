@@ -46,3 +46,4 @@ cmake-build-*
 # Coverage
 *.gcda
 *.gcno
+coverage.info
