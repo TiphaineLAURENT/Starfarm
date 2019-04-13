@@ -10,7 +10,7 @@ set(STARFARM_TEST_SOURCES
     ../Starfarm/src/GameTest.cpp ../Starfarm/src/GameTest.hpp
     )
 
-option(CLION "Enable CLion" OFF)
+option(CLION "Enable CLion" ON)
 if (CLION)
     add_executable(tests main.cpp ${STARFARM_SOURCES})
 else ()
