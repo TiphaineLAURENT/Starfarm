@@ -4,6 +4,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
+set(EXECUTABLE_NAME "Starfarm")
+
+
 set(ECS_SOURCE_DIRECTORY ECS/src)
 set(ECS_SOURCES
     ECS/src/Entity/IEntity.cpp ECS/src/Entity/IEntity.hpp
@@ -22,6 +25,8 @@ set(ECS_SOURCES
     ECS/src/System/SystemManager.cpp ECS/src/System/SystemManager.hpp
     ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
     )
+add_library(ecs STATIC ${ECS_SOURCES})
+
 
 set(RESSOURCE_DIRECTORY "${CMAKE_SOURCE_DIR}/resource")
 add_definitions(-DTEXTURE_DIRECTORY="${RESSOURCE_DIRECTORY}/texture/")
@@ -41,9 +46,8 @@ set(STARFARM_SOURCES
     Starfarm/src/System/TransformSystem.cpp Starfarm/src/System/TransformSystem.hpp
     Starfarm/src/Component/RendererComponent.cpp Starfarm/src/Component/RendererComponent.hpp
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
-    Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp)
-
-add_library(ecs STATIC ${ECS_SOURCES})
+    Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
+    )
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -55,19 +59,13 @@ if (WIN32)
         set(SFML_DLLS "${CMAKE_SOURCE_DIR}/SFML-2.5.1-visual32/bin")
         include_directories(SFML-2.5.1-visual32/include)
     endif ()
-    add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
-                       COMMAND ${CMAKE_COMMAND} -E copy_directory
-                       ${SFML_DLLS}
-                       ${EXECUTABLE_OUTPUT_PATH}
-                       )
 elseif (UNIX)
     set(SFML_DIR "SFML-2.5.1-gcc64/lib/cmake/SFML")
     include_directories(SFML-2.5.1-gcc64/include)
 endif ()
 
-option(STARFARM_EXECUTABLE "" OFF)
+option(STARFARM_EXECUTABLE "Compile Starfarm binary" OFF)
 if (STARFARM_EXECUTABLE)
-    set(EXECUTABLE_NAME "Starfarm")
     add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/main.cpp)
 
     add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
@@ -75,6 +73,13 @@ if (STARFARM_EXECUTABLE)
                        ${CMAKE_SOURCE_DIR}/resource
                        ${EXECUTABLE_OUTPUT_PATH}
                        )
+    if (WIN32)
+        add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+                           COMMAND ${CMAKE_COMMAND} -E copy_directory
+                           ${SFML_DLLS}
+                           ${EXECUTABLE_OUTPUT_PATH}
+                           )
+    endif ()
 
     find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
@@ -82,8 +87,8 @@ if (STARFARM_EXECUTABLE)
     install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 endif ()
 
-add_library(coverage_config INTERFACE)
 
+add_library(coverage_config INTERFACE)
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(coverage_config INTERFACE
