@@ -2,9 +2,17 @@
 // Created by TipLa on 13/04/2019.
 //
 
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-int main()
+unsigned int Factorial(unsigned int number)
 {
-        return 0;
+	return number <= 1 ? number : Factorial(number - 1) * number;
+}
+
+TEST_CASE("Factorial are computed", "[factorial]") {
+	REQUIRE(Factorial(1) == 1);
+	REQUIRE(Factorial(2) == 2);
+	REQUIRE(Factorial(3) == 6);
+	REQUIRE(Factorial(10) == 3628800);
 }
