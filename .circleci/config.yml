@@ -53,6 +53,10 @@ jobs:
           command: "apt-get install -y perl"
 
       - run:
+          name: Install curl
+          command: "sudo apt-get install curl"
+
+      - run:
           name: Creating build files
           command: "cmake -H. -Bbuild -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug"
 
@@ -73,10 +77,6 @@ jobs:
             ../tools/lcov --directory . --capture --output-file coverage.info --gcov-tool gcov-8
             ../tools/lcov --list coverage.info
             bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
-
-
-  code-coverage:
-
 
 workflows:
   build:
