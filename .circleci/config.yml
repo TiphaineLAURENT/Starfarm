@@ -49,6 +49,10 @@ jobs:
           command: "apt-get install -y libvorbis-dev"
 
       - run:
+          name: Installing Perl
+          command: "apt-get install -y perl"
+
+      - run:
           name: Creating build files
           command: "cmake -H. -Bbuild -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug"
 
