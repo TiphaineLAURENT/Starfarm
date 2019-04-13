@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Executing tests
           command: |
-	    cd build
+            cd build
             ctest -j $(nproc) --output-on-failure
 
       - run:
