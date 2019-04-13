@@ -70,7 +70,7 @@ jobs:
           name: Uploading coverage
           working_directory: "~/project/build"
           command: |
-            ../tools/lcov --directory . --capture --output-file coverage.info
+            ../tools/lcov --directory . --capture --output-file coverage.info --gcov-tool gcov-8
             ../tools/lcov --list coverage.info
             bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 
