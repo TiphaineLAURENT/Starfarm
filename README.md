@@ -11,6 +11,16 @@ Code Quality<br>
 Coverage<br>
 [![codecov](https://codecov.io/gh/TiphaineLAURENT/Starfarm/branch/master/graph/badge.svg)](https://codecov.io/gh/TiphaineLAURENT/Starfarm)
 
+Activity<br>
+![GitHub last commit](https://img.shields.io/github/last-commit/TiphaineLAURENT/Starfarm.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/TiphaineLAURENT/Starfarm.svg)
+
+Support<br>
+![GitHub issues](https://img.shields.io/github/issues-raw/TiphaineLAURENT/Starfarm.svg)
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/TiphaineLAURENT/Starfarm.svg)
+![GitHub](https://img.shields.io/github/license/TiphaineLAURENT/Starfarm.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
+
 # Starfarm
 
 A SFML game where your ship must farm to progress
