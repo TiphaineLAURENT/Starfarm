@@ -71,12 +71,15 @@ jobs:
             ctest -j $(nproc) --output-on-failure
 
       - run:
-          name: Uploading coverage
+          name: Generating coverage
           working_directory: "~/project/build"
           command: |
             ../tools/lcov --directory . --capture --output-file coverage.info --gcov-tool gcov-8
             ../tools/lcov --list coverage.info
-            bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
+
+      - codecov/upload:
+          file: "~/project/build/coverage.info"
+
 
 workflows:
   build:
