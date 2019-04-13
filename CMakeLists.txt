@@ -65,6 +65,8 @@ elseif (UNIX)
     include_directories(SFML-2.5.1-gcc64/include)
 endif ()
 
+find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
+
 option(STARFARM_EXECUTABLE "Compile Starfarm binary" OFF)
 if (STARFARM_EXECUTABLE)
     add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/main.cpp)
@@ -82,7 +84,6 @@ if (STARFARM_EXECUTABLE)
                            )
     endif ()
 
-    find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
 
     install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
