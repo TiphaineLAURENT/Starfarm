@@ -1,7 +1,7 @@
 <!-- @formatter:off -->
 | Platform | Status |
 |----------|:------:|
-| Linux (Ubuntu 18.04 - g++-8 - CMake 3.10.2) | ![CircleCI branch](https://img.shields.io/circleci/project/github/TiphaineLAURENT/Starfarm/master.svg)](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master) |
+| Linux (Ubuntu 18.04 - g++-8 - CMake 3.10.2) | ![CircleCI branch](https://img.shields.io/circleci/project/github/TiphaineLAURENT/Starfarm/master.svg) |
 | Windows (Windows 32 bits - Visual Studio 15 2017 - CMake 3.10.2) | [![Travis](https://travis-ci.com/TiphaineLAURENT/Starfarm.svg?branch=master)](https://travis-ci.com/TiphaineLAURENT/Starfarm) |
 
 Code Quality<br>
