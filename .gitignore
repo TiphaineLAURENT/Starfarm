@@ -42,3 +42,7 @@
 .vs/
 build/
 cmake-build-*
+
+# Coverage
+*.gcda
+*.gcno

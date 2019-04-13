@@ -53,7 +53,7 @@ jobs:
           command: "cmake -H. -Bbuild -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug"
 
       - run:
-          name: Creating game binary
+          name: Building project
           command: "cmake --build build --config Debug -- -j $(nproc)"
 
       - run:
@@ -63,6 +63,7 @@ jobs:
       - run:
           name: Executing tests
           command: |
+	    cd build
             ctest -j $(nproc) --output-on-failure
 
       - run:

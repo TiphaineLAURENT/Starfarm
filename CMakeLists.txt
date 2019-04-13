@@ -33,7 +33,6 @@ include_directories(ECS/src/Entity)
 include_directories(ECS/src/Component)
 include_directories(ECS/src/System)
 set(STARFARM_SOURCES
-        Starfarm/src/main.cpp
         Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
 		Starfarm/src/Game.cpp Starfarm/src/Game.hpp
         Starfarm/src/Player/PlayerEntity.hpp
@@ -45,9 +44,6 @@ set(STARFARM_SOURCES
 		Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp)
 
 add_library(ecs STATIC ${ECS_SOURCES})
-
-set(EXECUTABLE_NAME "Starfarm")
-add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES})
 
 if (WIN32)
 	if (CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -68,6 +64,12 @@ elseif (UNIX)
     set(SFML_DIR "SFML-2.5.1-gcc64/lib/cmake/SFML")
     include_directories(SFML-2.5.1-gcc64/include)
 endif()
+
+option(STARFARM_EXECUTABLE "" OFF)
+if (STARFARM_EXECUTABLE)
+set(EXECUTABLE_NAME "Starfarm")
+add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/main.cpp)
+
 add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
 		${CMAKE_SOURCE_DIR}/resource
@@ -78,30 +80,30 @@ find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
 target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
 
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
+endif()
 
-# Code Coverage Configuration
 add_library(coverage_config INTERFACE)
 
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
-if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    # Add required flags (GCC & LLVM/Clang)
-    target_compile_options(coverage_config INTERFACE
-                           -O0        # no optimization
-                           -g         # generate debug info
-                           --coverage # sets all required flags
-                           )
-    if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.13)
-        target_link_options(coverage_config INTERFACE --coverage)
-    else()
-        target_link_libraries(coverage_config INTERFACE --coverage)
-    endif()
+if (CODE_COVERAGE AND CMAKE_CXX_COMPILDER_ID MATCHES "GNU|Clang")
+	target_compile_options(coverage_config INTERFACE
+		-O0
+		-g
+		--coverage
+	)
+	if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.13)
+		target_link_options(coverage_config INTERFACE --coverage)
+	else()
+		target_link_libraries(coverage_config INTERFACE --coverage)
+	endif()
 endif()
-target_compile_options(Starfarm INTERFACE
-                       -O0        # no optimization
-                       -g         # generate debug info
-                       --coverage # sets all required flags
-                       )
 
-option (BUILD_TESTING "Build the testing tree." ON)
-enable_testing()
-add_subdirectory(test)
+option(BUILD_TESTING "Build testing tree" ON)
+if (BUILD_TESTING AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
+	enable_testing()
+
+	add_library(Starfarm_lib ${STARFARM_SOURCES})
+	target_link_libraries(Starfarm_lib PUBLIC coverage_config)
+
+	add_subdirectory(tests)
+endif()
