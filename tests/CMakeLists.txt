@@ -1,4 +1,4 @@
-set(STARFARM_TEST_SOURCES
+set(STARFARM_MANUAL_SOURCES
     ../Starfarm/src/RessourceManager.cpp ../Starfarm/src/RessourceManager.hpp
     ../Starfarm/src/Game.cpp ../Starfarm/src/Game.hpp
     ../Starfarm/src/Player/PlayerEntity.hpp
@@ -10,11 +10,11 @@ set(STARFARM_TEST_SOURCES
     ../Starfarm/src/GameTest.cpp ../Starfarm/src/GameTest.hpp
     )
 
-option(CLION "Enable CLion" ON)
-if (CLION)
-    add_executable(tests main.cpp ${STARFARM_SOURCES})
+option(MANUAL_TEST "Enable CLion" OFF)
+if (MANUAL_TEST)
+    add_executable(tests main.cpp ${STARFARM_MANUAL_SOURCES})
 else ()
-    add_executable(tests main.cpp ${STARFARM_TEST_SOURCES})
+    add_executable(tests main.cpp ${STARFARM_SOURCES})
 endif ()
 target_link_libraries(tests coverage_config)
 target_link_libraries(tests sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)

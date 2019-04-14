@@ -5,14 +5,36 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-unsigned int Factorial(unsigned int number)
-{
-	return number <= 1 ? number : Factorial(number - 1) * number;
-}
+#include <Entity.hpp>
+#include <EntityManager.hpp>
+#include <Component.hpp>
+#include <ComponentManager.hpp>
 
-TEST_CASE("Factorial are computed", "[factorial]") {
-	REQUIRE(Factorial(1) == 1);
-	REQUIRE(Factorial(2) == 2);
-	REQUIRE(Factorial(3) == 6);
-	REQUIRE(Factorial(10) == 3628800);
+class MyEntity : public ecs::Entity<MyEntity>
+{
+};
+
+class MyComponent : public ecs::Component<MyComponent>
+{
+};
+
+TEST_CASE("Entitity creation", "entity")
+{
+        auto entity = ecs::EntityManager::createEntity<MyEntity>();
+
+        REQUIRE(entity.getEntityCount() == 1);
+        REQUIRE(entity.getEntityID() == 0);
+        REQUIRE(entity.getEntityTypeID() == 0);
+
+        SECTION("Add component to entity") {
+                auto component = entity.addComponent<MyComponent>();
+
+                REQUIRE(component.getComponentCount() == 1);
+                REQUIRE(component.getComponentID() == 0);
+                REQUIRE(component.getComponentTypeID() == 0);
+
+                REQUIRE(component.isActive() == true);
+
+                REQUIRE(component.getOwner() == entity.getEntityID());
+        }
 }
