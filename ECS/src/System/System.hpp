@@ -22,7 +22,10 @@ namespace ecs
 
 // METHODS:
   public: // CONSTRUCTORS
-          System() = default;
+          explicit System(
+                  SystemPriority = SystemPriority::NORMAL,
+                  float = 1.
+          ) = default;
           ~System() override = default;
           System(const System &copy) = delete;
           System(System &&other) noexcept = delete;
@@ -44,17 +47,22 @@ namespace ecs
           }
 
           void preUpdate() override
-          {}
+          {
+          }
           void update() override
-          {}
+          {
+          }
           void postUpdate() override
-          {}
+          {
+          }
 
           template <class ...Dependencies>
-          void addDependencies(Dependencies&&... dependencies)
+          void addDependencies(Dependencies &&... dependencies)
           {
-                  SystemManager::addSystemDependency(this,
-                                                     std::forward<Dependencies>(dependencies)...);
+                  SystemManager::addSystemDependency(
+                          this,
+                          std::forward<Dependencies>(dependencies)...
+                  );
           }
   };
 
@@ -63,7 +71,7 @@ namespace ecs
 
   template <class S>
   const SystemTypeID System<S>::_systemTypeID =
-                             util::FamilyTypeID<ISystem>::getTypeID<S>();
+          util::FamilyTypeID<ISystem>::getTypeID<S>();
 
 }
 

@@ -9,6 +9,8 @@
 #include <EntityManager.hpp>
 #include <Component.hpp>
 #include <ComponentManager.hpp>
+#include <System.hpp>
+#include <SystemManager.hpp>
 
 class MyEntity : public ecs::Entity<MyEntity>
 {
@@ -18,7 +20,11 @@ class MyComponent : public ecs::Component<MyComponent>
 {
 };
 
-TEST_CASE("Entitity creation", "entity")
+class MySystem : public ecs::System<MySystem>
+{
+};
+
+TEST_CASE("Basic creation", "creation")
 {
         auto entity = ecs::EntityManager::createEntity<MyEntity>();
 
@@ -26,15 +32,18 @@ TEST_CASE("Entitity creation", "entity")
         REQUIRE(entity.getEntityID() == 0);
         REQUIRE(entity.getEntityTypeID() == 0);
 
-        SECTION("Add component to entity") {
-                auto component = entity.addComponent<MyComponent>();
+        auto component = entity.addComponent<MyComponent>();
 
-                REQUIRE(component.getComponentCount() == 1);
-                REQUIRE(component.getComponentID() == 0);
-                REQUIRE(component.getComponentTypeID() == 0);
+        REQUIRE(component.getComponentCount() == 1);
+        REQUIRE(component.getComponentID() == 0);
+        REQUIRE(component.getComponentTypeID() == 0);
+        REQUIRE(component.isActive());
+        REQUIRE(component.getOwner() == entity.getEntityID());
 
-                REQUIRE(component.isActive() == true);
+        auto &system = ecs::SystemManager::createSystem<MySystem>();
 
-                REQUIRE(component.getOwner() == entity.getEntityID());
-        }
+        REQUIRE(system.getPriority() == ecs::SystemPriority::NORMAL);
+        REQUIRE(system.getSystemTypeID() == 0);
+        REQUIRE(system.getUpdateInterval() == 1.);
+        REQUIRE(system.isEnable());
 }

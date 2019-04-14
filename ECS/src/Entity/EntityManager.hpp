@@ -28,8 +28,8 @@ namespace ecs
     public:// CONSTRUCTORS
 	  EntityManager() = default;
 	  ~EntityManager() = default;
-	  EntityManager(const EntityManager &copy) = default;
-	  EntityManager(EntityManager &&) noexcept = default;
+          EntityManager(const EntityManager &copy) = delete;
+          EntityManager(EntityManager &&) noexcept = delete;
 
     public: //OPERATORS
 	  EntityManager &operator=(const EntityManager &other) = default;
@@ -68,14 +68,14 @@ namespace ecs
 		  return container.createEntity(std::forward(args)...);
 	  }
 	  template<class E>
-	  static E *getEntityById(EntityID entityID)
+          static E &getEntityById(EntityID entityID)
 	  {
 		  EntityContainer<E> &container = getEntityContainer<E>();
 
 		  return container.getEntityById(entityID);
 	  }
 	  template<class E>
-	  static std::vector<E*> getComponents(EntityID entityID)
+          static std::map<EntityID, E> &getComponents(EntityID entityID)
 	  {
 		  EntityContainer<E> &container = getEntityContainer<E>();
 

@@ -17,14 +17,14 @@ namespace ecs
 
   template <class E>
   using EEntityIterator =
-  typename std::vector<std::unique_ptr<IEntity>>::iterator;
+  typename std::vector<E>::iterator;
 
   template <class E>
   class EntityContainer : public IEntityContainer
   {
 // ATTRIBUTES
     private:
-	  std::map<EntityID, std::unique_ptr<IEntity>> _entities;
+          std::map<EntityID, E> _entities;
 
     public:
 
@@ -37,7 +37,7 @@ namespace ecs
 
     public: //OPERATORS
 	  EntityContainer &operator=(const EntityContainer &other) = default;
-	  EntityContainer &operator=(EntityContainer &&) = default;
+          EntityContainer &operator=(EntityContainer &&) noexcept = default;
 
     public:
 	  const char* getEntityContainerTypeName() const override
@@ -53,23 +53,27 @@ namespace ecs
 		  static_assert(std::is_base_of<IEntity, E>::value,
 		                "Entity must be derived from IEntity");
 
-		  auto entity = std::make_unique<E>(std::forward(args)...);
-		  const EntityID entityID = entity->getEntityID();
+                  auto entity = E{std::forward(args)...};
+                  const EntityID entityID = entity.getEntityID();
 
 		  _entities[entityID] = std::move(entity);
-		  return *static_cast<E*>(_entities[entityID].get());
+                  return getEntityById(entityID);
+          }
+          E &getEntityById(EntityID entityID)
+          {
+                  return _entities[entityID];
 	  }
-	  E *getEntityById(EntityID entityID)
+          std::map<EntityID, E> &getEntities()
 	  {
-		  return static_cast<E*>(_entities[entityID].get());
+                  return _entities;
 	  }
-	  std::vector<E*> getEntities()
+          const std::map<EntityID, E> &getEntities() const
+          {
+                  return _entities;
+          }
+          void destroyEntity(const E &entity) override
 	  {
-		  return std::vector<E*>(_entities.begin(), _entities.end());
-	  }
-	  void destroyEntity(IEntity *entity) override
-	  {
-		  _entities.erase(entity->getEntityID());
+                  _entities.erase(entity.getEntityID());
 	  }
 
 	  EEntityIterator<E> begin()

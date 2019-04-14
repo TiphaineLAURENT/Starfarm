@@ -70,7 +70,7 @@ namespace ecs
 	  }
 	  std::vector<C* const> getComponents(EntityID entityID)
 	  {
-		  std::vector<C*> components;
+                  std::vector<C *const> components;
 
 		  for (auto &component : _components) {
 			  if (component->getOwner() == entityID)
@@ -78,9 +78,9 @@ namespace ecs
 		  }
 		  return components;
 	  }
-	  const std::vector<C*> getComponents(EntityID entityID) const
+          const std::vector<C *const> getComponents(EntityID entityID) const
 	  {
-		  std::vector<C*> components;
+                  std::vector<C *const> components;
 
 		  for (auto& component : _components) {
 			  if (component->getOwner() == entityID)
