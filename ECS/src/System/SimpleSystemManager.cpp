@@ -13,8 +13,9 @@ namespace ecs
 
   SimpleSystemManager &SimpleSystemManager::getInstance()
   {
-          if (_instance == nullptr)
+          if (_instance == nullptr) {
                   _instance = new SimpleSystemManager;
+          }
           return *_instance;
   }
 

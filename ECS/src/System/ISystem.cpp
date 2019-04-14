@@ -4,7 +4,8 @@
 
 #include "ISystem.hpp"
 
-namespace ecs {
+namespace ecs
+{
 
   ISystem::ISystem(SystemPriority priority, float updateInterval)
           : _updateInterval(updateInterval), _priority(priority)

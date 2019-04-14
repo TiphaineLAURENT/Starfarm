@@ -23,9 +23,12 @@ namespace ecs
 // METHODS:
   public: // CONSTRUCTORS
           explicit System(
-                  SystemPriority = SystemPriority::NORMAL,
-                  float = 1.
-          ) = default;
+                  SystemPriority priority = SystemPriority::NORMAL,
+                  float updateInterval = 1.
+          )
+                  : ISystem(priority, updateInterval)
+          {
+          }
           ~System() override = default;
           System(const System &copy) = delete;
           System(System &&other) noexcept = delete;

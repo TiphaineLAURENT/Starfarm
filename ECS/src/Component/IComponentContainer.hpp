@@ -17,26 +17,26 @@ namespace ecs
   class IComponentContainer
   {
 // ATTRIBUTES
-    private:
-    public:
+  private:
+  public:
 
 // METHODS
-    public:// CONSTRUCTORS
-	  IComponentContainer() = default;
-	  virtual ~IComponentContainer() = default;
-	  IComponentContainer(const IComponentContainer &copy) = default;
-	  IComponentContainer(IComponentContainer &&) noexcept = default;
+  public:// CONSTRUCTORS
+          IComponentContainer() = default;
+          virtual ~IComponentContainer() = default;
+          IComponentContainer(const IComponentContainer &copy) = default;
+          IComponentContainer(IComponentContainer &&) noexcept = default;
 
-    public: //OPERATORS
-	  IComponentContainer &operator=(const IComponentContainer &other) = default;
-	  IComponentContainer &operator=(IComponentContainer &&) = default;
+  public: //OPERATORS
+          IComponentContainer &operator=(const IComponentContainer &other) = default;
+          IComponentContainer &operator=(IComponentContainer &&) = default;
 
-    public:
-	  virtual const char *getComponentContainerTypeName() const = 0;
+  public:
+          virtual const char *getComponentContainerTypeName() const = 0;
 
-	  virtual void removeComponent(EntityID entityID) = 0;
+          virtual void removeComponent(EntityID entityID) = 0;
 
-    private:
+  private:
   };
 
   std::ostream &operator<<(std::ostream &out, const IComponentContainer &);

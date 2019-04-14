@@ -4,6 +4,7 @@
 
 #include "System.hpp"
 
-namespace ecs {
+namespace ecs
+{
 
 }

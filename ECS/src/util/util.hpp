@@ -22,21 +22,21 @@ namespace ecs
     template <class T>
     class FamilyTypeID
     {
-      private:
-    	static ID _countID;
+    private:
+            static ID _countID;
 
-      public:
-    	template <class E>
-        static const ID getTypeID()
-        {
-	        static const ID _typeID{_countID++};
-	        return _typeID;
-        }
+    public:
+            template <class E>
+            static const ID getTypeID()
+            {
+                    static const ID _typeID{_countID++};
+                    return _typeID;
+            }
 
-        static const ID getCountID()
-        {
-	        return _countID;
-        }
+            static const ID getCountID()
+            {
+                    return _countID;
+            }
     };
 
     template <class T>

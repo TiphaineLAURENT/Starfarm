@@ -29,9 +29,9 @@ namespace ecs
   protected:
           float _timeSinceLastUpdate = 0.;
 
-          float _updateInterval;
+          float _updateInterval = 1.;
 
-          SystemPriority _priority;
+          SystemPriority _priority = SystemPriority::NORMAL;
 
           bool _enabled = true;
 
@@ -44,8 +44,8 @@ namespace ecs
 // METHODS:
   public: // CONSTRUCTORS
           explicit ISystem(
-                  SystemPriority = SystemPriority::NORMAL,
-                  float = 1.
+                  SystemPriority,
+                  float
           );
           virtual ~ISystem() = default;
           ISystem(const ISystem &copy) = delete;

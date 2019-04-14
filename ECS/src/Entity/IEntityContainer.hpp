@@ -17,26 +17,26 @@ namespace ecs
   class IEntityContainer
   {
 // ATTRIBUTES
-    private:
-    public:
+  private:
+  public:
 
 // METHODS
-    public:// CONSTRUCTORS
-	  IEntityContainer() = default;
-	  virtual ~IEntityContainer() = default;
-	  IEntityContainer(const IEntityContainer &copy) = default;
-	  IEntityContainer(IEntityContainer &&) noexcept = default;
+  public:// CONSTRUCTORS
+          IEntityContainer() = default;
+          virtual ~IEntityContainer() = default;
+          IEntityContainer(const IEntityContainer &copy) = default;
+          IEntityContainer(IEntityContainer &&) noexcept = default;
 
-    public: //OPERATORS
-	  IEntityContainer &operator=(const IEntityContainer &other) = default;
-	  IEntityContainer &operator=(IEntityContainer &&) = default;
+  public: //OPERATORS
+          IEntityContainer &operator=(const IEntityContainer &other) = default;
+          IEntityContainer &operator=(IEntityContainer &&) = default;
 
-    public:
-	  virtual const char* getEntityContainerTypeName() const = 0;
+  public:
+          virtual const char *getEntityContainerTypeName() const = 0;
 
-	  virtual void destroyEntity(IEntity* object) = 0;
+          virtual void destroyEntity(EntityID) = 0;
 
-    private:
+  private:
   };
 
   std::ostream &operator<<(std::ostream &out, const IEntityContainer &);

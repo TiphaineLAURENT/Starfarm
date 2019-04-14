@@ -11,8 +11,9 @@ namespace ecs
 
   SystemManager &SystemManager::getInstance()
   {
-          if (_instance == nullptr)
+          if (_instance == nullptr) {
                   _instance = new SystemManager;
+          }
           return *_instance;
   }
 
@@ -40,10 +41,11 @@ namespace ecs
                                                                     "used one");
 
           for (size_t i = 0; i < instance._systemWorkOrder.size(); ++i) {
-                  if (mask[i])
+                  if (mask[i]) {
                           instance._systemWorkOrder[i]->enable();
-                  else
+                  } else {
                           instance._systemWorkOrder[i]->disable();
+                  }
           }
   }
 

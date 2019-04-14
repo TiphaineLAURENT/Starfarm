@@ -18,28 +18,28 @@ namespace ecs
   class Entity : public IEntity
   {
 // ATTRIBUTES
-    private:
-    public:
-	  static const EntityTypeID _entityTypeID;
+  private:
+  public:
+          static const EntityTypeID _entityTypeID;
 
 // METHODS
-    public:// CONSTRUCTORS
-	  Entity() = default;
-	  ~Entity() override = default;
-	  Entity(const Entity &copy) = default;
-	  Entity(Entity &&) noexcept = default;
+  public:// CONSTRUCTORS
+          Entity() = default;
+          ~Entity() override = default;
+          Entity(const Entity &copy) = default;
+          Entity(Entity &&) noexcept = default;
 
-    public: //OPERATORS
-	  Entity &operator=(const Entity &other) = default;
-	  Entity &operator=(Entity &&) noexcept = default;
+  public: //OPERATORS
+          Entity &operator=(const Entity &other) = default;
+          Entity &operator=(Entity &&) noexcept = default;
 
-    public:
-	  const EntityTypeID getEntityTypeID() const override
-	  {
-		  return _entityTypeID;
-	  }
+  public:
+          const EntityTypeID getEntityTypeID() const override
+          {
+                  return _entityTypeID;
+          }
 
-    private:
+  private:
   };
 
   template <class E>
@@ -47,7 +47,7 @@ namespace ecs
 
   template <class E>
   const EntityTypeID Entity<E>::_entityTypeID =
-	                     util::FamilyTypeID<IEntity>::getTypeID<E>();
+          util::FamilyTypeID<IEntity>::getTypeID<E>();
 
 }
 

@@ -14,75 +14,84 @@ namespace ecs
   ComponentID IComponent::_componentCount = 0;
 
   IComponent::IComponent()
-	  : _componentID(INVALID_COMPONENT_ID)
+          : _componentID(INVALID_COMPONENT_ID)
   {
-	  if (!_freeID.empty()) {
-		  _componentID = _freeID.back();
-		  _freeID.pop_back();
-	  } else {
-		  _componentID = _componentCount++;
-	  }
+          if (!_freeID.empty()) {
+                  _componentID = _freeID.back();
+                  _freeID.pop_back();
+          } else {
+                  _componentID = _componentCount++;
+          }
   }
 
   const ComponentID IComponent::getComponentCount()
   {
-	  return _componentCount;
+          return _componentCount;
   }
 
   const ComponentID IComponent::getComponentID() const
   {
-	  return _componentID;
+          return _componentID;
   }
 
   IComponent::~IComponent()
   {
-	  _freeID.push_back(_componentID);
+          _freeID.push_back(_componentID);
   }
 
   const EntityID IComponent::getOwner() const
   {
-	  return _owner;
+          return _owner;
   }
 
   IComponent &IComponent::setActive(bool state)
   {
-	  _active = state;
-	  return *this;
+          _active = state;
+          return *this;
   }
 
   const bool IComponent::isActive() const
   {
-	  return _active;
+          return _active;
   }
 
   IComponent &IComponent::setOwner(const EntityID entityID)
   {
-	  _owner = entityID;
+          _owner = entityID;
 
-	  return *this;
+          return *this;
   }
 
   std::ostream &operator<<(std::ostream &out, const IComponent &component)
   {
-	  out << "Component:" << "\n"
-	      << "\tID: " << component.getComponentID() << "\n"
-	      << "\tComponent count: " << component.getComponentCount() << "\n"
-	      << "\tComponent type ID: " << component.getComponentTypeID() << "\n"
-	      << "\tEntity owner: " << component.getOwner();
+          out
+                  << "Component:"
+                  << "\n"
+                  << "\tID: "
+                  << component.getComponentID()
+                  << "\n"
+                  << "\tComponent count: "
+                  << component.getComponentCount()
+                  << "\n"
+                  << "\tComponent type ID: "
+                  << component.getComponentTypeID()
+                  << "\n"
+                  << "\tEntity owner: "
+                  << component.getOwner();
 
-	  return out;
+          return out;
   }
 
-  std::ostream& operator<<(std::ostream& out, const IComponent *component)
+  std::ostream &operator<<(std::ostream &out, const IComponent *component)
   {
-	  out << "{ "
-		  << "ID: " << component->getComponentID() << ", "
-		  << "Count: " << component->getComponentCount() << ", "
-		  << "TypeID: " << component->getComponentTypeID() << ", "
-		  << "Owner: " << component->getOwner() << ", "
-		  << "Active: " << component->isActive() << true
-		  << " }";
-	  return out;
+          out << "{ "
+              << "ID: " << component->getComponentID() << ", "
+              << "Count: " << component->getComponentCount() << ", "
+              << "TypeID: " << component->getComponentTypeID() << ", "
+              << "Owner: " << component->getOwner() << ", "
+              << "Active: " << component->isActive() << true
+              << " }";
+          return out;
   }
 
 }
