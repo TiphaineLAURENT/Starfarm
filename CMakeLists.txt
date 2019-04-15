@@ -24,6 +24,7 @@ set(ECS_SOURCES
     ECS/src/System/System.cpp ECS/src/System/System.hpp
     ECS/src/System/SystemManager.cpp ECS/src/System/SystemManager.hpp
     ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
+    ECS/src/provided/Component/MonoBehaviourComponent.cpp ECS/src/provided/Component/MonoBehaviourComponent.hpp
     )
 add_library(ecs STATIC ${ECS_SOURCES})
 

@@ -11,6 +11,7 @@
 # include <ostream>
 # include <unordered_map>
 # include "ComponentContainer.hpp"
+# include "../provided/Component/MonoBehaviourComponent.hpp"
 
 namespace ecs
 {
@@ -19,6 +20,8 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
+          using IBehaviour = std::unique_ptr<MonoBehaviourComponent>;
+
           static ComponentManager *_instance;
 
           std::unordered_map<ComponentTypeID,
@@ -43,11 +46,17 @@ namespace ecs
           static ComponentContainer<C> &getComponentContainer()
           {
                   static_assert(
-                          std::is_base_of<IComponent, C>::value,
+                          std::is_base_of<IComponent, C>::value
+                          || std::is_same<IBehaviour, C>::value,
                           "Component must be derived from IComponent"
                   );
 
-                  const ComponentTypeID componentTypeID = C::_componentTypeID;
+                  if constexpr (std::is_same<IBehaviour, C>::value) {
+                          const ComponentTypeID componentTypeID =
+                                  MonoBehaviourComponent::_componentTypeID;
+                  } else {
+                          const ComponentTypeID componentTypeID = C::_componentTypeID;
+                  }
                   ComponentManager &instance = getInstance();
 
                   if (instance._containers.find(componentTypeID)
@@ -73,10 +82,34 @@ namespace ecs
                           std::forward<ARGS>(args)...
                   );
           }
+          template <class C, class ...ARGS>
+          static MonoBehaviourComponent const *addBehaviour(
+                  EntityID entityId, ARGS &&... args
+          )
+          {
+                  static_assert(
+                          std::is_base_of<MonoBehaviourComponent, C>::value,
+                          "Component must be derived from MonoBehaviour"
+                  );
+                  ComponentContainer<IBehaviour> &container = getComponentContainer<IBehaviour>();
+
+                  return container.addComponent(
+                          entityID,
+                          new C{std::forward<ARGS>(args)}
+                  ).get();
+          }
           template <class C>
           static C &getComponent(EntityID entityID)
           {
                   ComponentContainer<C> &container = getComponentContainer<C>();
+
+                  return container.getComponent(entityID);
+          }
+          template <class C>
+          static C &getBehaviour(EntityID entityId)
+          {
+                  ComponentContainer<IBehaviour> &container =
+                          getComponentContainer<IBehaviour>();
 
                   return container.getComponent(entityID);
           }
@@ -104,6 +137,10 @@ namespace ecs
           static CComponentIterator<C> end()
           {
                   return getComponentContainer<C>().end();
+          }
+          static std::vector<IBehaviour> &behaviours()
+          {
+                  return getComponentContainer<IBehaviour>().getComponents();
           }
 
   private:
