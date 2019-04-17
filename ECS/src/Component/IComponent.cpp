@@ -19,6 +19,7 @@ namespace ecs
           if (!_freeID.empty()) {
                   _componentID = _freeID.back();
                   _freeID.pop_back();
+				  ++_componentCount;
           } else {
                   _componentID = _componentCount++;
           }
@@ -37,6 +38,7 @@ namespace ecs
   IComponent::~IComponent()
   {
           _freeID.push_back(_componentID);
+		  --_componentCount;
   }
 
   const EntityID IComponent::getOwner() const

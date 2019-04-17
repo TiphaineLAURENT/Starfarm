@@ -10,6 +10,7 @@
 
 # include <cstddef>
 # include <limits>
+# include <iostream>
 
 namespace ecs
 {

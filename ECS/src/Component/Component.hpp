@@ -19,13 +19,21 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
+		  static ComponentID _componentTypeCount;
+
   public:
           static const ComponentTypeID _componentTypeID;
 
 // METHODS
   public:// CONSTRUCTORS
-          Component() = default;
-          virtual ~Component() = default;
+		  Component()
+		  {
+				  ++_componentTypeCount;
+		  }
+		  virtual ~Component()
+		  {
+			  --_componentTypeCount;
+		  }
           Component(const Component &copy) = default;
           Component(Component &&) noexcept = default;
 
@@ -34,6 +42,11 @@ namespace ecs
           Component &operator=(Component &&) = default;
 
   public:
+		  static const ComponentID getComponentTypeCount()
+		  {
+				  return _componentTypeCount;
+		  }
+
           const ComponentTypeID getComponentTypeID() const override
           {
                   return _componentTypeID;
@@ -48,7 +61,8 @@ namespace ecs
   template <class C>
   const ComponentTypeID Component<C>::_componentTypeID =
           util::FamilyTypeID<IComponent>::getTypeID<C>();
-
+  template <class C>
+  ComponentID Component<C>::_componentTypeCount = 0;
 }
 
 #endif /* !ECS_COMPONENT_HPP */

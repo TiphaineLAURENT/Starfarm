@@ -19,14 +19,14 @@ namespace ecs
 
   template <class C>
   using CComponentIterator =
-  typename std::vector<C>::iterator;
+  typename std::vector<std::unique_ptr<C>>::iterator;
 
   template <class C>
   class ComponentContainer : public IComponentContainer
   {
 // ATTRIBUTES
   private:
-          std::vector<C> _components;
+          std::vector<std::unique_ptr<C>> _components;
 
   public:
 
@@ -44,51 +44,52 @@ namespace ecs
   public:
           const char *getComponentContainerTypeName() const override
           {
-                  static const char *componentTypeName{typeid(C).name()};
+                  static const auto componentTypeName{typeid(C).name()};
 
                   return componentTypeName;
           }
 
           template <class ...ARGS>
-          C &addComponent(EntityID entityID, ARGS &&... args)
+          C *addComponent(EntityID entityID, ARGS &&... args)
           {
                   static_assert(
                           std::is_base_of<IComponent, C>::value,
                           "Component must be derived from IComponent"
                   );
 
-                  auto component = C{std::forward<ARGS>(args)...};
-                  component.setOwner(entityID);
+                  auto component = std::make_unique<C>(std::forward<ARGS>(args)...);
+                  component->setOwner(entityID);
 
-                  _components.push_back(component);
-                  return _components.back();
+                  _components.push_back(std::move(component));
+                  return _components.back().get();
           }
-          C &getComponent(EntityID entityID)
+          C *getComponent(EntityID entityID)
           {
                   for (auto &component : _components) {
-                          if (component.getOwner() == entityID) {
-                                  return component;
+                          if (component->getOwner() == entityID) {
+                                  return component.get();
                           }
                   }
+				  return nullptr;
           }
           std::vector<C *const> getComponents(EntityID entityID)
           {
-                  std::vector<C *const> components;
+				  auto components = std::vector<C * const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {
-                                  components.emplace_back(&component);
+                                  components.emplace_back(component.get());
                           }
                   }
                   return components;
           }
           const std::vector<C *const> getComponents(EntityID entityID) const
           {
-                  std::vector<C *const> components;
+				  auto components = std::vector<C * const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {
-                                  components.emplace_back(&component);
+                                  components.emplace_back(component.get());
                           }
                   }
                   return components;
@@ -98,8 +99,8 @@ namespace ecs
                   auto toRemove = std::find_if(
                           _components.begin(),
                           _components.end(),
-                          [&](C &component) {
-                                  return component.getOwner()
+                          [&](auto &component) {
+                                  return component->getOwner()
                                          == entityID;
                           }
                   );

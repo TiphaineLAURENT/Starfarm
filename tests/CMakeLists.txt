@@ -19,4 +19,4 @@ endif ()
 target_link_libraries(tests coverage_config)
 target_link_libraries(tests sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
 
-add_test(NAME exec_tests COMMAND tests)
+add_test(NAME exec_tests COMMAND tests --success)

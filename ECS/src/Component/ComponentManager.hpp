@@ -20,8 +20,6 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          using IBehaviour = std::unique_ptr<MonoBehaviourComponent>;
-
           static ComponentManager *_instance;
 
           std::unordered_map<ComponentTypeID,
@@ -43,87 +41,71 @@ namespace ecs
   public:
           static ComponentManager &getInstance();
           template <class C>
-          static ComponentContainer<C> &getComponentContainer()
+          static auto &getComponentContainer()
           {
                   static_assert(
-                          std::is_base_of<IComponent, C>::value
-                          || std::is_same<IBehaviour, C>::value,
+                          std::is_base_of<IComponent, C>::value,
                           "Component must be derived from IComponent"
                   );
 
-                  if constexpr (std::is_same<IBehaviour, C>::value) {
-                          const ComponentTypeID componentTypeID =
-                                  MonoBehaviourComponent::_componentTypeID;
-                  } else {
-                          const ComponentTypeID componentTypeID = C::_componentTypeID;
-                  }
-                  ComponentManager &instance = getInstance();
+				  auto &instance = getInstance();
 
-                  if (instance._containers.find(componentTypeID)
-                      == instance._containers.end()) {
-                          auto container =
-                                  std::make_unique<ComponentContainer<C>>();
-                          instance._containers[componentTypeID] = std::move(
-                                  container
-                          );
-                  }
-
-                  return *static_cast<ComponentContainer<C> *>(instance
-                          ._containers[componentTypeID].get());
+				  if constexpr (std::is_base_of<MonoBehaviourComponent, C>::value) {
+					  auto container = instance.getContainer<MonoBehaviourComponent>();
+					  if (container == nullptr)
+					  {
+						  return *instance.createContainer<MonoBehaviourComponent>();
+					  }
+					  return *container;
+				  }
+				  else {
+					  auto container = instance.getContainer<C>();
+					  if (container == nullptr)
+					  {
+						  return *instance.createContainer<C>();
+					  }
+					  return *container;
+				  }
           }
 
-          template <class C, class ...ARGS>
-          static C &addComponent(EntityID entityID, ARGS &&... args)
-          {
-                  ComponentContainer<C> &container = getComponentContainer<C>();
-
-                  return container.addComponent(
-                          entityID,
-                          std::forward<ARGS>(args)...
-                  );
-          }
-          template <class C, class ...ARGS>
-          static MonoBehaviourComponent const *addBehaviour(
-                  EntityID entityId, ARGS &&... args
-          )
-          {
-                  static_assert(
-                          std::is_base_of<MonoBehaviourComponent, C>::value,
-                          "Component must be derived from MonoBehaviour"
-                  );
-                  ComponentContainer<IBehaviour> &container = getComponentContainer<IBehaviour>();
-
-                  return container.addComponent(
-                          entityID,
-                          new C{std::forward<ARGS>(args)}
-                  ).get();
-          }
+		  template <class C, class ...ARGS>
+		  static auto* addComponent(EntityID entityID, ARGS&& ... args)
+		  {
+			  if constexpr (std::is_base_of<MonoBehaviourComponent, C>::value)
+			  {
+				  auto& container = getComponentContainer<MonoBehaviourComponent>();
+				  return container.addComponent(
+					  entityID,
+					  std::forward<ARGS>(args)...
+				  );
+			  }
+			  else
+			  {
+				  auto& container = getComponentContainer<C>();
+				  return container.addComponent(
+					  entityID,
+					  std::forward<ARGS>(args)...
+				  );
+			  }
+		  }
           template <class C>
-          static C &getComponent(EntityID entityID)
+          static auto *getComponent(EntityID entityID)
           {
-                  ComponentContainer<C> &container = getComponentContainer<C>();
-
-                  return container.getComponent(entityID);
-          }
-          template <class C>
-          static C &getBehaviour(EntityID entityId)
-          {
-                  ComponentContainer<IBehaviour> &container =
-                          getComponentContainer<IBehaviour>();
+                  auto &container = getComponentContainer<C>();
 
                   return container.getComponent(entityID);
           }
           template <class C>
           static std::vector<C *> getComponents(EntityID entityID)
           {
-                  ComponentContainer<C> &container = getComponentContainer<C>();
+                  auto &container = getComponentContainer<C>();
 
                   return container.getComponents(entityID);
           }
           template <class C>
           static void removeComponent(EntityID entityID)
           {
-                  ComponentContainer<C> &container = getComponentContainer<C>();
+                  auto &container = getComponentContainer<C>();
 
                   container.removeComponent(entityID);
           }
@@ -138,12 +120,32 @@ namespace ecs
           {
                   return getComponentContainer<C>().end();
           }
-          static std::vector<IBehaviour> &behaviours()
-          {
-                  return getComponentContainer<IBehaviour>().getComponents();
-          }
+
+		  size_t getContainerCount() const
+		  {
+			  return _containers.size();
+		  }
 
   private:
+		  template <class C>
+		  ComponentContainer<C> *createContainer()
+		  {
+			  const auto componentTypeID = C::_componentTypeID;
+			  auto container = std::make_unique<ComponentContainer<C>>();
+			  _containers[componentTypeID] = std::move(container);
+
+			  return static_cast<ComponentContainer<C>*>(_containers[componentTypeID].get());
+		  }
+
+		  template <class C>
+		  ComponentContainer<C> *getContainer()
+		  {
+			  const auto componentTypeID = C::_componentTypeID;
+			  auto it = _containers.find(componentTypeID);
+			  if (it != _containers.end())
+				  return static_cast<ComponentContainer<C>*>(it->second.get());
+			  return nullptr;
+		  }
   };
 
   std::ostream &operator<<(std::ostream &out, const ComponentManager &);
