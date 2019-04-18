@@ -1,0 +1,6 @@
+languages:
+- cpp
+
+exclude:
+- SFML*/**
+- **catch.hpp
