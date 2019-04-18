@@ -63,6 +63,20 @@ namespace ecs
                   _components.push_back(std::move(component));
                   return _components.back().get();
           }
+		  template <class M, class ...ARGS>
+		  M* addBehaviour(EntityID entityID, ARGS&& ... args)
+		  {
+			  static_assert(
+				  std::is_base_of<MonoBehaviourComponent, M>::value,
+				  "Component must be derived from IComponent"
+				  );
+
+			  auto component = std::make_unique<M>(std::forward<ARGS>(args)...);
+			  component->setOwner(entityID);
+
+			  _components.push_back(std::move(component));
+			  return static_cast<M*>(_components.back().get());
+		  }
           C *getComponent(EntityID entityID)
           {
                   for (auto &component : _components) {

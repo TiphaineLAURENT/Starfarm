@@ -74,7 +74,7 @@ namespace ecs
 			  if constexpr (std::is_base_of<MonoBehaviourComponent, C>::value)
 			  {
 				  auto& container = getComponentContainer<MonoBehaviourComponent>();
-				  return container.addComponent(
+				  return container.addBehaviour<C>(
 					  entityID,
 					  std::forward<ARGS>(args)...
 				  );

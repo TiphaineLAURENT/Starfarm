@@ -32,7 +32,7 @@ namespace ecs
 		  }
 		  virtual ~Component()
 		  {
-			  --_componentTypeCount;
+				  --_componentTypeCount;
 		  }
           Component(const Component &copy) = default;
           Component(Component &&) noexcept = default;

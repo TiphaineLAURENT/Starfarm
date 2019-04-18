@@ -26,6 +26,21 @@ class MyComponent2 : public ecs::Component<MyComponent2>
 {
 };
 
+class MyBehaviour : public ecs::MonoBehaviourComponent
+{
+public:
+	void Start() override
+	{
+		std::cout << "start" << "\n";
+	}
+	virtual void Update() {};
+	virtual void FixedUpdate() {};
+	virtual void LateUpdate() {};
+	virtual void OnGUI() {};
+	virtual void OnDisable() {};
+	virtual void OnEnable() {};
+};
+
 class MySystem : public ecs::System<MySystem>
 {
 };
@@ -59,4 +74,15 @@ TEST_CASE("Basic creation", "creation")
 		REQUIRE(component->isActive());
         REQUIRE(component->getOwner() == entity.getEntityID());
 
+		entity.addComponent<MyBehaviour>();
+		auto behaviour = entity.getComponent<MyBehaviour>();
+		REQUIRE(behaviour->getComponentCount() == 3);
+		REQUIRE(behaviour->getComponentTypeCount() == 1);
+		REQUIRE(behaviour->getComponentID() == 2);
+		REQUIRE(behaviour->getComponentTypeID() == 0);
+		REQUIRE(behaviour->isActive());
+		REQUIRE(behaviour->getOwner() == entity.getEntityID());
+
+		for (auto& behaviour : ecs::ComponentManager::getComponentContainer<ecs::MonoBehaviourComponent>())
+			behaviour->Start();
 }
