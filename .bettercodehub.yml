@@ -5,5 +5,7 @@ languages:
     exclude:
       - test/*
   test:
+	exclude:
+	  - */catch.hpp
 exclude:
 - SFML*/*
