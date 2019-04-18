@@ -1,6 +1,7 @@
-component_depth: 3
+component_depth: 4
 languages:
 - cpp
 exclude:
 - SFML*/*
 - test/*
+- catch.hpp
