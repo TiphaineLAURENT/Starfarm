@@ -4,4 +4,4 @@ languages:
 exclude:
 - SFML*/*
 - test/*
-- catch.hpp
+- test/catch.hpp
