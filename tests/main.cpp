@@ -13,6 +13,7 @@
 #include <ComponentManager.hpp>
 #include <System.hpp>
 #include <SystemManager.hpp>
+#include <Component/MonoBehaviourComponent.hpp>
 
 class MyEntity : public ecs::Entity<MyEntity>
 {

@@ -38,6 +38,7 @@ add_definitions(-DFONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font/")
 include_directories(ECS/src/Entity)
 include_directories(ECS/src/Component)
 include_directories(ECS/src/System)
+include_directories(ECS/src/provided)
 set(STARFARM_SOURCES
     Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
     Starfarm/src/Game.cpp Starfarm/src/Game.hpp

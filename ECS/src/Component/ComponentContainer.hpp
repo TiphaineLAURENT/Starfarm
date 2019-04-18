@@ -11,8 +11,9 @@
 # include <ostream>
 # include <memory>
 # include <vector>
-#include <algorithm>
+# include <algorithm>
 # include "IComponentContainer.hpp"
+# include "Component/MonoBehaviourComponent.hpp"
 
 namespace ecs
 {
@@ -68,7 +69,7 @@ namespace ecs
 		  {
 			  static_assert(
 				  std::is_base_of<MonoBehaviourComponent, M>::value,
-				  "Component must be derived from IComponent"
+				  "Behaviour must be derived from MonoBehaviourComponent"
 				  );
 
 			  auto component = std::make_unique<M>(std::forward<ARGS>(args)...);
