@@ -6,31 +6,32 @@
 # define STARFARM_TRANSFORMCOMPONENT_HPP
 
 # include <ostream>
+# include <array>
 # include <Component.hpp>
 
 namespace game
 {
 
-  class TransformComponent : public ecs::Component<TransformComponent>
-  {
-// ATTRIBUTES
-  private:
-          using Positions = std::pair<size_t, size_t>;
-          Positions _position;
+	class TransformComponent : public ecs::Component<TransformComponent>
+	{
+		// ATTRIBUTES
+	private:
+		using Positions = std::pair<size_t, size_t>;
+		Positions _position;
 
-          using Rotations = std::array<size_t, 3>;
-          Rotations _rotation;
+		using Rotations = std::array<size_t, 3>;
+		Rotations _rotation;
 
-          using Scales = std::pair<size_t, size_t>;
-          Scales _scale;
+		using Scales = std::pair<size_t, size_t>;
+		Scales _scale;
 
-  public:
+	public:
 
-// METHODS:
-  public: // CONSTRUCTORS
-          explicit TransformComponent(const Positions &position = Positions(0, 0),
-                             const Rotations &rotation = Rotations(0, 0, 0),
-                             const Scales &scale = Scales(0, 0)
+		// METHODS:
+	public: // CONSTRUCTORS
+		explicit TransformComponent(const Positions& position = Positions{ 0, 0 },
+			const Rotations& rotation = Rotations{0, 0, 0},
+			const Scales& scale = Scales{ 0, 0 }
           );
           ~TransformComponent() override = default;
           TransformComponent(const TransformComponent &copy) = default;

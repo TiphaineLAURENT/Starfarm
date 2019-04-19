@@ -25,6 +25,7 @@ set(ECS_SOURCES
     ECS/src/System/SystemManager.cpp ECS/src/System/SystemManager.hpp
     ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
     ECS/src/provided/Component/MonoBehaviourComponent.cpp ECS/src/provided/Component/MonoBehaviourComponent.hpp
+	ECS/src/provided/System/BehaviourSystem.cpp 	ECS/src/provided/System/BehaviourSystem.hpp
     )
 add_library(ecs STATIC ${ECS_SOURCES})
 
@@ -44,13 +45,11 @@ set(STARFARM_SOURCES
     Starfarm/src/Game.cpp Starfarm/src/Game.hpp
     Starfarm/src/Player/PlayerEntity.hpp
     Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp
-    Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
     Starfarm/src/System/TransformSystem.cpp Starfarm/src/System/TransformSystem.hpp
     Starfarm/src/Component/RendererComponent.cpp Starfarm/src/Component/RendererComponent.hpp
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
     )
-set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFAR_SOURCES})
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)

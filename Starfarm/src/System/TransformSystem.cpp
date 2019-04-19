@@ -13,7 +13,7 @@ namespace game
 	void game::TransformSystem::update()
 	{
 		for (auto& component : ecs::ComponentManager::getComponentContainer<TransformComponent>())
-			component.update();
+			component->update();
 	}
 
 }

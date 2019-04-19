@@ -12,9 +12,9 @@ set(STARFARM_MANUAL_SOURCES
 
 option(MANUAL_TEST "Enable CLion" OFF)
 if (MANUAL_TEST)
-    add_executable(tests main.cpp ${STARFARM_MANUAL_SOURCES})
-else ()
     add_executable(tests main.cpp ${STARFARM_SOURCES})
+else ()
+    add_executable(tests main.cpp ${STARFARM_MANUAL_SOURCES})
 endif ()
 target_link_libraries(tests coverage_config)
 target_link_libraries(tests sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
