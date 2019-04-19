@@ -2,8 +2,8 @@
 // Created by TipLa on 14/04/2019.
 //
 
-#ifndef STARFARM_MONOBEHAVIOURCOMPONENT_HPP
-# define STARFARM_MONOBEHAVIOURCOMPONENT_HPP
+#ifndef ECS_MONOBEHAVIOURCOMPONENT_HPP
+# define ECS_MONOBEHAVIOURCOMPONENT_HPP
 
 # include <ostream>
 # include <Component.hpp>
@@ -44,4 +44,4 @@ std::ostream &operator<<(std::ostream &out, const MonoBehaviourComponent &);
 
 }
 
-#endif //STARFARM_MONOBEHAVIOURCOMPONENT_HPP
+#endif //ECS_MONOBEHAVIOURCOMPONENT_HPP

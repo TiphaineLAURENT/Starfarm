@@ -30,16 +30,13 @@ class MyComponent2 : public ecs::Component<MyComponent2>
 class MyBehaviour : public ecs::MonoBehaviourComponent
 {
 public:
-	void Start() override
+	void start() override
 	{
 		std::cout << "start" << "\n";
 	}
-	virtual void Update() {};
-	virtual void FixedUpdate() {};
-	virtual void LateUpdate() {};
-	virtual void OnGUI() {};
-	virtual void OnDisable() {};
-	virtual void OnEnable() {};
+	virtual void update() {};
+	virtual void fixedUpdate() {};
+	virtual void lateUpdate() {};
 };
 
 class MySystem : public ecs::System<MySystem>

@@ -2,8 +2,8 @@
 // Created by tiphaine on 11/04/19.
 //
 
-#ifndef STARFARM_BEHAVIOURSYSTEM_HPP
-# define STARFARM_BEHAVIOURSYSTEM_HPP
+#ifndef ECS_BEHAVIOURSYSTEM_HPP
+# define ECS_BEHAVIOURSYSTEM_HPP
 
 # include <ostream>
 # include <System.hpp>
@@ -39,4 +39,4 @@ namespace ecs
 
 }
 
-#endif //STARFARM_BEHAVIOURSYSTEM_HPP
+#endif //ECS_BEHAVIOURSYSTEM_HPP
