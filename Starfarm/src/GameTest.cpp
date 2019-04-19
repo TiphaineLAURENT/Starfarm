@@ -106,7 +106,7 @@ namespace game
             if (downFlag && sprite.getPosition().y + SPEED < 480)
                 sprite.setPosition(sprite.getPosition().x, sprite.getPosition().y + SPEED);
 
-            window.clear();
+            window.clear(sf::Color::Black);
 
             window.draw(sprite);
 

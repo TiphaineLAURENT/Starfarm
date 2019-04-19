@@ -44,13 +44,12 @@ set(STARFARM_SOURCES
     Starfarm/src/Game.cpp Starfarm/src/Game.hpp
     Starfarm/src/Player/PlayerEntity.hpp
     Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp
-    Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
     Starfarm/src/System/TransformSystem.cpp Starfarm/src/System/TransformSystem.hpp
     Starfarm/src/Component/RendererComponent.cpp Starfarm/src/Component/RendererComponent.hpp
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
     )
-set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFAR_SOURCES})
+set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFARM_SOURCES})
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)
