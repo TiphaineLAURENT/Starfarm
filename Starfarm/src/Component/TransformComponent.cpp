@@ -10,20 +10,15 @@
 namespace game
 {
 
-  TransformComponent::TransformComponent(TransformComponent::Positions position,
-                                         TransformComponent::Rotations rotation,
-                                         TransformComponent::Scales scale
-  )
+  TransformComponent::TransformComponent(const TransformComponent::Positions &position,
+                                         const TransformComponent::Rotations &rotation,
+                                         const TransformComponent::Scales &scale
+  ) : _position(position), _rotation(rotation), _scale(scale)
   {
-          _position = std::move(position);
-          _rotation = std::move(rotation);
-          _scale = std::move(scale);
   }
 
   void TransformComponent::update() const
   {
-          auto id = getOwner();
-          auto entity = ecs::EntityManager::getEntityById<PlayerEntity>(id);
   }
 
 }

@@ -28,7 +28,7 @@ namespace ecs
 
     public:
             template <class E>
-            static const ID getTypeID()
+            constexpr static ID getTypeID()
             {
                     static const ID _typeID{_countID++};
                     return _typeID;

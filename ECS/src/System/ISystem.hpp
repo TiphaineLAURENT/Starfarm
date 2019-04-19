@@ -80,6 +80,10 @@ namespace ecs
           {
                   return _updateInterval;
           }
+		  float getTimeSinceLastUpdate() const
+		  {
+			  return _timeSinceLastUpdate;
+		  }
           void setUpdateInterval(float interval)
           {
                   _updateInterval = interval;
@@ -96,7 +100,7 @@ namespace ecs
 
   };
 
-  std::ostream &operator<<(std::ostream &out, const ISystem &);
+  std::ostream &operator<<(std::ostream &out, const ISystem *);
 
 }
 

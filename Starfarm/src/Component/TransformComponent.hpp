@@ -18,8 +18,8 @@ namespace game
           using Positions = std::pair<size_t, size_t>;
           Positions _position;
 
-          using Rotations = std::pair<size_t, size_t>;
-          Positions _rotation;
+          using Rotations = std::array<size_t, 3>;
+          Rotations _rotation;
 
           using Scales = std::pair<size_t, size_t>;
           Scales _scale;
@@ -28,9 +28,9 @@ namespace game
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit TransformComponent(Positions position = Positions(0, 0),
-                             Rotations rotation = Rotations(0, 0),
-                             Scales scale = Scales(0, 0)
+          explicit TransformComponent(const Positions &position = Positions(0, 0),
+                             const Rotations &rotation = Rotations(0, 0, 0),
+                             const Scales &scale = Scales(0, 0)
           );
           ~TransformComponent() override = default;
           TransformComponent(const TransformComponent &copy) = default;
