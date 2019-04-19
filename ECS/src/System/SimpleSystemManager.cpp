@@ -13,6 +13,11 @@ namespace ecs
 
   SimpleSystemManager &SimpleSystemManager::getInstance()
   {
+	  static_assert(
+		  std::is_base_of<ISystem, S>::value,
+		  "System must be derived from ISystem"
+		  );
+
           if (_instance == nullptr) {
                   _instance = new SimpleSystemManager;
           }
