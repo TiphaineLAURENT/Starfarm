@@ -2,6 +2,8 @@ component_depth: 4
 languages:
 - cpp
 exclude:
-- /SFML*/.*
+- /SFML-2.5.1-visual32/.*
+- /SFML-2.5.1-gcc64/.*
+- /SFML-2.5.1-visual64/.*
 - /tests/.*
 - .*/catch\.hpp
