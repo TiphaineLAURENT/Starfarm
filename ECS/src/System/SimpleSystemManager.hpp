@@ -49,6 +49,11 @@ namespace ecs
           template <class S, class ...ARGS>
           static S &createSystem(ARGS &&... args)
           {
+			  static_assert(
+				  std::is_base_of<ISystem, S>::value,
+				  "System must be derived from ISystem"
+				  );
+
 			  SimpleSystemManager& instance = getInstance();
 			  const SystemTypeID systemTypeID = S::_systemTypeID;
 
@@ -61,6 +66,11 @@ namespace ecs
           template <class S>
           static S &getSystem()
           {
+			  static_assert(
+				  std::is_base_of<ISystem, S>::value,
+				  "System must be derived from ISystem"
+				  );
+			
 			  SimpleSystemManager& instance = getInstance();
 			  const SystemTypeID systemTypeID = S::_systemTypeID;
 

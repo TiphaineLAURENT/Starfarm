@@ -4,6 +4,7 @@
 
 #include <SimpleSystemManager.hpp>
 #include <EntityManager.hpp>
+#include <System/BehaviourSystem.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
@@ -22,6 +23,7 @@ namespace game
 	{
 		ecs::SimpleSystemManager::createSystem<TransformSystem>();
 		ecs::SimpleSystemManager::createSystem<RendererSystem>(&_window);
+		ecs::SimpleSystemManager::createSystem<BehaviourSystem>();
 	}
 
 	float GetAngleMouse(sf::Sprite _sprite, sf::RenderWindow* mainWindow) {
