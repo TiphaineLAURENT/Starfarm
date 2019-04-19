@@ -16,8 +16,6 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          sf::RenderWindow * const _window = nullptr;
-
   public:
 
 // METHODS:

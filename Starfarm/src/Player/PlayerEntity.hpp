@@ -19,7 +19,7 @@ namespace game
           PlayerEntity()
           {
                   addComponent<TransformComponent>();
-				  std::cout << &addComponent<RendererComponent>(RessourceManager::getTexture("darkgrey_05.png"));
+				  std::cout << addComponent<RendererComponent>(RessourceManager::getTexture("darkgrey_05.png"));
           }
   };
 

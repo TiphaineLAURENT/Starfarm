@@ -3,12 +3,13 @@
 //
 
 #include "BehaviourSystem.hpp"
-#include "MonoBehaviourComponent.hpp"
+#include "../Component/MonoBehaviourComponent.hpp"
 #include "ComponentManager.hpp"
 
 namespace ecs
 {
 	BehaviourSystem::BehaviourSystem()
+		: System()
 	{
 		for (auto& behaviour : ComponentManager::getComponentContainer<MonoBehaviourComponent>()) {
 			behaviour->awake();
@@ -23,7 +24,6 @@ namespace ecs
 	}
 
 	void ecs::BehaviourSystem::update()
-		: System()
 	{
 		for (auto& behaviour : ComponentManager::getComponentContainer<MonoBehaviourComponent>()) {
 			behaviour->update();

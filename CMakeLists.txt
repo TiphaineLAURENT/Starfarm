@@ -25,6 +25,7 @@ set(ECS_SOURCES
     ECS/src/System/SystemManager.cpp ECS/src/System/SystemManager.hpp
     ECS/src/System/SimpleSystemManager.cpp ECS/src/System/SimpleSystemManager.hpp
     ECS/src/provided/Component/MonoBehaviourComponent.cpp ECS/src/provided/Component/MonoBehaviourComponent.hpp
+	ECS/src/provided/System/BehaviourSystem.cpp 	ECS/src/provided/System/BehaviourSystem.hpp
     )
 add_library(ecs STATIC ${ECS_SOURCES})
 
@@ -49,6 +50,7 @@ set(STARFARM_SOURCES
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
     )
+
 set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFARM_SOURCES})
 
 if (WIN32)
