@@ -85,5 +85,5 @@ TEST_CASE("Basic creation", "creation")
 		REQUIRE(behaviour->getOwner() == entity.getEntityID());
 
 		for (auto& behaviour : ecs::ComponentManager::getComponentContainer<ecs::MonoBehaviourComponent>())
-			behaviour->Start();
+			behaviour->start();
 }
