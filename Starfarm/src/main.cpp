@@ -1,6 +1,7 @@
 //
 // Created by Hugo on 06/04/2019.
 //
+#include <Windows.h>
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -13,6 +14,7 @@
 
 int main(int argc, char* argv[])
 {
+	::ShowWindow(::GetConsoleWindow(), SW_HIDE);
     game::Game game;
     game.loop();
 
