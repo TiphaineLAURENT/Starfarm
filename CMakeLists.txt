@@ -72,21 +72,23 @@ find_package(SFML 2.5 COMPONENTS graphics audio window network system REQUIRED)
 
 option(STARFARM_EXECUTABLE "Compile Starfarm binary" OFF)
 if (STARFARM_EXECUTABLE)
-    add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/main.cpp)
+    if (WIN32)
+	    add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/windows_main.cpp)
+
+		add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+			               COMMAND ${CMAKE_COMMAND} -E copy_directory
+				           ${SFML_DLLS}
+					       ${EXECUTABLE_OUTPUT_PATH}
+                           )
+	elseif (UNIX)
+	    add_executable(${EXECUTABLE_NAME} ${STARFARM_SOURCES} Starfarm/src/unix_main.cpp)
+    endif ()
 
     add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E copy_directory
                        ${CMAKE_SOURCE_DIR}/resource
                        ${EXECUTABLE_OUTPUT_PATH}
                        )
-    if (WIN32)
-        add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
-                           COMMAND ${CMAKE_COMMAND} -E copy_directory
-                           ${SFML_DLLS}
-                           ${EXECUTABLE_OUTPUT_PATH}
-                           )
-    endif ()
-
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-audio sfml-window sfml-network sfml-system ecs)
 
     install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
