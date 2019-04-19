@@ -31,11 +31,8 @@ public: // OPERATORS
 public:
 		virtual void Start() {};
 		virtual void Update() {};
-		virtual void FixedUpdate() {};
+		virtual void FixedUpdate() {}; // Not implemented
 		virtual void LateUpdate() {};
-		virtual void OnGUI() {};
-		virtual void OnDisable() {};
-		virtual void OnEnable() {};
 };
 
 std::ostream &operator<<(std::ostream &out, const PlayerBehaviour&);
