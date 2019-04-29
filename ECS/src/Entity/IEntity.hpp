@@ -25,7 +25,7 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          EntityID _entityID;
+          EntityID _entityID = util::INVALID_ID;
 
           static std::vector<EntityID> _freeID;
 
@@ -33,7 +33,7 @@ namespace ecs
 
           EntityTypeID _entityTypeID = util::INVALID_ID;
 
-          bool _active;
+          bool _active = true;
 
   public:
 
@@ -78,10 +78,12 @@ namespace ecs
           template <class C>
           IEntity &removeComponent();
 
+          virtual void setup(){};
+
   private:
   };
 
-  std::ostream &operator<<(std::ostream &out, const IEntity &);
+  std::ostream &operator<<(std::ostream &out, const IEntity *);
 }
 
 #endif /* !ECS_IENTITY_HPP */

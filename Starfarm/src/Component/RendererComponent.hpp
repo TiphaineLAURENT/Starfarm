@@ -6,8 +6,8 @@
 # define STARFARM_RENDERERCOMPONENT_HPP
 
 # include <ostream>
-#include <Component.hpp>
-#include <SFML/Graphics.hpp>
+# include <Component.hpp>
+# include <SFML/Graphics.hpp>
 
 namespace game
 {
@@ -16,15 +16,18 @@ namespace game
   {
 // ATTRIBUTES
   private:
-          sf::Sprite _sprite;
-
           sf::Color _color = sf::Color::White;
 
           std::pair<bool, bool> _flip = {false, false};
 
           size_t _order = 0;
 
+          std::pair<float, float> _size;
+
+          sf::Sprite _sprite;
+
   public:
+          friend class TransformComponent;
 
 // METHODS:
   public: // CONSTRUCTORS

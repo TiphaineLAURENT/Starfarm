@@ -17,7 +17,7 @@ namespace ecs
 
   template <class E>
   using EEntityIterator =
-  typename std::vector<E>::iterator;
+  typename std::map<EntityID, E>::iterator;
 
   template <class E>
   class EntityContainer : public IEntityContainer
@@ -58,7 +58,7 @@ namespace ecs
                   auto entity = E{std::forward(args)...};
                   const EntityID entityID = entity.getEntityID();
 
-                  _entities.insert_or_assign(entityID, entity);
+                  _entities[entityID] = std::move(entity);
                   return getEntityById(entityID);
           }
           E &getEntityById(EntityID entityID)

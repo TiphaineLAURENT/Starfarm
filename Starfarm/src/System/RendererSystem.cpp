@@ -11,7 +11,7 @@ namespace game
 {
 
   RendererSystem::RendererSystem(sf::RenderWindow *const window)
-          : _window(window)
+          : System(), _window(window)
   {
   }
 

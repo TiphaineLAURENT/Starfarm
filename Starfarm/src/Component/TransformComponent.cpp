@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by tiphaine on 07/04/19.
 //
@@ -12,12 +14,36 @@ namespace game
           const TransformComponent::Rotations &rotation,
           const TransformComponent::Scales &scale
   )
-          : _position(position), _rotation(rotation), _scale(scale)
+          : Component(), _position(position), _rotation(rotation), _scale(scale)
   {
   }
 
   void TransformComponent::update() const
   {
+  }
+
+  TransformComponent &TransformComponent::move(float dx, float dy)
+  {
+          _position.first += dx;
+          _position.second += dy;
+
+          if (_renderer) {
+                  _renderer->_sprite.move(dx, dy);
+          }
+          return *this;
+  }
+  TransformComponent &TransformComponent::setPosition(float x, float y)
+  {
+          _position.first = x;
+          _position.second = y;
+          if (_renderer) {
+                  _renderer->_sprite.setPosition(x, y);
+          }
+          return *this;
+  }
+  const TransformComponent::Positions &TransformComponent::getPosition() const
+  {
+          return _position;
   }
 
 }

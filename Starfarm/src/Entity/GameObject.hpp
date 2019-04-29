@@ -17,9 +17,8 @@ namespace game
   {
 // ATTRIBUTES
   protected:
-          TransformComponent *_transform;
-
   public:
+          TransformComponent *_transform = nullptr;
 
 // METHODS:
   public: // CONSTRUCTORS

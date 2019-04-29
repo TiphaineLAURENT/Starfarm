@@ -10,6 +10,5 @@ namespace game
   MonoBehaviourComponent::MonoBehaviourComponent(GameObject *gameObject)
           : Component(), _gameObject(gameObject)
   {
-          awake();
   }
 }

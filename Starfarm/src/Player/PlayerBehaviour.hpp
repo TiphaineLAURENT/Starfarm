@@ -15,6 +15,12 @@ namespace game
   {
 // ATTRIBUTES
   private:
+          bool upFlag = false;
+          bool downFlag = false;
+          bool leftFlag = false;
+          bool rightFlag = false;
+
+          float _speed = 50;
   public:
 
 // METHODS:
@@ -29,6 +35,11 @@ namespace game
           PlayerBehaviour &operator=(PlayerBehaviour &&other) = default;
 
   public:
+          void awake() override;
+          void update() override;
+
+  private:
+          float getAngleMouse();
   };
 
   std::ostream &operator<<(std::ostream &out, const PlayerBehaviour &);

@@ -8,6 +8,7 @@
 # include <ostream>
 # include <array>
 # include <Component.hpp>
+#include "RendererComponent.hpp"
 
 namespace game
 {
@@ -15,18 +16,16 @@ namespace game
   {
           // ATTRIBUTES
   private:
-          using Positions = std::pair<size_t, size_t>;
-
+          using Positions = std::pair<float, float>;
           Positions _position;
 
-          using Rotations = std::array<size_t, 3>;
-
+          using Rotations = std::array<float, 3>;
           Rotations _rotation;
 
-          using Scales = std::pair<size_t, size_t>;
-
+          using Scales = std::pair<float, float>;
           Scales _scale;
 
+          RendererComponent *_renderer = nullptr;
   public:
 
           // METHODS:
@@ -45,11 +44,15 @@ namespace game
           TransformComponent &operator=(TransformComponent &&other) = default;
 
   public:
-          template <class R>
-          TransformComponent &linkToRenderer(R *renderer)
+          TransformComponent &linkToRenderer(RendererComponent *renderer)
           {
-                  return _renderer;
+                  _renderer = renderer;
+                  std::clog << _renderer->getComponentID() << "\n";
+                  return *this;
           }
+          TransformComponent &move(float dx, float dy);
+          TransformComponent &setPosition(float x, float y);
+          const Positions &getPosition() const;
 
           void update() const;
   };

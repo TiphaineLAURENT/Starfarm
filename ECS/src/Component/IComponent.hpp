@@ -22,9 +22,9 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          ComponentID _componentID;
-
           static const ComponentID INVALID_COMPONENT_ID = util::INVALID_ID;
+
+          ComponentID _componentID = INVALID_COMPONENT_ID;
 
           static std::vector<ComponentID> _freeID;
 

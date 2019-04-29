@@ -14,7 +14,6 @@ namespace ecs
   ComponentID IComponent::_componentCount = 0;
 
   IComponent::IComponent()
-          : _componentID(INVALID_COMPONENT_ID)
   {
           if (!_freeID.empty()) {
                   _componentID = _freeID.back();
@@ -66,10 +65,11 @@ namespace ecs
 
   std::ostream &operator<<(std::ostream &out, const IComponent *component)
   {
-          out << "{ "
+          out << "{c "
               << "ID: " << component->getComponentID() << ", "
               << "Count: " << component->getComponentCount() << ", "
               << "TypeID: " << component->getComponentTypeID() << ", "
+              << "TypeName: " << typeid(component).name() << ", "
               << "Owner: " << component->getOwner() << ", "
               << "Active: " << component->isActive() << true
               << " }";

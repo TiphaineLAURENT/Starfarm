@@ -17,13 +17,16 @@ namespace game
   {
   public:
           PlayerEntity()
+                  : GameObject()
           {
-                  addComponent<RendererComponent>(
+                  auto renderer = addComponent<RendererComponent>(
                           RessourceManager::getTexture(
                                   "darkgrey_05.png"
                           ));
                   addBehaviour<PlayerBehaviour>();
           }
+
+          ~PlayerEntity() override = default;
   };
 
 }

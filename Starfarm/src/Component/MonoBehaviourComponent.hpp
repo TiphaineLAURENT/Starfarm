@@ -16,7 +16,7 @@ namespace game
   {
 // ATTRIBUTES
   protected:
-          GameObject *_gameObject;
+          GameObject *const _gameObject = nullptr;
 
   public:
 
@@ -28,8 +28,10 @@ namespace game
           MonoBehaviourComponent(MonoBehaviourComponent &&other) noexcept = default;
 
   public: // OPERATORS
-          MonoBehaviourComponent &operator=(const MonoBehaviourComponent &other) = default;
-          MonoBehaviourComponent &operator=(MonoBehaviourComponent &&other) = default;
+          MonoBehaviourComponent &operator=(const MonoBehaviourComponent
+                  &other) = delete;
+          MonoBehaviourComponent &operator=(MonoBehaviourComponent &&other) =
+                  delete;
 
   public:
           virtual void awake()

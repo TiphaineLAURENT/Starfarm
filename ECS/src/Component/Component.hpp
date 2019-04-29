@@ -27,6 +27,7 @@ namespace ecs
 // METHODS
   public:// CONSTRUCTORS
           Component()
+                : IComponent()
           {
                   ++_componentTypeCount;
           }

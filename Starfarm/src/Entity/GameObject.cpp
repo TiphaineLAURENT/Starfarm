@@ -8,7 +8,8 @@
 namespace game
 {
   GameObject::GameObject()
-          : _transform(addComponent<TransformComponent>())
+          : Entity()
   {
+          _transform = addComponent<TransformComponent>();
   }
 }

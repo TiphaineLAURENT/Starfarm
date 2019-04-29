@@ -14,8 +14,9 @@
 #include <System.hpp>
 #include <SystemManager.hpp>
 #include "../Starfarm/src/Component/MonoBehaviourComponent.hpp"
+#include "../Starfarm/src/Entity/GameObject.hpp"
 
-class MyEntity : public ecs::Entity<MyEntity>
+class MyEntity : public game::GameObject
 {
 };
 
@@ -27,9 +28,14 @@ class MyComponent2 : public ecs::Component<MyComponent2>
 {
 };
 
-class MyBehaviour : public ecs::MonoBehaviourComponent
+class MyBehaviour : public game::MonoBehaviourComponent
 {
 public:
+        explicit MyBehaviour(game::GameObject *ga)
+                : MonoBehaviourComponent(ga)
+        {
+        }
+
         void start() override
         {
                 std::cout << "start" << "\n";
@@ -48,91 +54,39 @@ TEST_CASE("Basic creation", "creation")
         REQUIRE(entity.getEntityID() == 0);
         REQUIRE(entity.getEntityTypeID() == 0);
 
-auto &system = ecs::SystemManager::createSystem<MySystem>();
+        auto &system = ecs::SystemManager::createSystem<MySystem>();
 
-REQUIRE(system
-.
-getPriority()
-== ecs::SystemPriority::NORMAL);
-REQUIRE(system
-.
-getSystemTypeID()
-== 0);
-REQUIRE(system
-.
-getUpdateInterval()
-== 1.);
-REQUIRE(system
-.
-isEnable()
-);
+        REQUIRE(system.getPriority() == ecs::SystemPriority::NORMAL);
+        REQUIRE(system.getSystemTypeID() == 0);
+        REQUIRE(system.getUpdateInterval() == 1.);
+        REQUIRE(system.isEnable());
 
-entity.
-addComponent<MyComponent>();
-auto component = entity.getComponent<MyComponent>();
-auto component2 = entity.addComponent<MyComponent2>();
+        entity.addComponent<MyComponent>();
+        auto component = entity.getComponent<MyComponent>();
+        auto component2 = entity.addComponent<MyComponent2>();
 
-REQUIRE (ecs::ComponentManager::getInstance()
-.
-getContainerCount()
-== 2);
+        REQUIRE (ecs::ComponentManager::getInstance().getContainerCount() == 2);
 
         REQUIRE(component->getComponentCount() == 2);
-REQUIRE(component
-->
-getComponentTypeCount()
-== 1);
-REQUIRE(component
-->
-getComponentID()
-== 0);
+        REQUIRE(component->getComponentTypeCount() == 1);
+        REQUIRE(component->getComponentID() == 0);
         REQUIRE(component->getComponentTypeID() == 1);
-REQUIRE(component2
-->
-getComponentTypeID()
-== 2);
-REQUIRE(component
-->
-isActive()
-);
+        REQUIRE(component2->getComponentTypeID() == 2);
+        REQUIRE(component->isActive());
         REQUIRE(component->getOwner() == entity.getEntityID());
 
-entity.
-addComponent<MyBehaviour>();
-auto behaviour = entity.getComponent<MyBehaviour>();
-REQUIRE(behaviour
-->
-getComponentCount()
-== 3);
-REQUIRE(behaviour
-->
-getComponentTypeCount()
-== 1);
-REQUIRE(behaviour
-->
-getComponentID()
-== 2);
-REQUIRE(behaviour
-->
-getComponentTypeID()
-== 0);
-REQUIRE(behaviour
-->
-isActive()
-);
-REQUIRE(behaviour
-->
-getOwner()
-== entity.
-getEntityID()
-);
+        entity.addBehaviour<MyBehaviour>();
+        auto mybehaviour = entity.getComponent<MyBehaviour>();
+        REQUIRE(mybehaviour->getComponentCount() == 3);
+        REQUIRE(mybehaviour->getComponentTypeCount() == 1);
+        REQUIRE(mybehaviour->getComponentID() == 2);
+        REQUIRE(mybehaviour->getComponentTypeID() == 0);
+        REQUIRE(mybehaviour->isActive());
+        REQUIRE(mybehaviour->getOwner() == entity.getEntityID());
 
-for (
-auto &behaviour
-:
-ecs::ComponentManager::getComponentContainer<ecs::MonoBehaviourComponent>()
-) {
-behaviour->
-start();
-}
+        for (auto &behaviour
+                : ecs::ComponentManager::getComponentContainer<game::MonoBehaviourComponent>()
+                ) {
+                behaviour->start();
+        }
 }

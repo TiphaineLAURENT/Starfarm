@@ -20,8 +20,6 @@ namespace ecs
   }
 
   IEntity::IEntity()
-          : _entityID(INVALID_ENTITY_ID),
-            _active(true)
   {
           if (!_freeID.empty()) {
                   _entityID = _freeID.back();
@@ -63,12 +61,14 @@ namespace ecs
           return ComponentManager::removeComponent<C>(_entityID);
   }
 
-  std::ostream &operator<<(std::ostream &out, const IEntity &entity)
+  std::ostream &operator<<(std::ostream &out, const IEntity *entity)
   {
-          out << "Entity:" << "\n"
-              << "\tID: " << entity.getEntityID() << "\n"
-              << "\tEntity count: " << entity.getEntityCount() << "\n"
-              << "\tEntity type ID: " << entity.getEntityTypeID();
+          out << "{e "
+              << "ID: " << entity->getEntityID() << ", "
+              << "Entity count: " << entity->getEntityCount() << ", "
+              << "Entity type ID: " << entity->getEntityTypeID() << ", "
+              << "Entity type name: " << typeid(entity).name()
+              << " }";
 
           return out;
   }

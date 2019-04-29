@@ -17,6 +17,7 @@ namespace game
 
   public:
           void loop();
+
   private:
           sf::RenderWindow _window;
   };
