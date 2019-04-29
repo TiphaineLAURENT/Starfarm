@@ -19,33 +19,33 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-		  static ComponentID _componentTypeCount;
+          static ComponentID _componentTypeCount;
 
   public:
           static const ComponentTypeID _componentTypeID;
 
 // METHODS
   public:// CONSTRUCTORS
-		  Component()
-		  {
-				  ++_componentTypeCount;
-		  }
-		  virtual ~Component()
-		  {
-				  --_componentTypeCount;
-		  }
+          Component()
+          {
+                  ++_componentTypeCount;
+          }
+          ~Component() override
+          {
+                  --_componentTypeCount;
+          }
           Component(const Component &copy) = default;
           Component(Component &&) noexcept = default;
 
   public: //OPERATORS
           Component &operator=(const Component &other) = default;
-          Component &operator=(Component &&) = default;
+          Component &operator=(Component &&) noexcept = default;
 
   public:
-		  static const ComponentID getComponentTypeCount()
-		  {
-				  return _componentTypeCount;
-		  }
+          static const ComponentID getComponentTypeCount()
+          {
+                  return _componentTypeCount;
+          }
 
           const ComponentTypeID getComponentTypeID() const override
           {

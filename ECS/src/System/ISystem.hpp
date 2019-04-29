@@ -80,10 +80,10 @@ namespace ecs
           {
                   return _updateInterval;
           }
-		  float getTimeSinceLastUpdate() const
-		  {
-			  return _timeSinceLastUpdate;
-		  }
+          float getTimeSinceLastUpdate() const
+          {
+                  return _timeSinceLastUpdate;
+          }
           void setUpdateInterval(float interval)
           {
                   _updateInterval = interval;

@@ -6,36 +6,32 @@
 # define STARFARM_PLAYERBEHAVIOUR_HPP
 
 # include <ostream>
-# include <Component/MonoBehaviourComponent.hpp>
+# include "../Component/MonoBehaviourComponent.hpp"
 
-namespace ecs
+namespace game
 {
 
-class PlayerBehaviour : public MonoBehaviourComponent
-{
+  class PlayerBehaviour : public MonoBehaviourComponent
+  {
 // ATTRIBUTES
-private:
-public:
+  private:
+  public:
 
 // METHODS:
-public: // CONSTRUCTORS
-		PlayerBehaviour() = default;
-        ~PlayerBehaviour() override = default;
-		PlayerBehaviour(const PlayerBehaviour&copy) = default;
-		PlayerBehaviour(PlayerBehaviour&&other) noexcept = default;
+  public: // CONSTRUCTORS
+          explicit PlayerBehaviour(GameObject *gameObject);
+          ~PlayerBehaviour() override = default;
+          PlayerBehaviour(const PlayerBehaviour &copy) = default;
+          PlayerBehaviour(PlayerBehaviour &&other) noexcept = default;
 
-public: // OPERATORS
-		PlayerBehaviour&operator=(const PlayerBehaviour&other) = default;
-		PlayerBehaviour&operator=(PlayerBehaviour&&other) = default;
+  public: // OPERATORS
+          PlayerBehaviour &operator=(const PlayerBehaviour &other) = default;
+          PlayerBehaviour &operator=(PlayerBehaviour &&other) = default;
 
-public:
-		virtual void Start() {};
-		virtual void Update() {};
-		virtual void FixedUpdate() {}; // Not implemented
-		virtual void LateUpdate() {};
-};
+  public:
+  };
 
-std::ostream &operator<<(std::ostream &out, const PlayerBehaviour&);
+  std::ostream &operator<<(std::ostream &out, const PlayerBehaviour &);
 
 }
 

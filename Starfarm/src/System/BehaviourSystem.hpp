@@ -9,7 +9,7 @@
 # include <System.hpp>
 # include <SFML/Window.hpp>
 
-namespace ecs
+namespace game
 {
 
   class BehaviourSystem : public ecs::System<BehaviourSystem>
@@ -22,19 +22,19 @@ namespace ecs
   public: // CONSTRUCTORS
           explicit BehaviourSystem();
           ~BehaviourSystem() override = default;
-		  BehaviourSystem(const BehaviourSystem&copy) = delete;
-		  BehaviourSystem(BehaviourSystem&&other) noexcept = delete;
+          BehaviourSystem(const BehaviourSystem &copy) = delete;
+          BehaviourSystem(BehaviourSystem &&other) noexcept = delete;
 
   public: // OPERATORS
-		  BehaviourSystem&operator=(const BehaviourSystem&other) = delete;
-		  BehaviourSystem&operator=(BehaviourSystem&&other) = delete;
+          BehaviourSystem &operator=(const BehaviourSystem &other) = delete;
+          BehaviourSystem &operator=(BehaviourSystem &&other) = delete;
 
   public:
           void start();
           void update() override;
   };
 
-  std::ostream &operator<<(std::ostream &out, const BehaviourSystem&);
+  std::ostream &operator<<(std::ostream &out, const BehaviourSystem &);
 
 }
 

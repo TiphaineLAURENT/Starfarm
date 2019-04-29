@@ -7,15 +7,15 @@
 
 namespace game
 {
-    class GameTest {
-    public:
-        GameTest() = default;
-        ~GameTest() = default;
+  class GameTest
+  {
+  public:
+          GameTest() = default;
+          ~GameTest() = default;
 
-    public:
-        void loop();
-    };
+  public:
+          void loop();
+  };
 }
-
 
 #endif //STARFARM_GAMETEST_HPP

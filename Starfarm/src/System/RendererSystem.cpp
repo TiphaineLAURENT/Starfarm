@@ -12,15 +12,16 @@ namespace game
 
   RendererSystem::RendererSystem(sf::RenderWindow *const window)
           : _window(window)
-  {}
+  {
+  }
 
   void RendererSystem::update()
   {
-		  _window->clear();
+          _window->clear();
           for (auto &component :
                   ecs::ComponentManager::getComponentContainer<RendererComponent>()) {
-		                  _window->draw(component->getSprite());
+                  _window->draw(component->getSprite());
           }
-		  _window->display();
+          _window->display();
   }
 }

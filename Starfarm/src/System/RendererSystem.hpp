@@ -16,13 +16,13 @@ namespace game
   {
 // ATTRIBUTES
   private:
-          sf::RenderWindow * const _window = nullptr;
+          sf::RenderWindow *const _window = nullptr;
 
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit RendererSystem(sf::RenderWindow *const);
+          explicit RendererSystem(sf::RenderWindow *);
           ~RendererSystem() override = default;
           RendererSystem(const RendererSystem &copy) = delete;
           RendererSystem(RendererSystem &&other) noexcept = delete;

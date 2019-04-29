@@ -17,15 +17,18 @@ namespace game
 // ATTRIBUTES
   private:
           sf::Sprite _sprite;
+
           sf::Color _color = sf::Color::White;
-		  std::pair<bool, bool> _flip = { false, false };
+
+          std::pair<bool, bool> _flip = {false, false};
+
           size_t _order = 0;
 
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit RendererComponent(const sf::Texture&);
+          explicit RendererComponent(const sf::Texture &);
           ~RendererComponent() override = default;
           RendererComponent(const RendererComponent &copy) = default;
           RendererComponent(RendererComponent &&other) noexcept = default;
@@ -35,7 +38,7 @@ namespace game
           RendererComponent &operator=(RendererComponent &&other) = default;
 
   public:
-		  const sf::Sprite &getSprite() const;
+          const sf::Sprite &getSprite() const;
   };
 
   std::ostream &operator<<(std::ostream &out, const RendererComponent &);

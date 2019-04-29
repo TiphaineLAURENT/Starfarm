@@ -66,7 +66,7 @@ namespace ecs
                   );
           }
           template <class C>
-          auto * getComponent() const
+          auto *getComponent() const
           {
                   return ComponentManager::getComponent<C>(_entityID);
           }

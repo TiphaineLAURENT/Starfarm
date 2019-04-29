@@ -12,10 +12,10 @@
 #include "Game.hpp"
 #include "GameTest.hpp"
 
-int wmain(int argc, wchar_t* argv[])
+int wmain(int argc, wchar_t *argv[])
 {
-    game::Game game;
-    game.loop();
+        game::Game game;
+        game.loop();
 
-    return 0;
+        return 0;
 }

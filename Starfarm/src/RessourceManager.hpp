@@ -20,45 +20,57 @@ namespace game
   class RessourceManager
   {
 // ATTRIBUTES
-    private:
-	  static RessourceManager *_manager;
-	  std::map<std::string, std::unique_ptr<sf::Texture>> _textures;
-	  std::map<std::string, std::unique_ptr<sf::Music>> _musics;
-	  std::map<std::string, std::unique_ptr<sf::Font>> _fonts;
-	  std::map<std::string, std::unique_ptr<sf::SoundBuffer>> _soundBuffers;
+  private:
+          static RessourceManager *_manager;
 
-    public:
+          std::map<std::string, std::unique_ptr<sf::Texture>> _textures;
+
+          std::map<std::string, std::unique_ptr<sf::Music>> _musics;
+
+          std::map<std::string, std::unique_ptr<sf::Font>> _fonts;
+
+          std::map<std::string, std::unique_ptr<sf::SoundBuffer>> _soundBuffers;
+
+  public:
 
 // METHODS
-    public:// CONSTRUCTORS
-	  RessourceManager() = default;
-	  ~RessourceManager() = default;
+  public:// CONSTRUCTORS
+          RessourceManager() = default;
+          ~RessourceManager() = default;
           RessourceManager(const RessourceManager &copy) = delete;
           RessourceManager(RessourceManager &&) noexcept = delete;
 
-    public: //OPERATORS
+  public: //OPERATORS
           RessourceManager &operator=(const RessourceManager &other) = delete;
           RessourceManager &operator=(RessourceManager &&) = delete;
 
-    public:
-	  static const sf::Texture &getTexture(const std::string &textureName,
-	                                       const std::string &path =
-	                                       TEXTURE_DIRECTORY);
-	  static sf::Music &getMusic(const std::string &musicName,
-	                             const std::string &path =
-                                     MUSIC_DIRECTORY);
-	  static const sf::Font &getFont(const std::string &fontName,
-                                         const std::string &path =
-	                                 FONT_DIRECTORY);
-	  static const sf::SoundBuffer &getSoundBuffer(const std::string
-	                                               &soundBufferName,
-                                                       const std::string
-	                                               &path = SOUND_DIRECTORY);
+  public:
+          static const sf::Texture &getTexture(
+                  const std::string &textureName,
+                  const std::string &path =
+                  TEXTURE_DIRECTORY
+          );
+          static sf::Music &getMusic(
+                  const std::string &musicName,
+                  const std::string &path =
+                  MUSIC_DIRECTORY
+          );
+          static const sf::Font &getFont(
+                  const std::string &fontName,
+                  const std::string &path =
+                  FONT_DIRECTORY
+          );
+          static const sf::SoundBuffer &getSoundBuffer(
+                  const std::string
+                  &soundBufferName,
+                  const std::string
+                  &path = SOUND_DIRECTORY
+          );
 
-	  static RessourceManager &getInstance();
-	  static void destroy();
+          static RessourceManager &getInstance();
+          static void destroy();
 
-    private:
+  private:
   };
 
   std::ostream &operator<<(std::ostream &out, const RessourceManager &);

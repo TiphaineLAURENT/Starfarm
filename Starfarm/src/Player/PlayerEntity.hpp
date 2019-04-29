@@ -5,21 +5,24 @@
 #ifndef STARFARM_PLAYERENTITY_HPP
 # define STARFARM_PLAYERENTITY_HPP
 
-# include <Entity.hpp>
-
-# include "../Component/TransformComponent.hpp"
+# include "../Entity/GameObject.hpp"
+# include "PlayerBehaviour.hpp"
 # include "../Component/RendererComponent.hpp"
-#include "../RessourceManager.hpp"
+# include "../RessourceManager.hpp"
 
 namespace game
 {
 
-  class PlayerEntity : public ecs::Entity<PlayerEntity> {
+  class PlayerEntity : public GameObject
+  {
   public:
           PlayerEntity()
           {
-                  addComponent<TransformComponent>();
-				  std::cout << addComponent<RendererComponent>(RessourceManager::getTexture("darkgrey_05.png"));
+                  addComponent<RendererComponent>(
+                          RessourceManager::getTexture(
+                                  "darkgrey_05.png"
+                          ));
+                  addBehaviour<PlayerBehaviour>();
           }
   };
 

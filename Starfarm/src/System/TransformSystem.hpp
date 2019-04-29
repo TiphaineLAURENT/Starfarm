@@ -6,12 +6,12 @@
 # define STARFARM_TRANSFORMSYSTEM_HPP
 
 # include <ostream>
-#include <System.hpp>
+# include <System.hpp>
 
 namespace game
 {
 
-class TransformSystem : public ecs::System<TransformSystem>
+  class TransformSystem : public ecs::System<TransformSystem>
   {
 // ATTRIBUTES
   private:

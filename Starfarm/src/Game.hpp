@@ -9,17 +9,17 @@
 
 namespace game
 {
-    class Game {
-    public:
-        Game();
-        ~Game() = default;
+  class Game
+  {
+  public:
+          Game();
+          ~Game() = default;
 
-    public:
-        void loop();
-    private:
-		sf::RenderWindow _window;
-    };
+  public:
+          void loop();
+  private:
+          sf::RenderWindow _window;
+  };
 }
-
 
 #endif //STARFARM_GAME_HPP

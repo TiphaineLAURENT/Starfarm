@@ -13,7 +13,7 @@
 # include <vector>
 # include <algorithm>
 # include "IComponentContainer.hpp"
-# include "Component/MonoBehaviourComponent.hpp"
+# include "../../../Starfarm/src/Component/MonoBehaviourComponent.hpp"
 
 namespace ecs
 {
@@ -64,20 +64,20 @@ namespace ecs
                   _components.push_back(std::move(component));
                   return _components.back().get();
           }
-		  template <class M, class ...ARGS>
-		  M* addBehaviour(EntityID entityID, ARGS&& ... args)
-		  {
-			  static_assert(
-				  std::is_base_of<MonoBehaviourComponent, M>::value,
-				  "Behaviour must be derived from MonoBehaviourComponent"
-				  );
+          template <class M, class ...ARGS>
+          M *addBehaviour(EntityID entityID, ARGS &&... args)
+          {
+                  static_assert(
+                          std::is_base_of<game::MonoBehaviourComponent, M>::value,
+                          "Behaviour must be derived from MonoBehaviourComponent"
+                  );
 
-			  auto component = std::make_unique<M>(std::forward<ARGS>(args)...);
-			  component->setOwner(entityID);
+                  auto component = std::make_unique<M>(std::forward<ARGS>(args)...);
+                  component->setOwner(entityID);
 
-			  _components.push_back(std::move(component));
-			  return static_cast<M*>(_components.back().get());
-		  }
+                  _components.push_back(std::move(component));
+                  return static_cast<M *>(_components.back().get());
+          }
           C *getComponent(EntityID entityID)
           {
                   for (auto &component : _components) {
@@ -85,11 +85,11 @@ namespace ecs
                                   return component.get();
                           }
                   }
-				  return nullptr;
+                  return nullptr;
           }
           std::vector<C *const> getComponents(EntityID entityID)
           {
-				  auto components = std::vector<C * const>{};
+                  auto components = std::vector<C *const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {
@@ -100,7 +100,7 @@ namespace ecs
           }
           const std::vector<C *const> getComponents(EntityID entityID) const
           {
-				  auto components = std::vector<C * const>{};
+                  auto components = std::vector<C *const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {

@@ -11,27 +11,30 @@
 
 namespace game
 {
+  class TransformComponent : public ecs::Component<TransformComponent>
+  {
+          // ATTRIBUTES
+  private:
+          using Positions = std::pair<size_t, size_t>;
 
-	class TransformComponent : public ecs::Component<TransformComponent>
-	{
-		// ATTRIBUTES
-	private:
-		using Positions = std::pair<size_t, size_t>;
-		Positions _position;
+          Positions _position;
 
-		using Rotations = std::array<size_t, 3>;
-		Rotations _rotation;
+          using Rotations = std::array<size_t, 3>;
 
-		using Scales = std::pair<size_t, size_t>;
-		Scales _scale;
+          Rotations _rotation;
 
-	public:
+          using Scales = std::pair<size_t, size_t>;
 
-		// METHODS:
-	public: // CONSTRUCTORS
-		explicit TransformComponent(const Positions& position = Positions{ 0, 0 },
-			const Rotations& rotation = Rotations{0, 0, 0},
-			const Scales& scale = Scales{ 0, 0 }
+          Scales _scale;
+
+  public:
+
+          // METHODS:
+  public: // CONSTRUCTORS
+          explicit TransformComponent(
+                  const Positions &position = Positions{0, 0},
+                  const Rotations &rotation = Rotations{0, 0, 0},
+                  const Scales &scale = Scales{0, 0}
           );
           ~TransformComponent() override = default;
           TransformComponent(const TransformComponent &copy) = default;
@@ -42,6 +45,12 @@ namespace game
           TransformComponent &operator=(TransformComponent &&other) = default;
 
   public:
+          template <class R>
+          TransformComponent &linkToRenderer(R *renderer)
+          {
+                  return _renderer;
+          }
+
           void update() const;
   };
 

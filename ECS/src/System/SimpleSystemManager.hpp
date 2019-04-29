@@ -49,13 +49,13 @@ namespace ecs
           template <class S, class ...ARGS>
           static S &createSystem(ARGS &&... args)
           {
-			  static_assert(
-				  std::is_base_of<ISystem, S>::value,
-				  "System must be derived from ISystem"
-				  );
+                  static_assert(
+                          std::is_base_of<ISystem, S>::value,
+                          "System must be derived from ISystem"
+                  );
 
-			  SimpleSystemManager& instance = getInstance();
-			  const SystemTypeID systemTypeID = S::_systemTypeID;
+                  SimpleSystemManager &instance = getInstance();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
 
                   auto system = std::make_unique<S>(std::forward<ARGS>(args)...);
                   instance._systems[systemTypeID] = std::move(system);
@@ -66,13 +66,13 @@ namespace ecs
           template <class S>
           static S &getSystem()
           {
-			  static_assert(
-				  std::is_base_of<ISystem, S>::value,
-				  "System must be derived from ISystem"
-				  );
-			
-			  SimpleSystemManager& instance = getInstance();
-			  const SystemTypeID systemTypeID = S::_systemTypeID;
+                  static_assert(
+                          std::is_base_of<ISystem, S>::value,
+                          "System must be derived from ISystem"
+                  );
+
+                  SimpleSystemManager &instance = getInstance();
+                  const SystemTypeID systemTypeID = S::_systemTypeID;
 
                   return *static_cast<S *>(instance._systems[systemTypeID].get());
           }
@@ -80,7 +80,7 @@ namespace ecs
           template <class S>
           static S &enableSystem()
           {
-			  SimpleSystemManager& instance = getInstance();
+                  SimpleSystemManager &instance = getInstance();
 
                   auto system = instance.getSystem<S>();
                   system.enable();

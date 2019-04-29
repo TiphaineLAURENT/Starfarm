@@ -9,12 +9,12 @@ namespace game
 
   RendererComponent::RendererComponent(const sf::Texture &texture)
   {
-	  _sprite.setTexture(texture);
+          _sprite.setTexture(texture);
   }
 
-  const sf::Sprite & RendererComponent::getSprite() const
+  const sf::Sprite &RendererComponent::getSprite() const
   {
-	  return _sprite;
+          return _sprite;
   }
 
 }
