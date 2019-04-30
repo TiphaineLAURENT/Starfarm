@@ -6,6 +6,7 @@
 #include "../Entity/GameObject.hpp"
 #include "../Component/TransformComponent.hpp"
 #include <SFML/Graphics.hpp>
+#include <EntityManager.hpp>
 
 namespace game
 {

@@ -10,21 +10,25 @@
 
 # include <ostream>
 # include <map>
+# include <memory>
 # include "IEntityContainer.hpp"
 
 namespace ecs
 {
 
   template <class E>
+  using EntityMap = std::map<EntityID, std::unique_ptr<E>>;
+
+  template <class E>
   using EEntityIterator =
-  typename std::map<EntityID, E>::iterator;
+  typename EntityMap<E>::iterator;
 
   template <class E>
   class EntityContainer : public IEntityContainer
   {
 // ATTRIBUTES
   private:
-          std::map<EntityID, E> _entities;
+          EntityMap<E> _entities;
 
   public:
 
@@ -55,21 +59,21 @@ namespace ecs
                           "Entity must be derived from IEntity"
                   );
 
-                  auto entity = E{std::forward(args)...};
-                  const EntityID entityID = entity.getEntityID();
+                  auto entity = std::make_unique<E>(std::forward(args)...);
+                  const EntityID entityID = entity->getEntityID();
 
                   _entities[entityID] = std::move(entity);
                   return getEntityById(entityID);
           }
           E &getEntityById(EntityID entityID)
           {
-                  return _entities[entityID];
+                  return *_entities[entityID].get();
           }
-          std::map<EntityID, E> &getEntities()
+          EntityMap<E> &getEntities()
           {
                   return _entities;
           }
-          const std::map<EntityID, E> &getEntities() const
+          const EntityMap<E> &getEntities() const
           {
                   return _entities;
           }

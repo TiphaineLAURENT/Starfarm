@@ -20,7 +20,7 @@ namespace game
           bool leftFlag = false;
           bool rightFlag = false;
 
-          float _speed = 50;
+          float _speed = .5;
   public:
 
 // METHODS:
@@ -31,8 +31,8 @@ namespace game
           PlayerBehaviour(PlayerBehaviour &&other) noexcept = default;
 
   public: // OPERATORS
-          PlayerBehaviour &operator=(const PlayerBehaviour &other) = default;
-          PlayerBehaviour &operator=(PlayerBehaviour &&other) = default;
+          PlayerBehaviour &operator=(const PlayerBehaviour &other) = delete;
+          PlayerBehaviour &operator=(PlayerBehaviour &&other) = delete;
 
   public:
           void awake() override;
