@@ -8,6 +8,8 @@
 #include "PlayerBehaviour.hpp"
 #include "../Entity/GameObject.hpp"
 #include "../Component/TransformComponent.hpp"
+#include "../Component/SpriteComponent.hpp"
+
 
 namespace game
 {
@@ -57,6 +59,6 @@ namespace game
   void PlayerBehaviour::awake()
   {
           _gameObject->_transform->linkToRenderer
-                  (_gameObject->getComponent<RendererComponent>());
+                  (_gameObject->getComponent<SpriteComponent>());
   }
 }

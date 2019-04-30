@@ -7,8 +7,9 @@
 
 # include "../Entity/GameObject.hpp"
 # include "PlayerBehaviour.hpp"
-# include "../Component/RendererComponent.hpp"
 # include "../RessourceManager.hpp"
+# include "../Component/SpriteComponent.hpp"
+
 
 namespace game
 {
@@ -19,7 +20,7 @@ namespace game
           PlayerEntity()
                   : GameObject()
           {
-                  auto renderer = addComponent<RendererComponent>(
+                  auto renderer = addComponent<SpriteComponent>(
                           RessourceManager::getTexture(
                                   "darkgrey_05.png"
                           ));

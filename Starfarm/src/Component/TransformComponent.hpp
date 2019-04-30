@@ -8,7 +8,8 @@
 # include <ostream>
 # include <array>
 # include <Component.hpp>
-#include "RendererComponent.hpp"
+#include "BaseRendererComponent.hpp"
+
 
 namespace game
 {
@@ -33,7 +34,7 @@ namespace game
           };
           Scales _scale;
 
-          RendererComponent *_renderer = nullptr;
+          BaseRendererComponent *_renderer = nullptr;
   public:
 
           // METHODS:
@@ -52,10 +53,9 @@ namespace game
           TransformComponent &operator=(TransformComponent &&other) = default;
 
   public:
-          TransformComponent &linkToRenderer(RendererComponent *renderer)
+          TransformComponent &linkToRenderer(BaseRendererComponent *renderer)
           {
                   _renderer = renderer;
-                  std::clog << _renderer->getComponentID() << "\n";
                   return *this;
           }
           TransformComponent &move(float dx, float dy, bool= false);

@@ -42,7 +42,7 @@ namespace game
           }
 
           if (_renderer) {
-                  _renderer->_sprite.setPosition(_position.x, _position.y);
+                  _renderer->setPosition(_position.x, _position.y);
           }
           return *this;
   }
@@ -51,7 +51,7 @@ namespace game
           _position.x = x;
           _position.y = y;
           if (_renderer) {
-                  _renderer->_sprite.setPosition(x, y);
+                  _renderer->setPosition(x, y);
           }
           return *this;
   }

@@ -5,7 +5,7 @@
 #ifndef STARFARM_GAME_HPP
 #define STARFARM_GAME_HPP
 
-#include <SFML/Window.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace game
 {

@@ -5,7 +5,9 @@
 #include <iostream>
 #include <ComponentManager.hpp>
 #include "RendererSystem.hpp"
-#include "../Component/RendererComponent.hpp"
+#include "../Component/SpriteComponent.hpp"
+#include "../Component/TextComponent.hpp"
+
 
 namespace game
 {
@@ -19,8 +21,14 @@ namespace game
   {
           _window->clear();
           for (auto &component :
-                  ecs::ComponentManager::getComponentContainer<RendererComponent>()) {
-                  _window->draw(component->getSprite());
+                  ecs::ComponentManager::getComponentContainer<SpriteComponent>
+                          ()) {
+                  _window->draw(*component);
+          }
+          for (auto &component :
+                  ecs::ComponentManager::getComponentContainer<TextComponent>
+                          ()) {
+                  _window->draw(*component);
           }
           _window->display();
   }

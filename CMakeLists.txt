@@ -50,7 +50,7 @@ set(STARFARM_SOURCES
     Starfarm/src/Component/MonoBehaviourComponent.cpp Starfarm/src/Component/MonoBehaviourComponent.hpp
     Starfarm/src/System/BehaviourSystem.cpp Starfarm/src/System/BehaviourSystem.hpp
     Starfarm/src/Entity/GameObject.cpp Starfarm/src/Entity/GameObject.hpp
-    )
+    Starfarm/src/Component/TextComponent.cpp Starfarm/src/Component/TextComponent.hpp Starfarm/src/Component/BaseRendererComponent.cpp Starfarm/src/Component/BaseRendererComponent.hpp Starfarm/src/Component/SpriteComponent.cpp Starfarm/src/Component/SpriteComponent.hpp Starfarm/src/Entity/FpsCounter.cpp Starfarm/src/Entity/FpsCounter.hpp)
 
 #set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFARM_SOURCES})
 
