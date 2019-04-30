@@ -13,11 +13,7 @@
 # include <vector>
 # include <algorithm>
 # include "IComponentContainer.hpp"
-
-namespace game
-{
-  class MonoBehaviourComponent;
-}
+# include "../../../Starfarm/src/Component/MonoBehaviourComponent.hpp"
 
 namespace ecs
 {
