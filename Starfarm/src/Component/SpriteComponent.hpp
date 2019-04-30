@@ -6,7 +6,6 @@
 #ifndef STARFARM_SPRITECOMPONENT_HPP
 # define STARFARM_SPRITECOMPONENT_HPP
 
-# include <ostream>
 # include <SFML/Graphics/Sprite.hpp>
 # include "BaseRendererComponent.hpp"
 

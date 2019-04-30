@@ -5,10 +5,8 @@
 #ifndef STARFARM_BASERENDERERCOMPONENT_HPP
 # define STARFARM_BASERENDERERCOMPONENT_HPP
 
-# include <ostream>
 # include <Component.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics.hpp>
 
 
 namespace game

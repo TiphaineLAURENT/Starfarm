@@ -5,7 +5,6 @@
 #ifndef STARFARM_TEXTCOMPONENT_HPP
 # define STARFARM_TEXTCOMPONENT_HPP
 
-# include <ostream>
 # include <SFML/Graphics/Text.hpp>
 # include <SFML/Graphics/Font.hpp>
 # include "BaseRendererComponent.hpp"
