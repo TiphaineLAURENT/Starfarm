@@ -2,11 +2,12 @@
 // Created by Tiphaine on 19/04/2019.
 //
 
+#include <cmath>
+#include <SFML/Graphics.hpp>
+#include <EntityManager.hpp>
 #include "PlayerBehaviour.hpp"
 #include "../Entity/GameObject.hpp"
 #include "../Component/TransformComponent.hpp"
-#include <SFML/Graphics.hpp>
-#include <EntityManager.hpp>
 
 namespace game
 {
@@ -23,18 +24,16 @@ namespace game
           rightFlag = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 
           auto &transform = _gameObject->_transform;
-          auto position = transform->getPosition();
-
-          if (leftFlag && position.first - _speed > 0) {
+          if (leftFlag) {
                   transform->move(-_speed, 0);
           }
-          if (rightFlag && position.first + _speed < 640) {
+          if (rightFlag) {
                   transform->move(_speed, 0);
           }
-          if (upFlag && position.second - _speed > 0) {
+          if (upFlag) {
                   transform->move(0, -_speed);
           }
-          if (downFlag && position.second + _speed < 480) {
+          if (downFlag) {
                   transform->move(0, _speed);
           }
   }
@@ -45,12 +44,12 @@ namespace game
           auto mousePosition = sf::Mouse::getPosition();
           auto position = _gameObject->_transform->getPosition();
           auto angle = atan2(
-                  mousePosition.y - position.second,
-                  mousePosition.x - position.first
+                  mousePosition.y - position.y,
+                  mousePosition.x - position.x
           );
 
-          float dx = position.first - mousePosition.x;
-          float dy = position.second - mousePosition.y;
+          float dx = position.x - mousePosition.x;
+          float dy = position.y - mousePosition.y;
 
           return atan2(dy, dx) * 180 / PI;
   }

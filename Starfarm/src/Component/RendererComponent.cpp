@@ -14,7 +14,7 @@ namespace game
           auto bounds = _sprite.getGlobalBounds();
           _size = std::pair<float, float>(bounds.width, bounds.height);
           _sprite.setOrigin(_size.first / 2, _size.second / 2);
-          _sprite.move(100, 100);
+          _sprite.setPosition(0, 0);
   }
 
   const sf::Sprite &RendererComponent::getSprite() const

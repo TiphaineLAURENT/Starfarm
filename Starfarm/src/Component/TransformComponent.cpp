@@ -22,20 +22,33 @@ namespace game
   {
   }
 
-  TransformComponent &TransformComponent::move(float dx, float dy)
+  TransformComponent &TransformComponent::move(float dx, float dy, bool outside)
   {
-          _position.first += dx;
-          _position.second += dy;
+          _position.x += dx;
+          _position.y += dy;
+          if (!outside) {
+                  if (_position.x < 0) {
+                          _position.x = 1920;
+                  } else if (_position.x > 1920) {
+                          _position.x = 0;
+                  }
+
+                  if (_position.y < 0) {
+                          _position.y = 1080;
+                  } else if (_position.y > 1080) {
+                          _position.y = 0;
+                  }
+          }
 
           if (_renderer) {
-                  _renderer->_sprite.move(dx, dy);
+                  _renderer->_sprite.setPosition(_position.x, _position.y);
           }
           return *this;
   }
   TransformComponent &TransformComponent::setPosition(float x, float y)
   {
-          _position.first = x;
-          _position.second = y;
+          _position.x = x;
+          _position.y = y;
           if (_renderer) {
                   _renderer->_sprite.setPosition(x, y);
           }

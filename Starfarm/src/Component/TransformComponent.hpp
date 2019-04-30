@@ -16,13 +16,21 @@ namespace game
   {
           // ATTRIBUTES
   private:
-          using Positions = std::pair<float, float>;
+          using Positions = struct
+          {
+                  float x;
+                  float y;
+          };
           Positions _position;
 
           using Rotations = std::array<float, 3>;
           Rotations _rotation;
 
-          using Scales = std::pair<float, float>;
+          using Scales = struct
+          {
+                  float x;
+                  float y;
+          };
           Scales _scale;
 
           RendererComponent *_renderer = nullptr;
@@ -50,7 +58,7 @@ namespace game
                   std::clog << _renderer->getComponentID() << "\n";
                   return *this;
           }
-          TransformComponent &move(float dx, float dy);
+          TransformComponent &move(float dx, float dy, bool= false);
           TransformComponent &setPosition(float x, float y);
           const Positions &getPosition() const;
 
