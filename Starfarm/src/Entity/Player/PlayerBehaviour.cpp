@@ -6,9 +6,9 @@
 #include <SFML/Graphics.hpp>
 #include <EntityManager.hpp>
 #include "PlayerBehaviour.hpp"
-#include "../Entity/GameObject.hpp"
-#include "../Component/TransformComponent.hpp"
-#include "../Component/SpriteComponent.hpp"
+#include "../GameObject.hpp"
+#include "../../Component/TransformComponent.hpp"
+#include "../../Component/SpriteComponent.hpp"
 
 
 namespace game

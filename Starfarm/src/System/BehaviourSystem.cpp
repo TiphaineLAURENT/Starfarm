@@ -2,9 +2,9 @@
 // Created by tiphaine on 11/04/19.
 //
 
+#include <ComponentManager.hpp>
 #include "BehaviourSystem.hpp"
 #include "../Component/MonoBehaviourComponent.hpp"
-#include <ComponentManager.hpp>
 
 namespace game
 {

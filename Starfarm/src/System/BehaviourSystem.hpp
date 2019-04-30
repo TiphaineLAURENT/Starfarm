@@ -7,7 +7,6 @@
 
 # include <ostream>
 # include <System.hpp>
-# include <SFML/Window.hpp>
 
 namespace game
 {

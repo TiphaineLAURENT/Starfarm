@@ -6,7 +6,7 @@
 # define STARFARM_PLAYERBEHAVIOUR_HPP
 
 # include <ostream>
-# include "../Component/MonoBehaviourComponent.hpp"
+# include "../../Component/MonoBehaviourComponent.hpp"
 
 namespace game
 {

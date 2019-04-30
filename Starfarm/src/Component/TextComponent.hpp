@@ -6,7 +6,6 @@
 # define STARFARM_TEXTCOMPONENT_HPP
 
 # include <SFML/Graphics/Text.hpp>
-# include <SFML/Graphics/Font.hpp>
 # include "BaseRendererComponent.hpp"
 
 

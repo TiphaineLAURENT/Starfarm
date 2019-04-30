@@ -7,13 +7,13 @@
 # define STARFARM_FPSCOUNTER_HPP
 
 # include <ostream>
-#include <Entity.hpp>
+# include "../GameObject.hpp"
 
 
 namespace game
 {
 
-  class FPSCounter : ecs::Entity<FPSCounter>
+  class FPSCounter : public GameObject
   {
 // ATTRIBUTES
   private:
@@ -21,7 +21,7 @@ namespace game
 
 // METHODS:
   public: // CONSTRUCTORS
-          FPSCounter() = default;
+          FPSCounter();
           ~FPSCounter() override = default;
           FPSCounter(const FPSCounter &copy) = default;
           FPSCounter(FPSCounter &&other) noexcept = default;

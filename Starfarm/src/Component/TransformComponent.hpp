@@ -8,11 +8,12 @@
 # include <ostream>
 # include <array>
 # include <Component.hpp>
-#include "BaseRendererComponent.hpp"
 
 
 namespace game
 {
+  class BaseRendererComponent;
+
   class TransformComponent : public ecs::Component<TransformComponent>
   {
           // ATTRIBUTES

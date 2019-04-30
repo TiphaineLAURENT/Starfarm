@@ -6,7 +6,7 @@
 # define STARFARM_BASERENDERERCOMPONENT_HPP
 
 # include <Component.hpp>
-#include <SFML/Graphics.hpp>
+# include <SFML/Graphics.hpp>
 
 
 namespace game

@@ -20,6 +20,7 @@ namespace game
                   static constexpr unsigned int WIDTH = 1920;
                   static constexpr unsigned int HEIGHT = 1080;
                   static constexpr char NAME[] = "Starfarm";
+                  static constexpr unsigned int FRAMERATE = 60;
           };
 
   public:

@@ -6,8 +6,8 @@
 # define STARFARM_RENDERERSYSTEM_HPP
 
 # include <ostream>
-#include <System.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+# include <System.hpp>
+# include <SFML/Graphics/RenderWindow.hpp>
 
 namespace game
 {

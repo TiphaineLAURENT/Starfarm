@@ -22,10 +22,9 @@ namespace game
           RessourceManager &manager = getInstance();
 
           if (!manager._textures.count(textureName)) {
-                  sf::Texture texture;
-                  texture.loadFromFile(path + textureName);
-                  manager._textures[textureName] =
-                          std::make_unique<sf::Texture>(texture);
+                  auto texture = std::make_unique<sf::Texture>();
+                  texture->loadFromFile(path + textureName);
+                  manager._textures[textureName] = std::move(texture);
           }
 
           return *manager._textures[textureName];
@@ -55,10 +54,9 @@ namespace game
           RessourceManager &manager = getInstance();
 
           if (!manager._fonts.count(fontName)) {
-                  sf::Font font;
-                  font.loadFromFile(path + fontName);
-                  manager._fonts[fontName] =
-                          std::make_unique<sf::Font>(font);
+                  auto font = std::make_unique<sf::Font>();
+                  font->loadFromFile(path + fontName);
+                  manager._fonts[fontName] = std::move(font);
           }
 
           return *manager._fonts[fontName];
@@ -73,10 +71,9 @@ namespace game
           RessourceManager &manager = getInstance();
 
           if (manager._soundBuffers.count(soundBufferName)) {
-                  sf::SoundBuffer buffer;
-                  buffer.loadFromFile(path + soundBufferName);
-                  manager._soundBuffers[soundBufferName] =
-                          std::make_unique<sf::SoundBuffer>(buffer);
+                  auto buffer = std::make_unique<sf::SoundBuffer>();
+                  buffer->loadFromFile(path + soundBufferName);
+                  manager._soundBuffers[soundBufferName] = std::move(buffer);
           }
 
           return *manager._soundBuffers[soundBufferName];
@@ -89,7 +86,7 @@ namespace game
 
   RessourceManager &RessourceManager::getInstance()
   {
-          if (!_manager) {
+          if (_manager == nullptr) {
                   _manager = new RessourceManager;
           }
           return *_manager;

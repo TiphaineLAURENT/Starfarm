@@ -8,8 +8,10 @@
 #include <iostream>
 #include "Game.hpp"
 #include "System/RendererSystem.hpp"
-#include "Player/PlayerEntity.hpp"
+#include "Entity/Player/PlayerEntity.hpp"
 #include "System/BehaviourSystem.hpp"
+#include "Entity/FPSCounter/FpsCounter.hpp"
+
 
 namespace game
 {
@@ -20,6 +22,9 @@ namespace game
           SETTINGS::NAME
   )
   {
+          _window.setFramerateLimit(SETTINGS::FRAMERATE);
+
+          ecs::EntityManager::createEntity<FPSCounter>();
           ecs::EntityManager::createEntity<PlayerEntity>();
           ecs::SimpleSystemManager::createSystem<RendererSystem>(&_window);
           ecs::SimpleSystemManager::createSystem<BehaviourSystem>();

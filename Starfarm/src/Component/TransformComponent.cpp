@@ -6,6 +6,7 @@
 
 #include "TransformComponent.hpp"
 #include "../Game.hpp"
+#include "BaseRendererComponent.hpp"
 
 namespace game
 {

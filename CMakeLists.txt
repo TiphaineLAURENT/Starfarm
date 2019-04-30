@@ -37,22 +37,23 @@ add_definitions(-DFONT_DIRECTORY="${RESSOURCE_DIRECTORY}/font/")
 include_directories(ECS/src/Entity)
 include_directories(ECS/src/Component)
 include_directories(ECS/src/System)
-include_directories(ECS/src/provided)
 set(STARFARM_SOURCES
     Starfarm/src/RessourceManager.cpp Starfarm/src/RessourceManager.hpp
     Starfarm/src/Game.cpp Starfarm/src/Game.hpp
-    Starfarm/src/Player/PlayerEntity.hpp
+    Starfarm/src/Entity/Player/PlayerEntity.hpp
     Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp
     Starfarm/src/Component/RendererComponent.cpp Starfarm/src/Component/RendererComponent.hpp
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     #    Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
-    Starfarm/src/Player/PlayerBehaviour.cpp Starfarm/src/Player/PlayerBehaviour.hpp
+    Starfarm/src/Entity/Player/PlayerBehaviour.cpp Starfarm/src/Entity/Player/PlayerBehaviour.hpp
     Starfarm/src/Component/MonoBehaviourComponent.cpp Starfarm/src/Component/MonoBehaviourComponent.hpp
     Starfarm/src/System/BehaviourSystem.cpp Starfarm/src/System/BehaviourSystem.hpp
     Starfarm/src/Entity/GameObject.cpp Starfarm/src/Entity/GameObject.hpp
-    Starfarm/src/Component/TextComponent.cpp Starfarm/src/Component/TextComponent.hpp Starfarm/src/Component/BaseRendererComponent.cpp Starfarm/src/Component/BaseRendererComponent.hpp Starfarm/src/Component/SpriteComponent.cpp Starfarm/src/Component/SpriteComponent.hpp Starfarm/src/Entity/FpsCounter.cpp Starfarm/src/Entity/FpsCounter.hpp)
-
-#set(STARFARM_SOURCES ${CMAKE_SOURCE_DIR}/${STARFARM_SOURCES})
+    Starfarm/src/Component/TextComponent.cpp Starfarm/src/Component/TextComponent.hpp
+    Starfarm/src/Component/BaseRendererComponent.cpp Starfarm/src/Component/BaseRendererComponent.hpp
+    Starfarm/src/Component/SpriteComponent.cpp Starfarm/src/Component/SpriteComponent.hpp
+    Starfarm/src/Entity/FPSCounter/FpsCounter.cpp Starfarm/src/Entity/FPSCounter/FpsCounter.hpp
+    Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.cpp Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.hpp)
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)
