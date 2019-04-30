@@ -5,6 +5,7 @@
 //
 
 #include "TransformComponent.hpp"
+#include "../Game.hpp"
 
 namespace game
 {
@@ -28,14 +29,14 @@ namespace game
           _position.y += dy;
           if (!outside) {
                   if (_position.x < 0) {
-                          _position.x = 1920;
-                  } else if (_position.x > 1920) {
+                          _position.x = game::Game::SETTINGS::WIDTH;
+                  } else if (_position.x > game::Game::SETTINGS::WIDTH) {
                           _position.x = 0;
                   }
 
                   if (_position.y < 0) {
-                          _position.y = 1080;
-                  } else if (_position.y > 1080) {
+                          _position.y = game::Game::SETTINGS::HEIGHT;
+                  } else if (_position.y > game::Game::SETTINGS::HEIGHT) {
                           _position.y = 0;
                   }
           }

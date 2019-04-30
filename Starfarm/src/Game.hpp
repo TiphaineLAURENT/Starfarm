@@ -11,15 +11,23 @@ namespace game
 {
   class Game
   {
+  private:
+          sf::RenderWindow _window;
+
+  public:
+          struct SETTINGS
+          {
+                  static constexpr unsigned int WIDTH = 1920;
+                  static constexpr unsigned int HEIGHT = 1080;
+                  static constexpr char NAME[] = "Starfarm";
+          };
+
   public:
           Game();
           ~Game() = default;
 
   public:
           void loop();
-
-  private:
-          sf::RenderWindow _window;
   };
 }
 

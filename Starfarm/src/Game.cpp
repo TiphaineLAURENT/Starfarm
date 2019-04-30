@@ -15,7 +15,10 @@ namespace game
 {
 
   Game::Game()
-          : _window(sf::VideoMode(1920, 1080), "Starfarm")
+          : _window(
+          sf::VideoMode(SETTINGS::WIDTH, SETTINGS::HEIGHT),
+          SETTINGS::NAME
+  )
   {
           ecs::EntityManager::createEntity<PlayerEntity>();
           ecs::SimpleSystemManager::createSystem<RendererSystem>(&_window);
