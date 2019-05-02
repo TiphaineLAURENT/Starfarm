@@ -25,7 +25,12 @@ namespace game
           };
           Positions _position;
 
-          using Rotations = std::array<float, 3>;
+          using Rotations = struct
+          {
+                  float x;
+                  float y;
+                  float z;
+          };
           Rotations _rotation;
 
           using Scales = struct
@@ -50,7 +55,7 @@ namespace game
           TransformComponent(TransformComponent &&other) noexcept = default;
 
   public: // OPERATORS
-          TransformComponent &operator=(const TransformComponent &other) = default;
+          TransformComponent &operator=(const TransformComponent &other);
           TransformComponent &operator=(TransformComponent &&other) = default;
 
   public:
@@ -62,6 +67,9 @@ namespace game
           TransformComponent &move(float dx, float dy, bool= false);
           TransformComponent &setPosition(float x, float y);
           const Positions &getPosition() const;
+
+          TransformComponent &setRotation(float angle);
+          const Rotations &getRotations() const;
 
           void update() const;
   };

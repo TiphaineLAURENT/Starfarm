@@ -60,5 +60,30 @@ namespace game
   {
           return _position;
   }
+  TransformComponent &TransformComponent::setRotation(float angle)
+  {
+          _rotation.z = angle;
+          if (_renderer) {
+                  _renderer->setRotation(angle);
+          }
+          return *this;
+  }
+
+  TransformComponent &TransformComponent::operator=(const TransformComponent &other)
+  {
+          _position = other._position;
+          _rotation = other._rotation;
+          _scale = other._scale;
+          if (_renderer) {
+                  _renderer->setPosition(_position.x, _position.y);
+                  _renderer->setRotation(_rotation.z);
+                  _renderer->setScale(_scale.x, _scale.y);
+          }
+          return *this;
+  }
+  const TransformComponent::Rotations &TransformComponent::getRotations() const
+  {
+          return _rotation;
+  }
 
 }

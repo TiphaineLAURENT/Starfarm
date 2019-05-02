@@ -38,13 +38,12 @@ namespace game
           if (downFlag) {
                   _transform->move(0, _speed);
           }
+          _transform->setRotation(getAngleMouse() - 90);
+          moveForward();
 
           if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                   auto &missile = ecs::EntityManager::createEntity<Missile>();
-                  missile._transform->setPosition(
-                          _transform->getPosition().x,
-                          _transform->getPosition().y
-                  );
+                  *(missile._transform) = *_transform;
           }
   }
 
@@ -68,5 +67,10 @@ namespace game
   {
           _transform->linkToRenderer
                             (_gameObject->getComponent<SpriteComponent>());
+  }
+  void PlayerBehaviour::moveForward()
+  {
+          auto rotations = _transform->getRotations();
+          _transform->move(_speed * cos(rotations.z), _speed * sin(rotations.z));
   }
 }
