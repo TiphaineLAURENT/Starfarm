@@ -19,15 +19,18 @@ namespace ecs
 {
 
   template <class C>
+  using ComponentStorage = std::vector<std::unique_ptr<C>>;
+
+  template <class C>
   using CComponentIterator =
-  typename std::vector<std::unique_ptr<C>>::iterator;
+  typename ComponentStorage<C>::iterator;
 
   template <class C>
   class ComponentContainer : public IComponentContainer
   {
 // ATTRIBUTES
   private:
-          std::vector<std::unique_ptr<C>> _components;
+          ComponentStorage<C> _components;
 
   public:
 
@@ -87,7 +90,7 @@ namespace ecs
                   }
                   return nullptr;
           }
-          std::vector<C *const> getComponents(EntityID entityID)
+          ComponentStorage<C> getComponents(EntityID entityID)
           {
                   auto components = std::vector<C *const>{};
 
@@ -98,7 +101,7 @@ namespace ecs
                   }
                   return components;
           }
-          const std::vector<C *const> getComponents(EntityID entityID) const
+          const ComponentStorage<C> getComponents(EntityID entityID) const
           {
                   auto components = std::vector<C *const>{};
 
@@ -131,12 +134,12 @@ namespace ecs
                   return _components.end();
           }
 
-          std::vector<C> &getComponents()
+          ComponentStorage<C> &getComponents()
           {
                   return _components;
           }
 
-          const std::vector<C> &getComponents() const
+          const ComponentStorage<C> &getComponents() const
           {
                   return _components;
           }

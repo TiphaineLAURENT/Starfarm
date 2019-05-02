@@ -12,11 +12,15 @@ namespace game
 {
   class GameObject;
 
+  class TransformComponent;
+
   class MonoBehaviourComponent : public ecs::Component<MonoBehaviourComponent>
   {
 // ATTRIBUTES
   protected:
           GameObject *const _gameObject = nullptr;
+
+          TransformComponent *const _transform = nullptr;
 
   public:
 

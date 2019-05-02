@@ -11,6 +11,7 @@
 #include "Entity/Player/PlayerEntity.hpp"
 #include "System/BehaviourSystem.hpp"
 #include "Entity/FPSCounter/FpsCounter.hpp"
+#include "Entity/Missile/Missile.hpp"
 
 
 namespace game

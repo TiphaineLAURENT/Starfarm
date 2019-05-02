@@ -20,7 +20,7 @@ namespace game
           bool leftFlag = false;
           bool rightFlag = false;
 
-          float _speed = .5;
+          float _speed = 3;
   public:
 
 // METHODS:

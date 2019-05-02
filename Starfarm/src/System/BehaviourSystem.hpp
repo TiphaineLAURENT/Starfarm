@@ -15,6 +15,8 @@ namespace game
   {
 // ATTRIBUTES
   private:
+          ecs::ComponentContainer<MonoBehaviourComponent> &_container;
+
   public:
 
 // METHODS:

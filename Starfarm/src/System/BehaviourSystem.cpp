@@ -9,29 +9,39 @@
 namespace game
 {
   BehaviourSystem::BehaviourSystem()
-          : System()
+          : System(), _container(
+          ecs::ComponentManager::getComponentContainer
+                  <MonoBehaviourComponent>()
+  )
   {
-          for (auto &behaviour :
-                  ecs::ComponentManager::getComponentContainer
-                          <MonoBehaviourComponent>()) {
+          for (
+                  auto &behaviour : _container
+                  ) {
                   behaviour->awake();
           }
   }
 
   void BehaviourSystem::start()
   {
-          for (auto &behaviour : ecs::ComponentManager::getComponentContainer<MonoBehaviourComponent>()) {
+          for (
+                  auto &behaviour : _container
+                  ) {
                   behaviour->start();
           }
   }
 
   void BehaviourSystem::update()
   {
-          for (auto &behaviour : ecs::ComponentManager::getComponentContainer<MonoBehaviourComponent>()) {
-                  behaviour->update();
+          auto &components = _container.getComponents();
+          for (
+                  size_t i = 0; i < components.size(); ++i
+                  ) {
+                  components[i]->update();
           }
-          for (auto &behaviour : ecs::ComponentManager::getComponentContainer<MonoBehaviourComponent>()) {
-                  behaviour->lateUpdate();
+          for (
+                  size_t i = 0; i < components.size(); ++i
+                  ) {
+                  components[i]->lateUpdate();
           }
   }
 }

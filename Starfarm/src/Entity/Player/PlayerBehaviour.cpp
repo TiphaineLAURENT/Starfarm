@@ -9,6 +9,7 @@
 #include "../GameObject.hpp"
 #include "../../Component/TransformComponent.hpp"
 #include "../../Component/SpriteComponent.hpp"
+#include "../Missile/Missile.hpp"
 
 
 namespace game
@@ -25,18 +26,25 @@ namespace game
           leftFlag = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
           rightFlag = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 
-          auto &transform = _gameObject->_transform;
           if (leftFlag) {
-                  transform->move(-_speed, 0);
+                  _transform->move(-_speed, 0);
           }
           if (rightFlag) {
-                  transform->move(_speed, 0);
+                  _transform->move(_speed, 0);
           }
           if (upFlag) {
-                  transform->move(0, -_speed);
+                  _transform->move(0, -_speed);
           }
           if (downFlag) {
-                  transform->move(0, _speed);
+                  _transform->move(0, _speed);
+          }
+
+          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                  auto &missile = ecs::EntityManager::createEntity<Missile>();
+                  missile._transform->setPosition(
+                          _transform->getPosition().x,
+                          _transform->getPosition().y
+                  );
           }
   }
 
@@ -44,7 +52,7 @@ namespace game
   float PlayerBehaviour::getAngleMouse()
   {
           auto mousePosition = sf::Mouse::getPosition();
-          auto position = _gameObject->_transform->getPosition();
+          auto position = _transform->getPosition();
           auto angle = atan2(
                   mousePosition.y - position.y,
                   mousePosition.x - position.x
@@ -58,7 +66,7 @@ namespace game
 
   void PlayerBehaviour::awake()
   {
-          _gameObject->_transform->linkToRenderer
-                  (_gameObject->getComponent<SpriteComponent>());
+          _transform->linkToRenderer
+                            (_gameObject->getComponent<SpriteComponent>());
   }
 }

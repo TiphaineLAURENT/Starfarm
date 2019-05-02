@@ -14,7 +14,7 @@ set(STARFARM_MANUAL_SOURCES
     ../Starfarm/src/Component/BaseRendererComponent.cpp ../Starfarm/src/Component/BaseRendererComponent.hpp
     ../Starfarm/src/Component/SpriteComponent.cpp ../Starfarm/src/Component/SpriteComponent.hpp
     ../Starfarm/src/Entity/FPSCounter/FpsCounter.cpp ../Starfarm/src/Entity/FPSCounter/FpsCounter.hpp
-    ../Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.cpp ../Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.hpp)
+    ../Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.cpp ../Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.hpp ../Starfarm/src/Entity/Missile/Missile.cpp ../Starfarm/src/Entity/Missile/Missile.hpp ../Starfarm/src/Entity/Missile/MissileBehaviour.cpp ../Starfarm/src/Entity/Missile/MissileBehaviour.hpp)
 
 option(MANUAL_TEST "Enable CLion" ON)
 if (MANUAL_TEST)
