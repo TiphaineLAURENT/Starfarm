@@ -19,16 +19,14 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          static ComponentManager *_instance;
-
           std::unordered_map<ComponentTypeID,
-                             std::unique_ptr<IComponentContainer>> _containers;
+                             std::unique_ptr<IComponentContainer>> _containers{};
 
   public:
 
 // METHODS
   public:// CONSTRUCTORS
-          ComponentManager() = default;
+          constexpr ComponentManager() = default;
           ~ComponentManager() = default;
           ComponentManager(const ComponentManager &copy) = delete;
           ComponentManager(ComponentManager &&) noexcept = delete;

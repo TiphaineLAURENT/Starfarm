@@ -18,8 +18,6 @@ namespace ecs
   {
 // ATTRIBUTES
   private:
-          static EntityManager *_instance;
-
           std::unordered_map<EntityTypeID, std::unique_ptr<IEntityContainer>>
                   _containers;
 
@@ -77,7 +75,7 @@ namespace ecs
                   return container.getEntityById(entityID);
           }
           template <class E>
-          static std::map<EntityID, E> &getComponents(EntityID entityID)
+          static EntityMap<E> &getComponents(EntityID entityID)
           {
                   EntityContainer<E> &container = getEntityContainer<E>();
 

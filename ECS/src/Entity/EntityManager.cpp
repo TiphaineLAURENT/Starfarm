@@ -10,15 +10,10 @@
 namespace ecs
 {
 
-  EntityManager *EntityManager::_instance = nullptr;
-
   EntityManager &EntityManager::getInstance()
   {
-          if (_instance == nullptr) {
-                  _instance = new EntityManager;
-          }
-
-          return *_instance;
+          static EntityManager instance;
+          return instance;
   }
 
   template <class E>

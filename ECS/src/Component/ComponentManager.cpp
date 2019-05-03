@@ -10,15 +10,10 @@
 namespace ecs
 {
 
-  ComponentManager *ComponentManager::_instance = nullptr;
-
   ComponentManager &ComponentManager::getInstance()
   {
-          if (!_instance) {
-                  _instance = new ComponentManager;
-          }
-
-          return *_instance;
+          static ComponentManager instance;
+          return instance;
   }
 
 }

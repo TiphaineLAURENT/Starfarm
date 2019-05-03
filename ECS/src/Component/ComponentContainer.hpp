@@ -90,7 +90,7 @@ namespace ecs
                   }
                   return nullptr;
           }
-          ComponentStorage<C> getComponents(EntityID entityID)
+          std::vector<C *const> getComponents(EntityID entityID)
           {
                   auto components = std::vector<C *const>{};
 
@@ -123,6 +123,17 @@ namespace ecs
                           }
                   );
                   _components.erase(toRemove);
+          }
+          void removeComponentByID(ComponentID componentID)
+          {
+                  auto toRemove = std::find_if(
+                          _components.begin(),
+                          _components.end(),
+                          [&](auto &component) {
+                                  return component->getComponentID()
+                                         == componentID;
+                          }
+                  );
           }
 
           CComponentIterator<C> begin()
