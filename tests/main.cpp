@@ -65,11 +65,12 @@ TEST_CASE("Basic creation", "creation")
         auto component = entity.getComponent<MyComponent>();
         auto component2 = entity.addComponent<MyComponent2>();
 
-        REQUIRE (ecs::ComponentManager::getInstance().getContainerCount() == 2);
+        // MyComponent + MyComponent2 + TransformComponent(GameObject)
+        REQUIRE(ecs::ComponentManager::getInstance().getContainerCount() == 3);
 
-        REQUIRE(component->getComponentCount() == 2);
+        REQUIRE(component->getComponentCount() == 3);
         REQUIRE(component->getComponentTypeCount() == 1);
-        REQUIRE(component->getComponentID() == 0);
+        REQUIRE(component->getComponentID() == 1);
         REQUIRE(component->getComponentTypeID() == 1);
         REQUIRE(component2->getComponentTypeID() == 2);
         REQUIRE(component->isActive());
@@ -77,9 +78,11 @@ TEST_CASE("Basic creation", "creation")
 
         entity.addBehaviour<MyBehaviour>();
         auto mybehaviour = entity.getComponent<MyBehaviour>();
-        REQUIRE(mybehaviour->getComponentCount() == 3);
+        REQUIRE(mybehaviour->getComponentCount() == 4);
         REQUIRE(mybehaviour->getComponentTypeCount() == 1);
-        REQUIRE(mybehaviour->getComponentID() == 2);
+        REQUIRE(mybehaviour->getComponentID() == 3);
+        // Because type MonoBehaviourComponent is compiled before the other
+        // component, and so given a TypeID first
         REQUIRE(mybehaviour->getComponentTypeID() == 0);
         REQUIRE(mybehaviour->isActive());
         REQUIRE(mybehaviour->getOwner() == entity.getEntityID());
