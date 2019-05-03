@@ -40,7 +40,6 @@ namespace game
 
   private:
           float getAngleMouse();
-          void moveForward();
   };
 
   std::ostream &operator<<(std::ostream &out, const PlayerBehaviour &);

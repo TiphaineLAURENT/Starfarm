@@ -12,6 +12,12 @@
 
 namespace game
 {
+  constexpr float PI = 3.14159265f;
+  constexpr float TWO_PI = 2 * PI;
+
+  constexpr float RAD_TO_DEG = 180 / PI;
+  constexpr float DEG_TO_RAD = PI / 180;
+
   class BaseRendererComponent;
 
   class TransformComponent : public ecs::Component<TransformComponent>
@@ -22,8 +28,10 @@ namespace game
           {
                   float x;
                   float y;
+                  float z;
           };
-          Positions _position;
+
+          Positions _positions;
 
           using Rotations = struct
           {
@@ -31,14 +39,18 @@ namespace game
                   float y;
                   float z;
           };
-          Rotations _rotation;
+
+          Rotations _rotations;
+
+          static constexpr Rotations forward{0, 0, 1};
 
           using Scales = struct
           {
                   float x;
                   float y;
           };
-          Scales _scale;
+
+          Scales _scales;
 
           BaseRendererComponent *_renderer = nullptr;
   public:
@@ -46,7 +58,7 @@ namespace game
           // METHODS:
   public: // CONSTRUCTORS
           explicit TransformComponent(
-                  const Positions &position = Positions{0, 0},
+                  const Positions &position = Positions{0, 0, 0},
                   const Rotations &rotation = Rotations{0, 0, 0},
                   const Scales &scale = Scales{0, 0}
           );
@@ -66,10 +78,17 @@ namespace game
           }
           TransformComponent &move(float dx, float dy, bool= false);
           TransformComponent &setPosition(float x, float y);
+          TransformComponent &setPosition(const Positions &positions);
           const Positions &getPosition() const;
 
-          TransformComponent &setRotation(float angle);
+          TransformComponent &setRotation(float x, float y, float z);
+          TransformComponent &setRotation(const Rotations &rotations);
           const Rotations &getRotations() const;
+          const Rotations getForward() const;
+
+          TransformComponent &setScale(float x, float y);
+          TransformComponent &setScale(const Scales &scales);
+          const Scales &getScales() const;
 
           void update() const;
   };

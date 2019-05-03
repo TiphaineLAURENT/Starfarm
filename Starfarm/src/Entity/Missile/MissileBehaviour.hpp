@@ -18,7 +18,7 @@ namespace game
   {
 // ATTRIBUTES
   private:
-          float _speed = 5;
+          float _speed = -5;
 
   public:
 
@@ -36,6 +36,9 @@ namespace game
   public:
           void awake() override;
           void update() override;
+
+  private:
+          void moveForward();
   };
 
   std::ostream &operator<<(std::ostream &out, const MissileBehaviour &);

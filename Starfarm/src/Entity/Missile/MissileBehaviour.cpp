@@ -23,6 +23,15 @@ namespace game
   }
   void MissileBehaviour::update()
   {
-          _transform->move(_speed, 0, true);
+          moveForward();
+  }
+  void MissileBehaviour::moveForward()
+  {
+          auto rotations = _transform->getRotations();
+          _transform->move(
+                  _speed * cos(rotations.z * DEG_TO_RAD),
+                  _speed * sin(rotations.z * DEG_TO_RAD),
+                  true
+          );
   }
 }
