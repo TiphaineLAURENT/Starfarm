@@ -3,6 +3,7 @@
 // Created by Tiphaine LAURENT on 02/05/2019.
 //
 
+#include <cmath>
 #include <SFML/Graphics/Transformable.hpp>
 #include "MissileBehaviour.hpp"
 #include "../GameObject.hpp"

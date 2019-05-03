@@ -36,12 +36,12 @@ namespace ecs
   public:// CONSTRUCTORS
           EntityContainer() = default;
           ~EntityContainer() override = default;
-          EntityContainer(const EntityContainer &copy) = default;
-          EntityContainer(EntityContainer &&) noexcept = default;
+          EntityContainer(const EntityContainer &copy) = delete;
+          EntityContainer(EntityContainer &&) noexcept = delete;
 
   public: //OPERATORS
-          EntityContainer &operator=(const EntityContainer &other) = default;
-          EntityContainer &operator=(EntityContainer &&) noexcept = default;
+          EntityContainer &operator=(const EntityContainer &other) = delete;
+          EntityContainer &operator=(EntityContainer &&) noexcept = delete;
 
   public:
           const char *getEntityContainerTypeName() const override

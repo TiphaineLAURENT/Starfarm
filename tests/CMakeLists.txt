@@ -4,7 +4,6 @@ set(STARFARM_MANUAL_SOURCES
     ../Starfarm/src/Entity/Player/PlayerEntity.hpp
     ../Starfarm/src/Component/TransformComponent.cpp ../Starfarm/src/Component/TransformComponent.hpp
     ../Starfarm/src/RessourceManager.cpp ../Starfarm/src/RessourceManager.hpp
-    ../Starfarm/src/Component/RendererComponent.cpp ../Starfarm/src/Component/RendererComponent.hpp
     ../Starfarm/src/System/RendererSystem.cpp ../Starfarm/src/System/RendererSystem.hpp
     ../Starfarm/src/Entity/Player/PlayerBehaviour.cpp ../Starfarm/src/Entity/Player/PlayerBehaviour.hpp
     ../Starfarm/src/Component/MonoBehaviourComponent.cpp ../Starfarm/src/Component/MonoBehaviourComponent.hpp

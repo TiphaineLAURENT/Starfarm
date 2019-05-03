@@ -42,7 +42,6 @@ set(STARFARM_SOURCES
     Starfarm/src/Game.cpp Starfarm/src/Game.hpp
     Starfarm/src/Entity/Player/PlayerEntity.hpp
     Starfarm/src/Component/TransformComponent.cpp Starfarm/src/Component/TransformComponent.hpp
-    Starfarm/src/Component/RendererComponent.cpp Starfarm/src/Component/RendererComponent.hpp
     Starfarm/src/System/RendererSystem.cpp Starfarm/src/System/RendererSystem.hpp
     #    Starfarm/src/GameTest.cpp Starfarm/src/GameTest.hpp
     Starfarm/src/Entity/Player/PlayerBehaviour.cpp Starfarm/src/Entity/Player/PlayerBehaviour.hpp

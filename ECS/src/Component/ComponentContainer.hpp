@@ -38,12 +38,12 @@ namespace ecs
   public:// CONSTRUCTORS
           ComponentContainer() = default;
           ~ComponentContainer() override = default;
-          ComponentContainer(const ComponentContainer &copy) = default;
-          ComponentContainer(ComponentContainer &&) noexcept = default;
+          ComponentContainer(const ComponentContainer &copy) = delete;
+          ComponentContainer(ComponentContainer &&) noexcept = delete;
 
   public: //OPERATORS
-          ComponentContainer &operator=(const ComponentContainer &other) = default;
-          ComponentContainer &operator=(ComponentContainer &&) noexcept = default;
+          ComponentContainer &operator=(const ComponentContainer &other) = delete;
+          ComponentContainer &operator=(ComponentContainer &&) noexcept = delete;
 
   public:
           const char *getComponentContainerTypeName() const override

@@ -14,30 +14,32 @@
 namespace ecs
 {
 
+  using EntityContainerMap = std::unordered_map<EntityTypeID,
+                                                std::unique_ptr<IEntityContainer>>;
+
   class EntityManager
   {
 // ATTRIBUTES
   private:
-          std::unordered_map<EntityTypeID, std::unique_ptr<IEntityContainer>>
-                  _containers;
+          EntityContainerMap _containers{};
 
   public:
 
 // METHODS
   public:// CONSTRUCTORS
-          EntityManager() = default;
+          constexpr EntityManager() = default;
           ~EntityManager() = default;
           EntityManager(const EntityManager &copy) = delete;
           EntityManager(EntityManager &&) noexcept = delete;
 
   public: //OPERATORS
-          EntityManager &operator=(const EntityManager &other) = default;
-          EntityManager &operator=(EntityManager &&) = default;
+          EntityManager &operator=(const EntityManager &other) = delete;
+          EntityManager &operator=(EntityManager &&) = delete;
 
   public:
           static EntityManager &getInstance();
           template <class E>
-          static EntityContainer<E> &getEntityContainer()
+          constexpr static EntityContainer<E> &getEntityContainer()
           {
                   static_assert(
                           std::is_base_of<IEntity, E>::value,

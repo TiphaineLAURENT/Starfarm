@@ -12,15 +12,18 @@
 # include <unordered_map>
 # include "ComponentContainer.hpp"
 
+
 namespace ecs
 {
+
+  using ComponentContainerMap = std::unordered_map<ComponentTypeID,
+                                                   std::unique_ptr<IComponentContainer>>;
 
   class ComponentManager
   {
 // ATTRIBUTES
   private:
-          std::unordered_map<ComponentTypeID,
-                             std::unique_ptr<IComponentContainer>> _containers{};
+          ComponentContainerMap _containers{};
 
   public:
 
@@ -38,7 +41,7 @@ namespace ecs
   public:
           static ComponentManager &getInstance();
           template <class C>
-          static auto &getComponentContainer()
+          constexpr static auto &getComponentContainer()
           {
                   static_assert(
                           std::is_base_of<IComponent, C>::value,
@@ -49,9 +52,11 @@ namespace ecs
 
                   if constexpr (std::is_base_of<game::MonoBehaviourComponent,
                                                 C>::value) {
-                          auto container = instance.getContainer<game::MonoBehaviourComponent>();
+                          auto container = instance
+                                  .getContainer<game::MonoBehaviourComponent>();
                           if (container == nullptr) {
-                                  return *instance.createContainer<game::MonoBehaviourComponent>();
+                                  return *instance
+                                          .createContainer<game::MonoBehaviourComponent>();
                           }
                           return *container;
                   } else {

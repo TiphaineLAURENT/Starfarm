@@ -24,12 +24,12 @@ namespace ecs
   public:// CONSTRUCTORS
           IComponentContainer() = default;
           virtual ~IComponentContainer() = default;
-          IComponentContainer(const IComponentContainer &copy) = default;
-          IComponentContainer(IComponentContainer &&) noexcept = default;
+          IComponentContainer(const IComponentContainer &copy) = delete;
+          IComponentContainer(IComponentContainer &&) noexcept = delete;
 
   public: //OPERATORS
-          IComponentContainer &operator=(const IComponentContainer &other) = default;
-          IComponentContainer &operator=(IComponentContainer &&) = default;
+          IComponentContainer &operator=(const IComponentContainer &other) = delete;
+          IComponentContainer &operator=(IComponentContainer &&) = delete;
 
   public:
           virtual const char *getComponentContainerTypeName() const = 0;
