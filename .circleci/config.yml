@@ -68,7 +68,9 @@ jobs:
           name: Executing tests
           working_directory: "~/project/build"
           command: |
+            set +e
             ctest -j $(nproc) --output-on-failure
+            set -e
 
       - run:
           name: Generating coverage
