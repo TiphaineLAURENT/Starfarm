@@ -29,3 +29,4 @@ ignore:
   - "**catch.hpp"
   - "SFML-2.5.1-*/.*"
   - "ECS/.*"
+  - "tools/.*"
