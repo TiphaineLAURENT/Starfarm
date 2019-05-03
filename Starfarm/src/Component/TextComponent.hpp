@@ -36,18 +36,18 @@ namespace game
           TextComponent &operator=(TextComponent &&other) = default;
 
   public:
-          const sf::Vector2f &getOrigin() const override;
-          void setOrigin(float x, float y) override;
+          const sf::Vector2f &getOrigins() const override;
+          void setOrigins(float x, float y) override;
           void setOriginCenter() override;
 
-          const sf::Vector2f &getPosition() const override;
-          void setPosition(float x, float y) override;
+          const sf::Vector2f &getPositions() const override;
+          void setPositions(float x, float y) override;
 
-          float getRotation() const override;
+          float getRotations() const override;
           void setRotation(float angle) override;
 
-          const sf::Vector2f &getScale() const override;
-          void setScale(float x, float y) override;
+          const sf::Vector2f &getScales() const override;
+          void setScales(float x, float y) override;
   };
 
   std::ostream &operator<<(std::ostream &out, const TextComponent &);

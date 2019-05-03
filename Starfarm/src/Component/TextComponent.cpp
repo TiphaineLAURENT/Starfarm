@@ -11,7 +11,7 @@ namespace game
   TextComponent::TextComponent()
   {
           setOriginCenter();
-          setPosition(0, 0);
+          setPositions(0, 0);
   }
   TextComponent::TextComponent(
           const std::string &text,
@@ -21,33 +21,33 @@ namespace game
           : Text(text, font, characterSize)
   {
           setOriginCenter();
-          setPosition(0, 0);
+          setPositions(0, 0);
   }
-  const sf::Vector2f &TextComponent::getOrigin() const
+  const sf::Vector2f &TextComponent::getOrigins() const
   {
           return Transformable::getOrigin();
   }
-  void TextComponent::setOrigin(float x, float y)
+  void TextComponent::setOrigins(float x, float y)
   {
           Transformable::setOrigin(x, y);
   }
-  const sf::Vector2f &TextComponent::getPosition() const
+  const sf::Vector2f &TextComponent::getPositions() const
   {
           return Transformable::getPosition();
   }
-  void TextComponent::setPosition(float x, float y)
+  void TextComponent::setPositions(float x, float y)
   {
           Transformable::setPosition(x, y);
   }
-  float TextComponent::getRotation() const
+  float TextComponent::getRotations() const
   {
           return Transformable::getRotation();
   }
-  const sf::Vector2f &TextComponent::getScale() const
+  const sf::Vector2f &TextComponent::getScales() const
   {
           return Transformable::getScale();
   }
-  void TextComponent::setScale(float x, float y)
+  void TextComponent::setScales(float x, float y)
   {
           Transformable::setScale(x, y);
   }
@@ -58,7 +58,7 @@ namespace game
   void TextComponent::setOriginCenter()
   {
           auto bounds = getLocalBounds();
-          setOrigin(bounds.width / 2, bounds.height / 2);
+          setOrigins(bounds.width / 2, bounds.height / 2);
   }
 
 }

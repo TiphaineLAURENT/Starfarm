@@ -38,19 +38,19 @@ namespace game
           if (downFlag) {
                   _transform->move(0, _speed);
           }
-          _transform->setRotation(0, 0, getAngleMouse());
+          _transform->setRotations(0, 0, getAngleMouse());
 
           if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                   auto &missile = ecs::EntityManager::createEntity<Missile>();
-                  missile._transform->setPosition(_transform->getPosition());
-                  missile._transform->setRotation(_transform->getRotations());
+                  missile._transform->setPositions(_transform->getPositions());
+                  missile._transform->setRotations(_transform->getRotations());
           }
   }
 
   float PlayerBehaviour::getAngleMouse()
   {
           auto mousePosition = sf::Mouse::getPosition();
-          auto position = _transform->getPosition();
+          auto position = _transform->getPositions();
           auto angle = atan2(
                   mousePosition.y - position.y,
                   mousePosition.x - position.x
@@ -66,6 +66,6 @@ namespace game
   {
           _transform->linkToRenderer
                             (_gameObject->getComponent<SpriteComponent>());
-          _transform->setPosition(250, 250);
+          _transform->setPositions(250, 250);
   }
 }

@@ -33,18 +33,18 @@ namespace game
           BaseRendererComponent &operator=(BaseRendererComponent &&other) = default;
 
   public:
-          virtual const sf::Vector2f &getOrigin() const = 0;
-          virtual void setOrigin(float x, float y) = 0;
+          virtual const sf::Vector2f &getOrigins() const = 0;
+          virtual void setOrigins(float x, float y) = 0;
           virtual void setOriginCenter() = 0;
 
-          virtual const sf::Vector2f &getPosition() const = 0;
-          virtual void setPosition(float x, float y) = 0;
+          virtual const sf::Vector2f &getPositions() const = 0;
+          virtual void setPositions(float x, float y) = 0;
 
-          virtual float getRotation() const = 0;
+          virtual float getRotations() const = 0;
           virtual void setRotation(float angle) = 0;
 
-          virtual const sf::Vector2f &getScale() const = 0;
-          virtual void setScale(float x, float y) = 0;
+          virtual const sf::Vector2f &getScales() const = 0;
+          virtual void setScales(float x, float y) = 0;
   };
 
   std::ostream &operator<<(std::ostream &out, const BaseRendererComponent &);

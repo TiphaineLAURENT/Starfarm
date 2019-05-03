@@ -18,7 +18,7 @@ namespace game
   void FPSCounterBehaviour::awake()
   {
           _text = _gameObject->getComponent<TextComponent>();
-          _text->setPosition(100, 100);
+          _text->setPositions(100, 100);
   }
 
   void FPSCounterBehaviour::update()

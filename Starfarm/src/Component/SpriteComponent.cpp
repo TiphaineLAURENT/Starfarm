@@ -12,13 +12,13 @@ namespace game
   SpriteComponent::SpriteComponent()
   {
           setOriginCenter();
-          setPosition(0, 0);
+          setPositions(0, 0);
   }
   SpriteComponent::SpriteComponent(const sf::Texture &texture)
           : Sprite(texture)
   {
           setOriginCenter();
-          setPosition(0, 0);
+          setPositions(0, 0);
   }
   SpriteComponent::SpriteComponent(
           const sf::Texture &texture,
@@ -27,25 +27,25 @@ namespace game
           : Sprite(texture, rectangle)
   {
           setOriginCenter();
-          setPosition(0, 0);
+          setPositions(0, 0);
   }
-  const sf::Vector2f &SpriteComponent::getOrigin() const
+  const sf::Vector2f &SpriteComponent::getOrigins() const
   {
           return Transformable::getOrigin();
   }
-  void SpriteComponent::setOrigin(float x, float y)
+  void SpriteComponent::setOrigins(float x, float y)
   {
           Transformable::setOrigin(x, y);
   }
-  const sf::Vector2f &SpriteComponent::getPosition() const
+  const sf::Vector2f &SpriteComponent::getPositions() const
   {
           return Transformable::getPosition();
   }
-  void SpriteComponent::setPosition(float x, float y)
+  void SpriteComponent::setPositions(float x, float y)
   {
           Transformable::setPosition(x, y);
   }
-  float SpriteComponent::getRotation() const
+  float SpriteComponent::getRotations() const
   {
           return Transformable::getRotation();
   }
@@ -53,18 +53,18 @@ namespace game
   {
           Transformable::setRotation(angle);
   }
-  const sf::Vector2f &SpriteComponent::getScale() const
+  const sf::Vector2f &SpriteComponent::getScales() const
   {
           return Transformable::getScale();
   }
-  void SpriteComponent::setScale(float x, float y)
+  void SpriteComponent::setScales(float x, float y)
   {
           Transformable::setScale(x, y);
   }
   void SpriteComponent::setOriginCenter()
   {
           auto bounds = getLocalBounds();
-          setOrigin(bounds.width / 2, bounds.height / 2);
+          setOrigins(bounds.width / 2, bounds.height / 2);
   }
 
 }

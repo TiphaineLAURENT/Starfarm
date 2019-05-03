@@ -31,7 +31,7 @@ namespace game
                   float z;
           };
 
-          Positions _positions;
+          Positions _positions{0, 0, 0};
 
           using Rotations = struct
           {
@@ -40,7 +40,7 @@ namespace game
                   float z;
           };
 
-          Rotations _rotations;
+          Rotations _rotations{0, 0, 0};
 
           static constexpr Rotations forward{0, 0, 1};
 
@@ -50,15 +50,16 @@ namespace game
                   float y;
           };
 
-          Scales _scales;
+          Scales _scales{0, 0};
 
           BaseRendererComponent *_renderer = nullptr;
   public:
 
           // METHODS:
   public: // CONSTRUCTORS
+          TransformComponent() = default;
           explicit TransformComponent(
-                  const Positions &position = Positions{0, 0, 0},
+                  const Positions &position,
                   const Rotations &rotation = Rotations{0, 0, 0},
                   const Scales &scale = Scales{0, 0}
           );
@@ -76,18 +77,18 @@ namespace game
                   _renderer = renderer;
                   return *this;
           }
-          TransformComponent &move(float dx, float dy, bool= false);
-          TransformComponent &setPosition(float x, float y);
-          TransformComponent &setPosition(const Positions &positions);
-          const Positions &getPosition() const;
+          TransformComponent &move(float dx, float dy, bool outside = false);
+          TransformComponent &setPositions(float x, float y);
+          TransformComponent &setPositions(const Positions &positions);
+          const Positions &getPositions() const;
 
-          TransformComponent &setRotation(float x, float y, float z);
-          TransformComponent &setRotation(const Rotations &rotations);
+          TransformComponent &setRotations(float x, float y, float z);
+          TransformComponent &setRotations(const Rotations &rotations);
           const Rotations &getRotations() const;
           const Rotations getForward() const;
 
-          TransformComponent &setScale(float x, float y);
-          TransformComponent &setScale(const Scales &scales);
+          TransformComponent &setScales(float x, float y);
+          TransformComponent &setScales(const Scales &scales);
           const Scales &getScales() const;
 
           void update() const;

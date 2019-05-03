@@ -45,24 +45,28 @@ namespace game
           }
 
           if (_renderer) {
-                  _renderer->setPosition(_positions.x, _positions.y);
+                  _renderer->setPositions(_positions.x, _positions.y);
           }
           return *this;
   }
-  TransformComponent &TransformComponent::setPosition(float x, float y)
+  TransformComponent &TransformComponent::setPositions(float x, float y)
   {
           _positions.x = x;
           _positions.y = y;
           if (_renderer) {
-                  _renderer->setPosition(x, y);
+                  _renderer->setPositions(x, y);
           }
           return *this;
   }
-  const TransformComponent::Positions &TransformComponent::getPosition() const
+  const TransformComponent::Positions &TransformComponent::getPositions() const
   {
           return _positions;
   }
-  TransformComponent &TransformComponent::setRotation(float x, float y, float z)
+  TransformComponent &TransformComponent::setRotations(
+          float x,
+          float y,
+          float z
+  )
   {
           _rotations.x = x;
           _rotations.y = y;
@@ -75,40 +79,40 @@ namespace game
 
   TransformComponent &TransformComponent::operator=(const TransformComponent &other)
   {
-          setPosition(other._positions);
-          setRotation(other._rotations);
-          setScale(other._scales);
+          setPositions(other._positions);
+          setRotations(other._rotations);
+          setScales(other._scales);
           return *this;
   }
   const TransformComponent::Rotations &TransformComponent::getRotations() const
   {
           return _rotations;
   }
-  TransformComponent &TransformComponent::setPosition(const TransformComponent::Positions &positions)
+  TransformComponent &TransformComponent::setPositions(const TransformComponent::Positions &positions)
   {
-          setPosition(positions.x, positions.y);
+          setPositions(positions.x, positions.y);
           return *this;
   }
-  TransformComponent &TransformComponent::setRotation(const TransformComponent::Rotations &rotations)
+  TransformComponent &TransformComponent::setRotations(const TransformComponent::Rotations &rotations)
   {
-          setRotation(rotations.x, rotations.y, rotations.z);
+          setRotations(rotations.x, rotations.y, rotations.z);
           return *this;
   }
-  TransformComponent &TransformComponent::setScale(float x, float y)
+  TransformComponent &TransformComponent::setScales(float x, float y)
   {
           _scales.x = x;
           _scales.y = y;
           if (_renderer) {
-                  _renderer->setScale(x, y);
+                  _renderer->setScales(x, y);
           }
           return *this;
   }
-  TransformComponent &TransformComponent::setScale(
+  TransformComponent &TransformComponent::setScales(
           const
           TransformComponent::Scales &scales
   )
   {
-          setScale(scales.x, scales.y);
+          setScales(scales.x, scales.y);
           return *this;
   }
   const TransformComponent::Scales &TransformComponent::getScales() const
