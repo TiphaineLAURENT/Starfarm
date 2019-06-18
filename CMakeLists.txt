@@ -52,7 +52,7 @@ set(STARFARM_SOURCES
     Starfarm/src/Component/BaseRendererComponent.cpp Starfarm/src/Component/BaseRendererComponent.hpp
     Starfarm/src/Component/SpriteComponent.cpp Starfarm/src/Component/SpriteComponent.hpp
     Starfarm/src/Entity/FPSCounter/FpsCounter.cpp Starfarm/src/Entity/FPSCounter/FpsCounter.hpp
-    Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.cpp Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.hpp Starfarm/src/Entity/Missile/Missile.cpp Starfarm/src/Entity/Missile/Missile.hpp Starfarm/src/Entity/Missile/MissileBehaviour.cpp Starfarm/src/Entity/Missile/MissileBehaviour.hpp)
+    Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.cpp Starfarm/src/Entity/FPSCounter/FpsCounterBehaviour.hpp Starfarm/src/Entity/Missile/Missile.cpp Starfarm/src/Entity/Missile/Missile.hpp Starfarm/src/Entity/Missile/MissileBehaviour.cpp Starfarm/src/Entity/Missile/MissileBehaviour.hpp Starfarm/src/System/EventSystem.cpp Starfarm/src/System/EventSystem.hpp Starfarm/src/Event/Event.cpp Starfarm/src/Event/Event.hpp Starfarm/src/Event/EventHandler.cpp Starfarm/src/Event/EventHandler.hpp)
 
 if (WIN32)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)

@@ -32,7 +32,9 @@ namespace game
           RendererSystem &operator=(RendererSystem &&other) = delete;
 
   public:
+          void preUpdate() override;
           void update() override;
+          void postUpdate() override;
   };
 
   std::ostream &operator<<(std::ostream &out, const RendererSystem &);

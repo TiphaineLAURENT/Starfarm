@@ -20,7 +20,8 @@ namespace game
 
   class BaseRendererComponent;
 
-  class TransformComponent : public ecs::Component<TransformComponent>
+  class TransformComponent
+          : public ecs::Component<TransformComponent>
   {
           // ATTRIBUTES
   private:
@@ -53,6 +54,7 @@ namespace game
           Scales _scales{0, 0};
 
           BaseRendererComponent *_renderer = nullptr;
+
   public:
 
           // METHODS:

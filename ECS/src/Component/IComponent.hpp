@@ -9,7 +9,7 @@
 # define ECS_ICOMPONENT_HPP
 
 # include <ostream>
-# include <vector>
+# include <list>
 # include "../util/util.hpp"
 
 namespace ecs
@@ -26,7 +26,7 @@ namespace ecs
 
           ComponentID _componentID = INVALID_COMPONENT_ID;
 
-          static std::vector<ComponentID> _freeID;
+          static std::list<ComponentID> _freeID;
 
           static ComponentID _componentCount;
 

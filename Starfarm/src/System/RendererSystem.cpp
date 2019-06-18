@@ -17,9 +17,18 @@ namespace game
   {
   }
 
+  void RendererSystem::preUpdate()
+  {
+          _window->display();
+  }
+
   void RendererSystem::update()
   {
           _window->clear();
+  }
+
+  void RendererSystem::postUpdate()
+  {
           for (auto &component :
                   ecs::ComponentManager::getComponentContainer<SpriteComponent>
                           ()) {
@@ -30,6 +39,5 @@ namespace game
                           ()) {
                   _window->draw(*component);
           }
-          _window->display();
   }
 }

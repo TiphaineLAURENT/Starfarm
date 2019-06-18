@@ -10,7 +10,7 @@
 
 # include <ostream>
 # include <memory>
-# include <vector>
+# include <list>
 # include <algorithm>
 # include "IComponentContainer.hpp"
 # include "../../../Starfarm/src/Component/MonoBehaviourComponent.hpp"
@@ -19,7 +19,7 @@ namespace ecs
 {
 
   template <class C>
-  using ComponentStorage = std::vector<std::unique_ptr<C>>;
+  using ComponentStorage = std::list<std::unique_ptr<C>>;
 
   template <class C>
   using CComponentIterator =
