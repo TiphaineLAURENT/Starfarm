@@ -7,35 +7,41 @@
 # define STARFARM_EVENTHANDLER_HPP
 
 # include <ostream>
-#include "../../../ECS/src/util/util.hpp"
+# include "../../../ECS/src/util/util.hpp"
+# include "IEventHandler.hpp"
 
 
 namespace game
 {
 
+  template <class T>
+  using Handler = void(T *const);
   using HandlerID = ecs::util::ID;
   static const HandlerID INVALID_HANDLER_ID = ecs::util::INVALID_ID;
 
-  template <class... ARGS>
+  template <class T>
   class EventHandler
+          : public IEventHandler
   {
+
 // ATTRIBUTES
   private:
-          using Handler = void(ARGS...);
+          Handler<T> _handler;
 
-          Handler _handler;
+          T *const _obj;
 
+          static HandlerID _lastId;
           HandlerID _id;
 
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
-          explicit EventHandler(Handler &handler)
-                  : _handler(handler)
+          explicit EventHandler(Handler<T> &handler, T *const obj)
+                  : _handler(handler), _obj(obj), _id(++_lastId)
           {
           }
-          ~EventHandler() = default;
+          ~EventHandler() override = default;
           EventHandler(const EventHandler &copy) = default;
           EventHandler(EventHandler &&other) noexcept = default;
 
@@ -43,26 +49,19 @@ namespace game
           EventHandler &operator=(const EventHandler &other) = default;
           EventHandler &operator=(EventHandler &&other) noexcept = default;
 
-          void operator()(ARGS... args) const
-          {
-                  if (_handler) {
-                          _handler(args...);
-                  }
-          }
-          bool operator==(const EventHandler &other) const
-          {
-                  return _id == other._id;
-          }
-
   public:
           HandlerID getId() const
           {
                   return _id;
           }
+          void execute() override
+          {
+                  _handler(_obj);
+          }
   };
 
-  template <class... ARGS>
-  std::ostream &operator<<(std::ostream &out, const EventHandler<ARGS...> &);
+  template <class T>
+  std::ostream &operator<<(std::ostream &out, const EventHandler<T> &);
 
 }
 

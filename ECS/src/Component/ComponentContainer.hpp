@@ -90,9 +90,9 @@ namespace ecs
                   }
                   return nullptr;
           }
-          std::vector<C *const> getComponents(EntityID entityID)
+          std::list<C *const> getComponents(EntityID entityID)
           {
-                  auto components = std::vector<C *const>{};
+                  auto components = std::list<C *const>;
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {

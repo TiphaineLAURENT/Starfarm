@@ -20,7 +20,7 @@ namespace game
   {
 // ATTRIBUTES
   private:
-          std::list<EventHandler<ARGS...>> _handlers;
+          std::list<std::unique_ptr<IEventHandler>> _handlers;
 
   public:
 
@@ -36,14 +36,11 @@ namespace game
           Event &operator=(Event &&other) noexcept = default;
 
   public:
-          HandlerID add(EventHandler<ARGS...> &handler)
+          template <class T>
+          HandlerID addListener(Handler<T> &handler, T *const obj)
           {
                   _handlers.push_back(handler);
                   return handler.getId();
-          }
-          void remove(EventHandler<ARGS...> &handler)
-          {
-                  _handlers.remove(handler);
           }
           void removeById(HandlerID handlerId)
           {
@@ -58,12 +55,12 @@ namespace game
                   }
           }
 
-          void call(ARGS... params) const
+          void execute() const
           {
                   for (
                           auto &handler : _handlers
                           ) {
-                          handler(params...);
+                          handler->execute();
                   }
           }
   };

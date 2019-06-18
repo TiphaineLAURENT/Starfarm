@@ -4,3 +4,12 @@
 //
 
 #include "EventHandler.hpp"
+
+
+namespace game
+{
+
+  template <class T>
+  HandlerID EventHandler<T>::_lastId = 0;
+
+}
