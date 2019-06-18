@@ -7,7 +7,6 @@
 # define STARFARM_EVENTHANDLER_HPP
 
 # include <ostream>
-# include "../../../ECS/src/util/util.hpp"
 # include "IEventHandler.hpp"
 
 
@@ -16,8 +15,6 @@ namespace game
 
   template <class T>
   using Handler = void(T *const);
-  using HandlerID = ecs::util::ID;
-  static const HandlerID INVALID_HANDLER_ID = ecs::util::INVALID_ID;
 
   template <class T>
   class EventHandler
@@ -30,15 +27,12 @@ namespace game
 
           T *const _obj;
 
-          static HandlerID _lastId;
-          HandlerID _id;
-
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
           explicit EventHandler(Handler<T> &handler, T *const obj)
-                  : _handler(handler), _obj(obj), _id(++_lastId)
+                  : _handler(handler), _obj(obj)
           {
           }
           ~EventHandler() override = default;

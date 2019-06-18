@@ -15,12 +15,11 @@
 namespace game
 {
 
-  template <class... ARGS>
   class Event
   {
 // ATTRIBUTES
   private:
-          std::list<std::unique_ptr<IEventHandler>> _handlers;
+          std::list<std::unique_ptr<IEventHandler>> _listeners;
 
   public:
 
@@ -29,7 +28,7 @@ namespace game
           Event() = default;
           ~Event() = default;
           Event(const Event &copy) = default;
-          Event(Event &&other) noexcept = default;
+          Event(Event &&other) = default;
 
   public: // OPERATORS
           Event &operator=(const Event &other) = default;
@@ -39,34 +38,34 @@ namespace game
           template <class T>
           HandlerID addListener(Handler<T> &handler, T *const obj)
           {
-                  _handlers.push_back(handler);
+                  _listeners.push_back(handler);
                   return handler.getId();
           }
           void removeById(HandlerID handlerId)
           {
                   auto handler = std::find_if(
-                          _handlers.begin(), _handlers.end(),
-                          [handlerId](const EventHandler<ARGS...> &handler) {
-                                  return handlerId == handler.getId();
+                          _listeners.begin(), _listeners.end(),
+                          [handlerId](auto &handler) {
+                                  return handlerId == handler->getId();
                           }
                   );
-                  if (handler != _handlers.end()) {
-                          _handlers.erase(handler);
+                  if (handler != _listeners.end()) {
+                          _listeners.erase(handler);
                   }
           }
+          void clearListeners();
 
           void execute() const
           {
                   for (
-                          auto &handler : _handlers
+                          auto &handler : _listeners
                           ) {
                           handler->execute();
                   }
           }
   };
 
-  template <class... ARGS>
-  std::ostream &operator<<(std::ostream &out, const Event<ARGS...> &);
+  std::ostream &operator<<(std::ostream &out, const Event &);
 
 }
 

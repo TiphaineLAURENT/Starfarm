@@ -6,21 +6,31 @@
 #ifndef STARFARM_IEVENTHANDLER_HPP
 #define STARFARM_IEVENTHANDLER_HPP
 
-#include <ostream>
-
+# include <ostream>
+# include "../../../ECS/src/util/util.hpp"
 
 namespace game
 {
+
+  using HandlerID = ecs::util::ID;
+  static const HandlerID INVALID_HANDLER_ID = ecs::util::INVALID_ID;
 
   class IEventHandler
   {
 // ATTRIBUTES
   private:
+          static HandlerID _lastId;
+
+          HandlerID _id;
+
   public:
 
 // METHODS:
   public: // CONSTRUCTORS
-          IEventHandler() = default;
+          IEventHandler()
+                  : _id(++_lastId)
+          {
+          }
           virtual ~IEventHandler() = default;
           IEventHandler(const IEventHandler &copy) = default;
           IEventHandler(IEventHandler &&other) noexcept = default;

@@ -3,9 +3,12 @@
 // Created by Tiphaine LAURENT on 18/06/2019.
 //
 
-#include "EventHandler.hpp"
+#include "IEventHandler.hpp"
 
 
 namespace game
 {
+
+  HandlerID IEventHandler::_lastId = 0;
+
 }

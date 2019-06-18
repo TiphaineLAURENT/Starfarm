@@ -4,3 +4,14 @@
 //
 
 #include "Event.hpp"
+
+
+namespace game
+{
+
+  void Event::clearListeners()
+  {
+          _listeners.clear();
+  }
+
+}
