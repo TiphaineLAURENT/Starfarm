@@ -40,6 +40,10 @@ namespace game
           IEventHandler &operator=(IEventHandler &&other) noexcept = default;
 
   public:
+          HandlerID getId() const
+          {
+                  return _id;
+          }
           virtual void execute() = 0;
   };
 

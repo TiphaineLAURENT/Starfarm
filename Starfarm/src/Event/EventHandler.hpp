@@ -44,10 +44,6 @@ namespace game
           EventHandler &operator=(EventHandler &&other) noexcept = default;
 
   public:
-          HandlerID getId() const
-          {
-                  return _id;
-          }
           void execute() override
           {
                   _handler(_obj);
