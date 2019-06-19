@@ -14,7 +14,7 @@ namespace game
 {
 
   template <class T>
-  using Handler = void(T *const);
+  using Handler = void (*)(T *const);
 
   template <class T>
   class EventHandler
