@@ -24,7 +24,6 @@ namespace game
 // ATTRIBUTES
   private:
           Handler<T> _handler;
-
           T *const _obj;
 
   public:

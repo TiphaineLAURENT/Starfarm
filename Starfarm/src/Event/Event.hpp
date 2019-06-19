@@ -9,6 +9,7 @@
 # include <ostream>
 # include <list>
 # include <algorithm>
+# include <memory>
 # include "EventHandler.hpp"
 
 
@@ -38,8 +39,11 @@ namespace game
           template <class T>
           HandlerID addListener(Handler<T> &handler, T *const obj)
           {
-                  _listeners.push_back(handler);
-                  return handler.getId();
+                  auto eventHandler = std::make_unique<EventHandler<T>>
+                          (handler, obj);
+                  auto id = eventHandler->getId();
+                  _listeners.push_back(eventHandler);
+                  return id;
           }
           void removeById(HandlerID handlerId)
           {
