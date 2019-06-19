@@ -92,7 +92,7 @@ namespace ecs
           }
           std::list<C *const> getComponents(EntityID entityID)
           {
-                  auto components = std::list<C *const>;
+                  auto components = std::list<C *const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {
@@ -101,9 +101,9 @@ namespace ecs
                   }
                   return components;
           }
-          const ComponentStorage<C> getComponents(EntityID entityID) const
+          const std::list<C *const> getComponents(EntityID entityID) const
           {
-                  auto components = std::vector<C *const>{};
+                  auto components = std::list<C *const>{};
 
                   for (auto &component : _components) {
                           if (component->getOwner() == entityID) {
