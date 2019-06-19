@@ -10,6 +10,7 @@
 
 # include <ostream>
 # include <unordered_map>
+# include <list>
 # include "ComponentContainer.hpp"
 
 
@@ -93,7 +94,7 @@ namespace ecs
                   return container.getComponent(entityID);
           }
           template <class C>
-          static std::vector<C *> getComponents(EntityID entityID)
+          static std::list<C *const> getComponents(EntityID entityID)
           {
                   auto &container = getComponentContainer<C>();
 
