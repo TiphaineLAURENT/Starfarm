@@ -27,4 +27,6 @@ Support<br>
 
 A SFML game where your ship must farm to progress
 
+![Starfarm](https://image.noelshack.com/fichiers/2019/32/1/1565012747-starfarm.png)
+
 <!-- @formatter:on -->
