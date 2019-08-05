@@ -1,8 +1,7 @@
 <!-- @formatter:off -->
 | Platform | Status |
 |----------|:------:|
-| Linux (Ubuntu 18.04 - g++-8 - CMake 3.10.2) | [![CircleCI](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master.svg?style=svg)](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTiphaineLAURENT%2FStarfarm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FTiphaineLAURENT%2FStarfarm?ref=badge_shield)
-|
+| Linux (Ubuntu 18.04 - g++-8 - CMake 3.10.2) | [![CircleCI](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master.svg?style=svg)](https://circleci.com/gh/TiphaineLAURENT/Starfarm/tree/master) |
 | Windows (Windows 32 bits - Visual Studio 15 2017 - CMake 3.10.2) | [![Travis](https://travis-ci.com/TiphaineLAURENT/Starfarm.svg?branch=master)](https://travis-ci.com/TiphaineLAURENT/Starfarm) |
 
 Code Quality<br>
